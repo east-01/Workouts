@@ -8,11 +8,7 @@
 import UIKit
 
 class WorkoutViewController: UIViewController {
-    
-    static let UNIT_HEIGHT: Int = 100
-    static let SPACE_HEIGHT: Int = 15
-    static let HEADER_HEIGHT: Int = 50
-    
+        
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var stack: UIStackView!
@@ -39,11 +35,10 @@ class WorkoutViewController: UIViewController {
         
         var height: Int = 0
         for currentSet in workout.sets {
-            height += currentSet.exercises.count * WorkoutViewController.UNIT_HEIGHT
-            height += WorkoutViewController.HEADER_HEIGHT
+            height += currentSet.exercises.count * SetCell.UNIT_HEIGHT
+            height += SetCell.HEADER_HEIGHT
         }
-        height += (workout.sets.count - 1) * WorkoutViewController.SPACE_HEIGHT
-        // 50 = cell heiht, 15 = space size
+        height += (workout.sets.count - 1) * SetCell.SPACE_HEIGHT
         stackHeight.constant = CGFloat(height)
         
         for currentSet in workout.sets {
@@ -51,16 +46,12 @@ class WorkoutViewController: UIViewController {
             stack.addArrangedSubview(newCell)
             
             NSLayoutConstraint.activate([
-                newCell.leftAnchor.constraint(equalTo: stack.leftAnchor),
-                newCell.rightAnchor.constraint(equalTo: stack.rightAnchor),
-                newCell.heightAnchor.constraint(equalToConstant: CGFloat(currentSet.exercises.count * WorkoutViewController.UNIT_HEIGHT + WorkoutViewController.HEADER_HEIGHT))
+                newCell.heightAnchor.constraint(equalToConstant: CGFloat(currentSet.exercises.count * SetCell.UNIT_HEIGHT + SetCell.HEADER_HEIGHT))
             ])
         }
                         
         scrollView.showsVerticalScrollIndicator = false
         scrollView.layer.cornerRadius = 12
-        
-        
         
     }
         

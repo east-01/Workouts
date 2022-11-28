@@ -8,8 +8,12 @@
 import UIKit
 
 @IBDesignable
-class SetCell: UIView { // TODO Conver to StackView
+class SetCell: UIStackView {
     
+    static let UNIT_HEIGHT: Int = 55
+    static let SPACE_HEIGHT: Int = 15
+    static let HEADER_HEIGHT: Int = 50
+
     var workoutSet: WorkoutSet?
     
     var position: Int
@@ -32,7 +36,7 @@ class SetCell: UIView { // TODO Conver to StackView
         setup()
     }
     
-    required init?(coder: NSCoder) {
+    required init(coder: NSCoder) {
         self.cellHeader = UIView()
         self.numberText = UILabel()
         self.nameTexts = []
@@ -51,73 +55,44 @@ class SetCell: UIView { // TODO Conver to StackView
         self.translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = UIColor(named: "BackgroundAccentColor")
         self.layer.cornerRadius = 12
+        self.axis = .vertical
+        self.spacing = .zero
+        self.distribution = .equalSpacing
         
         createHeader()
-        
-        let colors: [UIColor] = [UIColor.orange, UIColor.systemRed, UIColor.systemBlue, UIColor.systemOrange, UIColor.systemCyan]
-        
+                
         for i in 0...workoutSet.exercises.count - 1 {
             let cell: UIView = createExerciseCell(exercise: workoutSet.exercises[i], sets: workoutSet.sets[i], reps: workoutSet.reps[i])
-            cell.backgroundColor = colors[i]
-            self.addSubview(cell)
+            self.addArrangedSubview(cell)
             
             NSLayoutConstraint.activate([
-                cell.leftAnchor.constraint(equalTo: self.leftAnchor),
-                cell.rightAnchor.constraint(equalTo: self.rightAnchor),
-                cell.heightAnchor.constraint(equalToConstant: CGFloat(WorkoutViewController.UNIT_HEIGHT))
+                cell.heightAnchor.constraint(equalToConstant: CGFloat(SetCell.UNIT_HEIGHT))
             ])
                         
         }
         
-        if(subviews.count > 1) {
-            for i in 0...subviews.count - 1 {
-                let cell = subviews[i]
-                if(i == 0) {
-                    NSLayoutConstraint.activate([
-                        cell.topAnchor.constraint(equalTo: cellHeader.bottomAnchor),
-                        cell.bottomAnchor.constraint(equalTo: subviews[i + 1].topAnchor),
-                    ])
-                } else if(i == subviews.count - 1) {
-                    NSLayoutConstraint.activate([
-                        cell.topAnchor.constraint(equalTo: subviews[i - 1].bottomAnchor),
-                        cell.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-                    ])
-                } else {
-                    NSLayoutConstraint.activate([
-                        cell.topAnchor.constraint(equalTo: subviews[i - 1].bottomAnchor),
-                        cell.bottomAnchor.constraint(equalTo: subviews[i + 1].topAnchor),
-                    ])
-                }
-            }
-        } else {
-            NSLayoutConstraint.activate([
-                subviews[0].topAnchor.constraint(equalTo: cellHeader.bottomAnchor),
-                subviews[0].bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            ])
-        }
     }
     
     private func createHeader() {
         
-        cellHeader.backgroundColor = UIColor.systemYellow
         cellHeader.translatesAutoresizingMaskIntoConstraints = false
-        
+        cellHeader.backgroundColor = UIColor(named:"AccentColor")
+        cellHeader.layer.cornerRadius = 12
+        cellHeader.layer.borderWidth = 5
+        cellHeader.layer.borderColor = UIColor(named:"BackgroundAccentColor")?.cgColor
+
+        self.addArrangedSubview(cellHeader)
+
         numberText = createTextLabel(text: "\(position)/\(totalCount)", isBold: false, fontSize: 20)
         cellHeader.addSubview(numberText)
  
         NSLayoutConstraint.activate([
             numberText.leadingAnchor.constraint(equalTo: cellHeader.leadingAnchor, constant: CGFloat(15)),
-            numberText.topAnchor.constraint(equalTo: cellHeader.topAnchor, constant: CGFloat(15))
+            numberText.centerYAnchor.constraint(equalTo: cellHeader.centerYAnchor)
         ])
-        
-    
-        self.addSubview(cellHeader)
-        
+                
         NSLayoutConstraint.activate([
-            cellHeader.leftAnchor.constraint(equalTo: self.leftAnchor),
-            cellHeader.rightAnchor.constraint(equalTo: self.rightAnchor),
-            cellHeader.topAnchor.constraint(equalTo: self.topAnchor),
-            cellHeader.heightAnchor.constraint(equalToConstant: CGFloat(WorkoutViewController.HEADER_HEIGHT)),
+            cellHeader.heightAnchor.constraint(equalToConstant: CGFloat(SetCell.HEADER_HEIGHT)),
         ])
         
     }
@@ -126,8 +101,9 @@ class SetCell: UIView { // TODO Conver to StackView
         
         let cell: UIView = UIView()
         cell.translatesAutoresizingMaskIntoConstraints = false
-                        
+        
         let nameText = createTextLabel(text: exercise.getData().displayName, isBold: false, fontSize: 35)
+        nameText.adjustsFontSizeToFitWidth = true
         nameTexts.append(nameText)
         cell.addSubview(nameText)
 
@@ -138,6 +114,7 @@ class SetCell: UIView { // TODO Conver to StackView
                 
         NSLayoutConstraint.activate([
             nameText.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: CGFloat(15)),
+            nameText.trailingAnchor.constraint(equalTo: setrepText.leadingAnchor, constant: CGFloat(-5)),
             nameText.centerYAnchor.constraint(equalTo: cell.centerYAnchor),
 
             setrepText.trailingAnchor.constraint(equalTo: cell.trailingAnchor, constant: CGFloat(-15)),
