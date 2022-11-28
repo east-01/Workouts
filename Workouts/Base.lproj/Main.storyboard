@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController title="Main" id="BYZ-38-t0r" customClass="MainViewController" customModule="Workouts" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome back, #USER#" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jxn-lo-53E">
+                                <rect key="frame" x="10" y="57" width="313" height="34"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                <color key="textColor" name="ForegroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wAH-Vq-JP4">
+                                <rect key="frame" x="145" y="745" width="100" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="ZvX-27-eZb"/>
+                                    <constraint firstAttribute="height" constant="50" id="vKn-F4-Fwk"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="New">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" name="AccentColor"/>
+                                    </backgroundConfiguration>
+                                    <color key="baseForegroundColor" name="ForegroundColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="newWorkoutClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xWm-Fz-sg3"/>
+                                    <segue destination="H7S-Np-35s" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="Zpl-zg-OHf"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" name="BackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="wAH-Vq-JP4" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-15" id="CR9-Nk-nkD"/>
+                            <constraint firstItem="Jxn-lo-53E" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="PjZ-a9-RTL"/>
+                            <constraint firstItem="wAH-Vq-JP4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ciX-Je-FUd"/>
+                            <constraint firstItem="Jxn-lo-53E" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="fAW-QS-Yrm"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="18" y="-2"/>
+        </scene>
+        <!--Workout View Controller-->
+        <scene sceneID="QIW-Sb-9Ng">
+            <objects>
+                <viewController storyboardIdentifier="WorkoutViewController" id="H7S-Np-35s" customClass="WorkoutViewController" customModule="Workouts" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pZp-X8-r71">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1" text="#DATE#" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="neb-v9-ws7">
+                                <rect key="frame" x="138" y="62" width="114" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <color key="textColor" name="ForegroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="2" text="#TYPE#" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qNI-nu-ngL">
+                                <rect key="frame" x="150.33333333333334" y="108" width="89.333333333333343" height="28.666666666666657"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                <color key="textColor" name="ForegroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="3" translatesAutoresizingMaskIntoConstraints="NO" id="TMa-Jg-C6c">
+                                <rect key="frame" x="10" y="156.66666666666669" width="370" height="653.33333333333326"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="500" axis="vertical" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="AyP-d4-ysC">
+                                        <rect key="frame" x="0.0" y="0.0" width="370" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="8f1-Mf-8vI"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="AyP-d4-ysC" firstAttribute="bottom" secondItem="cLR-MD-4Kx" secondAttribute="bottom" id="37F-oO-qXO"/>
+                                    <constraint firstItem="AyP-d4-ysC" firstAttribute="centerX" secondItem="TMa-Jg-C6c" secondAttribute="centerX" id="EYe-Gd-JUC"/>
+                                    <constraint firstItem="cLR-MD-4Kx" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="AyP-d4-ysC" secondAttribute="bottom" id="HNs-nf-3cC"/>
+                                    <constraint firstAttribute="bottom" secondItem="AyP-d4-ysC" secondAttribute="bottom" id="Hic-ZJ-vGp"/>
+                                    <constraint firstAttribute="trailing" secondItem="AyP-d4-ysC" secondAttribute="trailing" id="YEp-0D-AXh"/>
+                                    <constraint firstItem="AyP-d4-ysC" firstAttribute="top" secondItem="cLR-MD-4Kx" secondAttribute="top" id="aH9-9o-ipA"/>
+                                    <constraint firstItem="ui9-95-3gd" firstAttribute="trailing" secondItem="AyP-d4-ysC" secondAttribute="trailing" id="tw6-Nc-8ho"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="cLR-MD-4Kx"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="ui9-95-3gd"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="jen-Xv-nUz"/>
+                        <color key="backgroundColor" name="BackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="TMa-Jg-C6c" firstAttribute="leading" secondItem="jen-Xv-nUz" secondAttribute="leading" constant="10" id="0CO-F7-U0b"/>
+                            <constraint firstItem="TMa-Jg-C6c" firstAttribute="bottom" secondItem="jen-Xv-nUz" secondAttribute="bottom" id="1LP-z7-0MQ"/>
+                            <constraint firstItem="neb-v9-ws7" firstAttribute="top" secondItem="jen-Xv-nUz" secondAttribute="top" constant="15" id="1PU-FZ-tvc"/>
+                            <constraint firstItem="neb-v9-ws7" firstAttribute="centerX" secondItem="pZp-X8-r71" secondAttribute="centerX" id="JJu-LO-A5q"/>
+                            <constraint firstItem="qNI-nu-ngL" firstAttribute="top" secondItem="neb-v9-ws7" secondAttribute="bottom" constant="10" id="Rkd-YT-5T9"/>
+                            <constraint firstItem="neb-v9-ws7" firstAttribute="centerX" secondItem="qNI-nu-ngL" secondAttribute="centerX" id="XpF-dt-IV5"/>
+                            <constraint firstItem="TMa-Jg-C6c" firstAttribute="centerX" secondItem="neb-v9-ws7" secondAttribute="centerX" id="kdM-n7-hZA"/>
+                            <constraint firstItem="TMa-Jg-C6c" firstAttribute="top" secondItem="qNI-nu-ngL" secondAttribute="bottom" constant="20" id="tE3-ng-Ddp"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="llY-fI-5zI"/>
+                    <connections>
+                        <outlet property="dateLabel" destination="neb-v9-ws7" id="tg2-1Q-Fb9"/>
+                        <outlet property="scrollView" destination="TMa-Jg-C6c" id="upC-PS-VLK"/>
+                        <outlet property="stack" destination="AyP-d4-ysC" id="ogG-WC-9rM"/>
+                        <outlet property="stackHeight" destination="8f1-Mf-8vI" id="Ck6-vz-YDf"/>
+                        <outlet property="typeLabel" destination="qNI-nu-ngL" id="aQE-o3-ytf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Z0-3W-1qX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1090.7692307692307" y="-2.1327014218009479"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="AccentColor">
+            <color red="0.58823529411764708" green="0.098039215686274508" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BackgroundColor">
+            <color red="0.21568627450980393" green="0.20392156862745098" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ForegroundColor">
+            <color red="0.98039215686274506" green="0.96862745098039216" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
