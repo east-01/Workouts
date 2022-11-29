@@ -3,6 +3,7 @@
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,44 +17,90 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome back, #USER#" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jxn-lo-53E">
-                                <rect key="frame" x="10" y="57" width="313" height="34"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
-                                <color key="textColor" name="ForegroundColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wAH-Vq-JP4">
-                                <rect key="frame" x="145" y="745" width="100" height="50"/>
+                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bws-O1-Rqy">
+                                <rect key="frame" x="0.0" y="724" width="390" height="120"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wAH-Vq-JP4">
+                                        <rect key="frame" x="135" y="-40" width="120" height="120"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="ZvX-27-eZb"/>
+                                            <constraint firstAttribute="height" constant="120" id="vKn-F4-Fwk"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain">
+                                            <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
+                                            <backgroundConfiguration key="background" cornerRadius="75" strokeWidth="15">
+                                                <color key="backgroundColor" name="AccentColor"/>
+                                                <color key="strokeColor" name="BackgroundAccentColor"/>
+                                            </backgroundConfiguration>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="30"/>
+                                            <color key="baseForegroundColor" name="ForegroundColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="newWorkoutClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xWm-Fz-sg3"/>
+                                            <segue destination="H7S-Np-35s" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="Zpl-zg-OHf"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GGf-ae-a67">
+                                        <rect key="frame" x="40" y="14" width="73" height="56"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="person.fill" catalog="system">
+                                            <backgroundConfiguration key="background"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="35"/>
+                                            <color key="baseForegroundColor" name="AccentColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="profileClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VvA-Np-wNA"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="BackgroundAccentColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="ZvX-27-eZb"/>
-                                    <constraint firstAttribute="height" constant="50" id="vKn-F4-Fwk"/>
+                                    <constraint firstItem="wAH-Vq-JP4" firstAttribute="centerX" secondItem="bws-O1-Rqy" secondAttribute="centerX" id="4H1-Ct-kDd"/>
+                                    <constraint firstAttribute="bottom" secondItem="GGf-ae-a67" secondAttribute="bottom" constant="50" id="TYP-cs-1Cw"/>
+                                    <constraint firstAttribute="height" constant="120" id="Wot-BW-RfD"/>
+                                    <constraint firstItem="GGf-ae-a67" firstAttribute="leading" secondItem="bws-O1-Rqy" secondAttribute="leading" constant="40" id="vYx-8m-qXB"/>
+                                    <constraint firstAttribute="bottom" secondItem="wAH-Vq-JP4" secondAttribute="bottom" constant="40" id="zRx-e4-svX"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="New">
-                                    <backgroundConfiguration key="background">
-                                        <color key="backgroundColor" name="AccentColor"/>
-                                    </backgroundConfiguration>
-                                    <color key="baseForegroundColor" name="ForegroundColor"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="newWorkoutClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xWm-Fz-sg3"/>
-                                    <segue destination="H7S-Np-35s" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="Zpl-zg-OHf"/>
-                                </connections>
-                            </button>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cgp-cC-e2R">
+                                <rect key="frame" x="15" y="47" width="360" height="175"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome back, #USER#" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="Jxn-lo-53E">
+                                        <rect key="frame" x="15" y="15" width="330" height="34"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                        <color key="textColor" name="ForegroundColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="BackgroundAccentColor"/>
+                                <constraints>
+                                    <constraint firstItem="Jxn-lo-53E" firstAttribute="top" secondItem="cgp-cC-e2R" secondAttribute="top" constant="15" id="MUA-fF-wGy"/>
+                                    <constraint firstAttribute="trailing" secondItem="Jxn-lo-53E" secondAttribute="trailing" constant="15" id="dyK-Mg-JjH"/>
+                                    <constraint firstAttribute="height" constant="175" id="hmr-b1-riQ"/>
+                                    <constraint firstItem="Jxn-lo-53E" firstAttribute="leading" secondItem="cgp-cC-e2R" secondAttribute="leading" constant="15" id="rgj-Ks-uh2"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="BackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="wAH-Vq-JP4" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-15" id="CR9-Nk-nkD"/>
-                            <constraint firstItem="Jxn-lo-53E" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="PjZ-a9-RTL"/>
-                            <constraint firstItem="wAH-Vq-JP4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ciX-Je-FUd"/>
-                            <constraint firstItem="Jxn-lo-53E" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="fAW-QS-Yrm"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="bws-O1-Rqy" secondAttribute="bottom" constant="-34" id="0U7-sB-mnu"/>
+                            <constraint firstItem="cgp-cC-e2R" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="9Tr-P0-1Qs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bws-O1-Rqy" secondAttribute="trailing" constant="-16" id="OVP-BJ-jDP"/>
+                            <constraint firstItem="bws-O1-Rqy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="ZzM-wW-kqc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cgp-cC-e2R" secondAttribute="trailing" constant="15" id="clK-ut-xkN"/>
+                            <constraint firstItem="cgp-cC-e2R" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="xHu-w0-SnM"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="greetingText" destination="Jxn-lo-53E" id="3eT-aa-m62"/>
+                        <outlet property="topView" destination="cgp-cC-e2R" id="5ha-Qe-1en"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="18" y="-2"/>
+            <point key="canvasLocation" x="16.923076923076923" y="-2.1327014218009479"/>
         </scene>
         <!--Workout View Controller-->
         <scene sceneID="QIW-Sb-9Ng">
@@ -127,8 +174,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <namedColor name="AccentColor">
             <color red="0.58823529411764708" green="0.098039215686274508" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BackgroundAccentColor">
+            <color red="0.25490196078431371" green="0.2627450980392157" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="BackgroundColor">
             <color red="0.21568627450980393" green="0.20392156862745098" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

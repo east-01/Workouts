@@ -67,6 +67,13 @@ enum Exercise {
                 secMuscle: .NONE,
                 terMuscle: .NONE
             )
+        case .BB_BENCH:
+            return ExerciseData(
+                dispName: "Barbell Bench",
+                priMuscle: .NONE,
+                secMuscle: .NONE,
+                terMuscle: .NONE
+            )
         default:
             fatalError("Failed to get data for \(String(describing: self))")
         }

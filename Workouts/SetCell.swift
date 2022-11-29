@@ -114,7 +114,7 @@ class SetCell: UIStackView {
                 
         NSLayoutConstraint.activate([
             nameText.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: CGFloat(15)),
-            nameText.trailingAnchor.constraint(equalTo: setrepText.leadingAnchor, constant: CGFloat(-5)),
+            nameText.trailingAnchor.constraint(equalTo: setrepText.leadingAnchor, constant: CGFloat(-15)),
             nameText.centerYAnchor.constraint(equalTo: cell.centerYAnchor),
 
             setrepText.trailingAnchor.constraint(equalTo: cell.trailingAnchor, constant: CGFloat(-15)),

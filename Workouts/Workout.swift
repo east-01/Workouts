@@ -28,6 +28,7 @@ class Workout {
         sets.append(WorkoutSet(exercise: .DB_DECLINE_BENCH, sets: 5, reps: 10))
         sets.append(WorkoutSet(exercise: .LATERAL_RAISES, sets: 3, reps: 8))
         sets.append(WorkoutSet(exercise: .BAR_CURLS, sets: 4, reps: 10))
+        sets.append(WorkoutSet(exercises: [.BB_BENCH, .BAR_CURLS, .LATERAL_RAISES], sets: [3, 3, 3], reps: [5, 5, 8]))
 
     }
     
