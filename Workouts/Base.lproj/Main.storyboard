@@ -64,7 +64,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cgp-cC-e2R">
-                                <rect key="frame" x="15" y="47" width="360" height="175"/>
+                                <rect key="frame" x="15" y="47" width="360" height="200"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome back, #USER#" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="Jxn-lo-53E">
                                         <rect key="frame" x="15" y="15" width="330" height="34"/>
@@ -72,12 +72,21 @@
                                         <color key="textColor" name="ForegroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="7GP-hF-5Xq">
+                                        <rect key="frame" x="10" y="59" width="340" height="131"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="340" placeholder="YES" id="jKR-hq-718"/>
+                                        </constraints>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" name="BackgroundAccentColor"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="7GP-hF-5Xq" secondAttribute="bottom" constant="10" id="88t-7u-ImQ"/>
                                     <constraint firstItem="Jxn-lo-53E" firstAttribute="top" secondItem="cgp-cC-e2R" secondAttribute="top" constant="15" id="MUA-fF-wGy"/>
+                                    <constraint firstItem="7GP-hF-5Xq" firstAttribute="centerX" secondItem="cgp-cC-e2R" secondAttribute="centerX" id="UQZ-TG-f4w"/>
                                     <constraint firstAttribute="trailing" secondItem="Jxn-lo-53E" secondAttribute="trailing" constant="15" id="dyK-Mg-JjH"/>
-                                    <constraint firstAttribute="height" constant="175" id="hmr-b1-riQ"/>
+                                    <constraint firstItem="7GP-hF-5Xq" firstAttribute="top" secondItem="Jxn-lo-53E" secondAttribute="bottom" constant="10" id="fFy-Wf-5qv"/>
+                                    <constraint firstAttribute="height" constant="200" id="hmr-b1-riQ"/>
                                     <constraint firstItem="Jxn-lo-53E" firstAttribute="leading" secondItem="cgp-cC-e2R" secondAttribute="leading" constant="15" id="rgj-Ks-uh2"/>
                                 </constraints>
                             </view>
@@ -93,8 +102,10 @@
                             <constraint firstItem="cgp-cC-e2R" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="xHu-w0-SnM"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="SMT-Fa-PXO"/>
                     <connections>
                         <outlet property="greetingText" destination="Jxn-lo-53E" id="3eT-aa-m62"/>
+                        <outlet property="topStack" destination="7GP-hF-5Xq" id="fEC-xU-9y1"/>
                         <outlet property="topView" destination="cgp-cC-e2R" id="5ha-Qe-1en"/>
                     </connections>
                 </viewController>
@@ -145,6 +156,23 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="cLR-MD-4Kx"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="ui9-95-3gd"/>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gBg-CM-dw9">
+                                <rect key="frame" x="30" y="62" width="60" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="pa8-J4-vUd"/>
+                                    <constraint firstAttribute="height" constant="40" id="yBm-Z9-YrF"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="arrowshape.backward.fill" catalog="system">
+                                    <backgroundConfiguration key="background" cornerRadius="12">
+                                        <color key="backgroundColor" name="BackgroundAccentColor"/>
+                                    </backgroundConfiguration>
+                                    <color key="baseForegroundColor" name="AccentColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="iGX-MA-sld"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jen-Xv-nUz"/>
                         <color key="backgroundColor" name="BackgroundColor"/>
@@ -152,6 +180,8 @@
                             <constraint firstItem="TMa-Jg-C6c" firstAttribute="leading" secondItem="jen-Xv-nUz" secondAttribute="leading" constant="10" id="0CO-F7-U0b"/>
                             <constraint firstItem="TMa-Jg-C6c" firstAttribute="bottom" secondItem="jen-Xv-nUz" secondAttribute="bottom" id="1LP-z7-0MQ"/>
                             <constraint firstItem="neb-v9-ws7" firstAttribute="top" secondItem="jen-Xv-nUz" secondAttribute="top" constant="15" id="1PU-FZ-tvc"/>
+                            <constraint firstItem="gBg-CM-dw9" firstAttribute="leading" secondItem="jen-Xv-nUz" secondAttribute="leading" constant="30" id="5g9-jB-B1S"/>
+                            <constraint firstItem="gBg-CM-dw9" firstAttribute="top" secondItem="jen-Xv-nUz" secondAttribute="top" constant="15" id="7Gb-QG-WS0"/>
                             <constraint firstItem="neb-v9-ws7" firstAttribute="centerX" secondItem="pZp-X8-r71" secondAttribute="centerX" id="JJu-LO-A5q"/>
                             <constraint firstItem="qNI-nu-ngL" firstAttribute="top" secondItem="neb-v9-ws7" secondAttribute="bottom" constant="10" id="Rkd-YT-5T9"/>
                             <constraint firstItem="neb-v9-ws7" firstAttribute="centerX" secondItem="qNI-nu-ngL" secondAttribute="centerX" id="XpF-dt-IV5"/>
@@ -174,6 +204,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrowshape.backward.fill" catalog="system" width="128" height="104"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <namedColor name="AccentColor">

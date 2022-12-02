@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		503729EC293690D200CABCC9 /* ProgressCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503729EB293690D200CABCC9 /* ProgressCircle.swift */; };
 		50DBA01729307CFE00C46580 /* SetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DBA01629307CFE00C46580 /* SetCell.swift */; };
 		50DBA019293311FA00C46580 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DBA018293311FA00C46580 /* Exercise.swift */; };
 		50F70639292EB13E00846AA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F70638292EB13E00846AA4 /* AppDelegate.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		503729EB293690D200CABCC9 /* ProgressCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircle.swift; sourceTree = "<group>"; };
 		50DBA01629307CFE00C46580 /* SetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCell.swift; sourceTree = "<group>"; };
 		50DBA018293311FA00C46580 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		50F70635292EB13E00846AA4 /* Workouts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Workouts.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +80,7 @@
 				50F70650292EB98900846AA4 /* WorkoutSet.swift */,
 				50DBA01629307CFE00C46580 /* SetCell.swift */,
 				50DBA018293311FA00C46580 /* Exercise.swift */,
+				503729EB293690D200CABCC9 /* ProgressCircle.swift */,
 			);
 			path = Workouts;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 				50DBA019293311FA00C46580 /* Exercise.swift in Sources */,
 				50F7064D292EB3F900846AA4 /* WorkoutViewController.swift in Sources */,
 				50F7063D292EB13E00846AA4 /* MainViewController.swift in Sources */,
+				503729EC293690D200CABCC9 /* ProgressCircle.swift in Sources */,
 				50F70651292EB98900846AA4 /* WorkoutSet.swift in Sources */,
 				50F70639292EB13E00846AA4 /* AppDelegate.swift in Sources */,
 				50F7064F292EB91700846AA4 /* Workout.swift in Sources */,

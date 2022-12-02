@@ -102,7 +102,7 @@ class SetCell: UIStackView {
         let cell: UIView = UIView()
         cell.translatesAutoresizingMaskIntoConstraints = false
         
-        let nameText = createTextLabel(text: exercise.getData().displayName, isBold: false, fontSize: 35)
+        let nameText = createTextLabel(text: exercise.data().displayName, isBold: false, fontSize: 35)
         nameText.adjustsFontSizeToFitWidth = true
         nameTexts.append(nameText)
         cell.addSubview(nameText)
