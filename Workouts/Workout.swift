@@ -32,4 +32,17 @@ class Workout {
 
     }
     
+    init(name: String, muscleGroups: [Muscle], exerciseCount: Int, prefersSupersets: Bool, groupExercisesByMuscle: Bool) {
+        self.name = name
+        self.sets = []
+        
+        var exercisesPerMuscleGroup = exerciseCount % muscleGroups.count
+        
+        for muscleGroup in muscleGroups {
+            
+        }
+        
+        
+    }
+    
 }

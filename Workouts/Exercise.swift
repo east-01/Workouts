@@ -16,6 +16,24 @@ enum Muscle {
     case QUADS; case HAMSTRING; case CALVES; case GLUTES
     case OBLIQUES; case UPPER_ABS; case LOWER_ABS
     case LOWER_BACK; case TRAPS
+    
+    func getGeneralGroup() -> Muscle {
+        switch self{
+        case .UPPER_CHEST: return .GEN_CHEST
+        case .LOWER_CHEST: return .GEN_CHEST
+        case .QUADS: return .GEN_LEGS
+        case .HAMSTRING: return .GEN_LEGS
+        case .CALVES: return .GEN_LEGS
+        case .GLUTES: return .GEN_LEGS
+        case .OBLIQUES: return .GEN_ABS
+        case .UPPER_ABS: return .GEN_ABS
+        case .LOWER_ABS: return .GEN_ABS
+        case .LOWER_BACK: return .GEN_BACK
+        case .TRAPS: return .GEN_BACK
+        default: return .NONE
+        }
+    }
+    
 }
 
 enum Exercise {
