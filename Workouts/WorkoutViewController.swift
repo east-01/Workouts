@@ -9,7 +9,7 @@ import UIKit
 
 class WorkoutViewController: UIViewController {
         
-    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var stack: UIStackView!
     @IBOutlet weak var stackHeight: NSLayoutConstraint!
@@ -23,15 +23,15 @@ class WorkoutViewController: UIViewController {
         
         stack.translatesAutoresizingMaskIntoConstraints = false
         
-        let date = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/dd/yyyy"
-        dateLabel.text = dateFormatter.string(from: date)
-        typeLabel.text = "Default";
-        
         guard let workout = currentWorkout else {
+            print("Failed to get current workout")
             return;
         }
+
+        titleLabel.text = workout.name
+        typeLabel.text = "Default";
+                
+        print("Loading workout with \(workout.sets.count) sets")
         
         var height: Int = 0
         for currentSet in workout.sets {

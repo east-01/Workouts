@@ -65,11 +65,7 @@ class MainViewController: UIViewController {
         }
         greetingText.text = "\(greeting)\(userName)"
     }
-    
-    @IBAction func newWorkoutClicked(_ sender: Any) {
-        currentWorkout = Workout();
-    }
-    
+        
     @IBAction func profileClicked(_ sender: Any) {
         let alert = UIAlertController(title: "Edit profile", message: "Enter name", preferredStyle: .alert)
 

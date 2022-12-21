@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Muscle {
+enum Muscle: CaseIterable {
     case NONE;
     // The general muscle groups
     case GEN_BICEP; case GEN_TRICEP; case GEN_ABS; case GEN_CHEST; case GEN_LEGS; case GEN_BACK; case GEN_SHOULDERS
@@ -30,13 +30,17 @@ enum Muscle {
         case .LOWER_ABS: return .GEN_ABS
         case .LOWER_BACK: return .GEN_BACK
         case .TRAPS: return .GEN_BACK
-        default: return .NONE
+        default: return self
         }
+    }
+    
+    static func getGeneralGroups() -> [Muscle] {
+        return [.GEN_BICEP, .GEN_TRICEP, .GEN_ABS, .GEN_CHEST, .GEN_LEGS, .GEN_BACK, .GEN_SHOULDERS]
     }
     
 }
 
-enum Exercise {
+enum Exercise: CaseIterable {
     
     case DB_CURLS; case DB_HAMMER_CURLS;
     case DB_BENCH; case DB_DECLINE_BENCH; case DB_INCLINE_BENCH;
