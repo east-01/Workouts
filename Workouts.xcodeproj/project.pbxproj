@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		503729EC293690D200CABCC9 /* ProgressCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503729EB293690D200CABCC9 /* ProgressCircle.swift */; };
 		50888BE129515A140019C3F2 /* WorkoutSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50888BE029515A140019C3F2 /* WorkoutSettingsViewController.swift */; };
+		50A44A3D2957961500CDB23B /* Muscle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A44A3C2957961500CDB23B /* Muscle.swift */; };
 		50DBA01729307CFE00C46580 /* SetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DBA01629307CFE00C46580 /* SetCell.swift */; };
 		50DBA019293311FA00C46580 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DBA018293311FA00C46580 /* Exercise.swift */; };
 		50F70639292EB13E00846AA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F70638292EB13E00846AA4 /* AppDelegate.swift */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		503729EB293690D200CABCC9 /* ProgressCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircle.swift; sourceTree = "<group>"; };
 		50888BE029515A140019C3F2 /* WorkoutSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSettingsViewController.swift; sourceTree = "<group>"; };
+		50A44A3C2957961500CDB23B /* Muscle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Muscle.swift; sourceTree = "<group>"; };
 		50DBA01629307CFE00C46580 /* SetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCell.swift; sourceTree = "<group>"; };
 		50DBA018293311FA00C46580 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		50F70635292EB13E00846AA4 /* Workouts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Workouts.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +85,7 @@
 				50F70650292EB98900846AA4 /* WorkoutSet.swift */,
 				50DBA01629307CFE00C46580 /* SetCell.swift */,
 				50DBA018293311FA00C46580 /* Exercise.swift */,
+				50A44A3C2957961500CDB23B /* Muscle.swift */,
 				503729EB293690D200CABCC9 /* ProgressCircle.swift */,
 			);
 			path = Workouts;
@@ -166,6 +169,7 @@
 				50F7063D292EB13E00846AA4 /* MainViewController.swift in Sources */,
 				503729EC293690D200CABCC9 /* ProgressCircle.swift in Sources */,
 				50F70651292EB98900846AA4 /* WorkoutSet.swift in Sources */,
+				50A44A3D2957961500CDB23B /* Muscle.swift in Sources */,
 				50F70639292EB13E00846AA4 /* AppDelegate.swift in Sources */,
 				50F7064F292EB91700846AA4 /* Workout.swift in Sources */,
 				50F7063B292EB13E00846AA4 /* SceneDelegate.swift in Sources */,

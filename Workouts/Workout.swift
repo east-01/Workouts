@@ -36,6 +36,8 @@ class Workout {
         self.name = name
         self.sets = []
                 
+        print("Generating a workout with groups: \(muscleGroups)")
+        
         let exercisesPerMuscleGroup = exerciseCount / muscleGroups.count
                 
         // Sort and grap exercise options for each muscle group
@@ -58,12 +60,12 @@ class Workout {
         
         // Shuffle the exercises to be in order
         if(groupExercisesByMuscle) {
-            for muscle in groupAndOptions.keys {
+            for muscle in muscleGroups {
                 exercises.append(contentsOf: groupAndOptions[muscle]!)
             }
         } else {
             for i in 0...exercisesPerMuscleGroup {
-                for muscle in groupAndOptions.keys {
+                for muscle in muscleGroups {
                     if(i >= groupAndOptions[muscle]!.count) {
                         continue
                     }
@@ -71,7 +73,7 @@ class Workout {
                 }
             }
         }
-                
+                        
         let setCount = 3
         let repCount = 10
                 
@@ -102,9 +104,12 @@ class Workout {
                     //   group doesn't equal the current elements group
                     reset = nextExerciseGroup != currExerciseGroup
                 } else {
-                    // We know to reset when the exercises are NOT grouped by muscle if the current element's
-                    //   group is the same as the first group given in array
-                    reset = i != 0 && exercises[i+1].data().muscleGroups[0].getGeneralGroup() == muscleGroups[0].getGeneralGroup()
+                    // We know to reset when the exercises are NOT grouped by muscle if the next element's
+                    //   group position in muscleGroups is less than or equal to the current groups position
+                    //   When we go backwards in position count this means a reset in the cycle
+                    let currExerciseGroup = exercises[i].data().muscleGroups[0].getGeneralGroup()
+                    let nextExerciseGroup = exercises[i+1].data().muscleGroups[0].getGeneralGroup()
+                    reset = i != 0 && muscleGroups.firstIndex(of: nextExerciseGroup)! <= muscleGroups.firstIndex(of: currExerciseGroup)!
                 }
                 if(reset) {
                     self.sets.append(WorkoutSet(exercises: superset_exercises, sets: superset_sets, reps: superset_reps))
