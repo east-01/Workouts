@@ -8,7 +8,7 @@
 import UIKit
 
 @IBDesignable
-class SetCell: UIStackView {
+class SetCell: UIView {
     
     static let UNIT_HEIGHT: Int = 55
     static let SPACE_HEIGHT: Int = 15
@@ -20,6 +20,7 @@ class SetCell: UIStackView {
     var totalCount: Int
     
     var cellHeader: UIView
+    var subcellStack: UIStackView
     var numberText: UILabel
     var nameTexts: [UILabel]
     var setrepTexts: [UILabel]
@@ -29,6 +30,7 @@ class SetCell: UIStackView {
         self.position = position
         self.totalCount = totalCount
         self.cellHeader = UIView()
+        self.subcellStack = UIStackView()
         self.numberText = UILabel()
         self.nameTexts = []
         self.setrepTexts = []
@@ -36,8 +38,9 @@ class SetCell: UIStackView {
         setup()
     }
     
-    required init(coder: NSCoder) {
+    required init?(coder: NSCoder) {
         self.cellHeader = UIView()
+        self.subcellStack = UIStackView()
         self.numberText = UILabel()
         self.nameTexts = []
         self.setrepTexts = []
@@ -55,18 +58,28 @@ class SetCell: UIStackView {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = UIColor(named: "BackgroundAccentColor")
         self.layer.cornerRadius = 12
-        self.axis = .vertical
-        self.spacing = .zero
-        self.distribution = .equalSpacing
         
         createHeader()
-                
+
+        self.addSubview(subcellStack)
+        subcellStack.translatesAutoresizingMaskIntoConstraints = false
+        subcellStack.axis = .vertical
+        subcellStack.spacing = CGFloat(5)
+        subcellStack.distribution = .fillEqually
+
+        NSLayoutConstraint.activate([
+            subcellStack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: CGFloat(5)),
+            subcellStack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: CGFloat(-5)),
+            subcellStack.topAnchor.constraint(equalTo: cellHeader.bottomAnchor),
+            subcellStack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: CGFloat(-5))
+        ])
+        
         for i in 0...workoutSet.exercises.count - 1 {
             let cell: UIView = createExerciseCell(exercise: workoutSet.exercises[i], sets: workoutSet.sets[i], reps: workoutSet.reps[i])
-            self.addArrangedSubview(cell)
+            subcellStack.addArrangedSubview(cell)
             
             NSLayoutConstraint.activate([
-                cell.heightAnchor.constraint(equalToConstant: CGFloat(SetCell.UNIT_HEIGHT))
+//                cell.heightAnchor.constraint(equalToConstant: CGFloat(SetCell.UNIT_HEIGHT))
             ])
                         
         }
@@ -81,7 +94,7 @@ class SetCell: UIStackView {
         cellHeader.layer.borderWidth = 5
         cellHeader.layer.borderColor = UIColor(named:"BackgroundAccentColor")?.cgColor
 
-        self.addArrangedSubview(cellHeader)
+        self.addSubview(cellHeader)
 
         numberText = createTextLabel(text: "\(position)/\(totalCount)", isBold: false, fontSize: 20)
         cellHeader.addSubview(numberText)
@@ -92,7 +105,10 @@ class SetCell: UIStackView {
         ])
                 
         NSLayoutConstraint.activate([
-            cellHeader.heightAnchor.constraint(equalToConstant: CGFloat(SetCell.HEADER_HEIGHT)),
+            cellHeader.topAnchor.constraint(equalTo: self.topAnchor),
+            cellHeader.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            cellHeader.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            cellHeader.heightAnchor.constraint(equalToConstant: CGFloat(SetCell.HEADER_HEIGHT))
         ])
         
     }
@@ -101,6 +117,8 @@ class SetCell: UIStackView {
         
         let cell: UIView = UIView()
         cell.translatesAutoresizingMaskIntoConstraints = false
+        cell.backgroundColor = UIColor(named: "BackgroundAccentColor2")
+        cell.layer.cornerRadius = 8
         
         let nameText = createTextLabel(text: exercise.data().displayName, isBold: false, fontSize: 35)
         nameText.adjustsFontSizeToFitWidth = true
