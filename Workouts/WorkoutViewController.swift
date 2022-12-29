@@ -32,24 +32,20 @@ class WorkoutViewController: UIViewController {
         typeLabel.text = "Default";
                 
         print("Loading workout with \(workout.sets.count) sets")
-        
-        var height: Int = 0
-        for currentSet in workout.sets {
-            height += currentSet.exercises.count * SetCell.UNIT_HEIGHT
-            height += SetCell.HEADER_HEIGHT
-        }
-        height += (workout.sets.count - 1) * SetCell.SPACE_HEIGHT
-        stackHeight.constant = CGFloat(height)
-        
-        for currentSet in workout.sets {
-            let newCell: SetCell = SetCell(workoutSet: currentSet, position: stack.subviews.count + 1, totalCount: currentWorkout!.sets.count)
-            stack.addArrangedSubview(newCell)
-            
+                
+        // Create and add each SetCell to the stack, dynamically expand the stack height
+        for i in 0...workout.sets.count-1 {
+            let currentSet = workout.sets[i]
+            let newCell: SetCell = SetCell(workoutSet: currentSet, position: stack.subviews.count + 1, totalCount: workout.sets.count)
             NSLayoutConstraint.activate([
-                newCell.heightAnchor.constraint(equalToConstant: CGFloat(currentSet.exercises.count * SetCell.UNIT_HEIGHT + SetCell.HEADER_HEIGHT))
+                newCell.heightAnchor.constraint(equalToConstant: CGFloat(newCell.getDesiredHeight()))
             ])
+            stackHeight.constant += CGFloat(newCell.getDesiredHeight())
+            stack.addArrangedSubview(newCell)
         }
-                        
+         
+        print(stackHeight.constant)
+        
         scrollView.showsVerticalScrollIndicator = false
         scrollView.layer.cornerRadius = 12
         

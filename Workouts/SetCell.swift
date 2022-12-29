@@ -10,9 +10,13 @@ import UIKit
 @IBDesignable
 class SetCell: UIView {
     
-    static let UNIT_HEIGHT: Int = 55
+    static let SUBCELL_SIZE: Int = 120
+    static let SUBCELL_SPACING: Int = 5
+    static let SUBCELL_STACK_PADDING: Int = 5
+    static let SUBCELL_INTERIOR_PADDING: Int = 10
+    static let HEADER_HEIGHT: Int = 65
+    static let HEADER_BUTTON_SIZE: Int = 40
     static let SPACE_HEIGHT: Int = 15
-    static let HEADER_HEIGHT: Int = 50
 
     var workoutSet: WorkoutSet?
     
@@ -39,14 +43,7 @@ class SetCell: UIView {
     }
     
     required init?(coder: NSCoder) {
-        self.cellHeader = UIView()
-        self.subcellStack = UIStackView()
-        self.numberText = UILabel()
-        self.nameTexts = []
-        self.setrepTexts = []
-        self.position = 0
-        self.totalCount = 0
-        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented")
     }
         
     private func setup() {
@@ -64,24 +61,25 @@ class SetCell: UIView {
         self.addSubview(subcellStack)
         subcellStack.translatesAutoresizingMaskIntoConstraints = false
         subcellStack.axis = .vertical
-        subcellStack.spacing = CGFloat(5)
-        subcellStack.distribution = .fillEqually
+        subcellStack.spacing = CGFloat(SetCell.SUBCELL_SPACING)
+        subcellStack.distribution = .equalSpacing
 
         NSLayoutConstraint.activate([
             subcellStack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: CGFloat(5)),
             subcellStack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: CGFloat(-5)),
             subcellStack.topAnchor.constraint(equalTo: cellHeader.bottomAnchor),
-            subcellStack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: CGFloat(-5))
+            subcellStack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: CGFloat(-SetCell.SUBCELL_STACK_PADDING))
         ])
         
         for i in 0...workoutSet.exercises.count - 1 {
-            let cell: UIView = createExerciseCell(exercise: workoutSet.exercises[i], sets: workoutSet.sets[i], reps: workoutSet.reps[i])
-            subcellStack.addArrangedSubview(cell)
+            let cell: SetSubCell = SetSubCell(setCell: self, exercise: workoutSet.exercises[i], sets: workoutSet.sets[i], reps: workoutSet.reps[i])
             
             NSLayoutConstraint.activate([
-//                cell.heightAnchor.constraint(equalToConstant: CGFloat(SetCell.UNIT_HEIGHT))
+                cell.heightAnchor.constraint(equalToConstant: CGFloat(SetCell.SUBCELL_SIZE))
             ])
-                        
+
+            subcellStack.addArrangedSubview(cell)
+
         }
         
     }
@@ -96,53 +94,37 @@ class SetCell: UIView {
 
         self.addSubview(cellHeader)
 
-        numberText = createTextLabel(text: "\(position)/\(totalCount)", isBold: false, fontSize: 20)
+        numberText = createTextLabel(text: "\(position)/\(totalCount)", isBold: false, fontSize: 30)
         cellHeader.addSubview(numberText)
  
-        NSLayoutConstraint.activate([
-            numberText.leadingAnchor.constraint(equalTo: cellHeader.leadingAnchor, constant: CGFloat(15)),
-            numberText.centerYAnchor.constraint(equalTo: cellHeader.centerYAnchor)
-        ])
-                
+        let completedButton = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        completedButton.translatesAutoresizingMaskIntoConstraints = false
+        let config = UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: CGFloat(SetCell.HEADER_BUTTON_SIZE)))
+        completedButton.setImage(UIImage(systemName: "circle", withConfiguration: config), for: .normal)
+        completedButton.tintColor = UIColor(named: "ForegroundColor")
+        completedButton.backgroundColor = .clear
+        completedButton.addTarget(self, action: #selector(clickedCompleteButton), for: .touchUpInside)
+        cellHeader.addSubview(completedButton)
+        
         NSLayoutConstraint.activate([
             cellHeader.topAnchor.constraint(equalTo: self.topAnchor),
             cellHeader.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             cellHeader.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             cellHeader.heightAnchor.constraint(equalToConstant: CGFloat(SetCell.HEADER_HEIGHT))
         ])
-        
-    }
-    
-    private func createExerciseCell(exercise: Exercise, sets: Int, reps: Int) -> UIView {
-        
-        let cell: UIView = UIView()
-        cell.translatesAutoresizingMaskIntoConstraints = false
-        cell.backgroundColor = UIColor(named: "BackgroundAccentColor2")
-        cell.layer.cornerRadius = 8
-        
-        let nameText = createTextLabel(text: exercise.data().displayName, isBold: false, fontSize: 35)
-        nameText.adjustsFontSizeToFitWidth = true
-        nameTexts.append(nameText)
-        cell.addSubview(nameText)
 
-        let setrepText = createTextLabel(text: "\(sets) x \(reps)", isBold: true, fontSize: 35)
-        setrepText.textAlignment = .right
-        setrepTexts.append(setrepText)
-        cell.addSubview(setrepText)
-                
         NSLayoutConstraint.activate([
-            nameText.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: CGFloat(15)),
-            nameText.trailingAnchor.constraint(equalTo: setrepText.leadingAnchor, constant: CGFloat(-15)),
-            nameText.centerYAnchor.constraint(equalTo: cell.centerYAnchor),
-
-            setrepText.trailingAnchor.constraint(equalTo: cell.trailingAnchor, constant: CGFloat(-15)),
-            setrepText.centerYAnchor.constraint(equalTo: cell.centerYAnchor),
+            numberText.leadingAnchor.constraint(equalTo: cellHeader.leadingAnchor, constant: CGFloat(15)),
+            numberText.centerYAnchor.constraint(equalTo: cellHeader.centerYAnchor),
+            
+            completedButton.widthAnchor.constraint(equalToConstant: CGFloat(SetCell.HEADER_BUTTON_SIZE)),
+            completedButton.heightAnchor.constraint(equalToConstant: CGFloat(SetCell.HEADER_BUTTON_SIZE)),
+            completedButton.trailingAnchor.constraint(equalTo: cellHeader.trailingAnchor, constant: CGFloat(-15)),
+            completedButton.centerYAnchor.constraint(equalTo: cellHeader.centerYAnchor)
         ])
-
-        return cell
-        
+                        
     }
-    
+            
     private func createTextLabel(text: String, isBold: Bool, fontSize: Float) -> UILabel {
         let label: UILabel = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -157,4 +139,23 @@ class SetCell: UIView {
         setup()
     }
 
+    @objc func clickedCompleteButton(_ sender: UIButton) {
+        guard let workout = currentWorkout else {
+            return
+        }
+        let config = UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: CGFloat(SetCell.HEADER_BUTTON_SIZE)))
+        // Invert completion status then change button to reflect this
+        workout.sets[position-1].isComplete = !workout.sets[position-1].isComplete
+        let imageName = workout.sets[position-1].isComplete ? "checkmark.circle.fill" : "circle"
+        sender.setImage(UIImage(systemName: imageName, withConfiguration: config), for: .normal)
+    }
+    
+    public func getDesiredHeight() -> Int {
+        let exCnt = workoutSet!.exercises.count
+        return SetCell.HEADER_HEIGHT +
+            SetCell.SUBCELL_SIZE * exCnt +
+            SetCell.SUBCELL_SPACING * (exCnt - 1) +
+            SetCell.SPACE_HEIGHT
+    }
+    
 }

@@ -15,12 +15,15 @@ class WorkoutSet {
     
     var isSuperset: Bool
     
+    var isComplete: Bool
+    
     // Non-superset constructor
     init(exercise: Exercise, sets: Int, reps: Int) {
         self.exercises = Array(arrayLiteral: exercise)
         self.sets = Array(arrayLiteral: sets)
         self.reps = Array(arrayLiteral: reps)
         self.isSuperset = false
+        self.isComplete = false
     }
     
     // Superset constructor
@@ -29,6 +32,7 @@ class WorkoutSet {
         self.sets = sets
         self.reps = reps
         self.isSuperset = exercises.count > 1 ? true : false
+        self.isComplete = false
     }
     
 }

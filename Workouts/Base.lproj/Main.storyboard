@@ -316,7 +316,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="3" translatesAutoresizingMaskIntoConstraints="NO" id="TMa-Jg-C6c">
                                 <rect key="frame" x="10" y="191.66666666666669" width="370" height="618.33333333333326"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="500" axis="vertical" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="AyP-d4-ysC">
+                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="500" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="AyP-d4-ysC">
                                         <rect key="frame" x="0.0" y="0.0" width="370" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="8f1-Mf-8vI"/>
