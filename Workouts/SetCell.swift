@@ -18,6 +18,8 @@ class SetCell: UIView {
     static let HEADER_BUTTON_SIZE: Int = 40
     static let SPACE_HEIGHT: Int = 15
 
+    var workoutViewController: WorkoutViewController
+    
     var workoutSet: WorkoutSet?
     
     var position: Int
@@ -26,18 +28,15 @@ class SetCell: UIView {
     var cellHeader: UIView
     var subcellStack: UIStackView
     var numberText: UILabel
-    var nameTexts: [UILabel]
-    var setrepTexts: [UILabel]
     
-    init(workoutSet: WorkoutSet, position: Int, totalCount: Int) {
+    init(workoutViewController: WorkoutViewController, workoutSet: WorkoutSet, position: Int, totalCount: Int) {
+        self.workoutViewController = workoutViewController
         self.workoutSet = workoutSet
         self.position = position
         self.totalCount = totalCount
         self.cellHeader = UIView()
         self.subcellStack = UIStackView()
         self.numberText = UILabel()
-        self.nameTexts = []
-        self.setrepTexts = []
         super.init(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         setup()
     }
@@ -72,7 +71,7 @@ class SetCell: UIView {
         ])
         
         for i in 0...workoutSet.exercises.count - 1 {
-            let cell: SetSubCell = SetSubCell(setCell: self, exercise: workoutSet.exercises[i], sets: workoutSet.sets[i], reps: workoutSet.reps[i])
+            let cell: SetSubCell = SetSubCell(exercise: workoutSet.exercises[i], sets: workoutSet.sets[i], reps: workoutSet.reps[i])
             
             NSLayoutConstraint.activate([
                 cell.heightAnchor.constraint(equalToConstant: CGFloat(SetCell.SUBCELL_SIZE))
@@ -99,11 +98,10 @@ class SetCell: UIView {
  
         let completedButton = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         completedButton.translatesAutoresizingMaskIntoConstraints = false
-        let config = UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: CGFloat(SetCell.HEADER_BUTTON_SIZE)))
-        completedButton.setImage(UIImage(systemName: "circle", withConfiguration: config), for: .normal)
         completedButton.tintColor = UIColor(named: "ForegroundColor")
         completedButton.backgroundColor = .clear
         completedButton.addTarget(self, action: #selector(clickedCompleteButton), for: .touchUpInside)
+        updateCompletedButton(button: completedButton)
         cellHeader.addSubview(completedButton)
         
         NSLayoutConstraint.activate([
@@ -143,11 +141,20 @@ class SetCell: UIView {
         guard let workout = currentWorkout else {
             return
         }
-        let config = UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: CGFloat(SetCell.HEADER_BUTTON_SIZE)))
         // Invert completion status then change button to reflect this
         workout.sets[position-1].isComplete = !workout.sets[position-1].isComplete
+        updateCompletedButton(button: sender)
+        // Update the progress button in the workoutViewController as well
+        workoutViewController.updateProgressButton()
+    }
+    
+    func updateCompletedButton(button: UIButton) {
+        guard let workout = currentWorkout else {
+            return
+        }
+        let config = UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: CGFloat(SetCell.HEADER_BUTTON_SIZE)))
         let imageName = workout.sets[position-1].isComplete ? "checkmark.circle.fill" : "circle"
-        sender.setImage(UIImage(systemName: imageName, withConfiguration: config), for: .normal)
+        button.setImage(UIImage(systemName: imageName, withConfiguration: config), for: .normal)
     }
     
     public func getDesiredHeight() -> Int {

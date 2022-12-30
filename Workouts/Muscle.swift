@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Muscle: CaseIterable {
+enum Muscle: CaseIterable, Codable {
 
     case NONE;
     // The general muscle groups
@@ -39,6 +39,19 @@ enum Muscle: CaseIterable {
         case .TRAPS: return .GEN_BACK
         case .LATS: return .GEN_BACK
         default: return self
+        }
+    }
+    
+    func getDisplayName() -> String {
+        switch self{
+        case .GEN_BICEP: return "Biceps"
+        case .GEN_TRICEP: return "Triceps"
+        case .GEN_ABS: return "Abs"
+        case .GEN_CHEST: return "Chest"
+        case .GEN_LEGS: return "Legs"
+        case .GEN_BACK: return "Back"
+        case .GEN_SHOULDERS: return "Shoulders"
+        default: return String(describing: self)
         }
     }
     

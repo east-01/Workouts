@@ -7,7 +7,7 @@
 
 import Foundation
 
-class WorkoutSet {
+class WorkoutSet: Codable {
     
     var exercises: [Exercise]
     var sets: [Int]

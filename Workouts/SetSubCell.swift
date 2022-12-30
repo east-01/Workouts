@@ -9,16 +9,19 @@ import UIKit
 
 class SetSubCell: UIView {
     
-    var setCell: SetCell
     var exercise: Exercise
     var sets: Int
     var reps: Int
     
-    init(setCell: SetCell, exercise: Exercise, sets: Int, reps: Int) {
-        self.setCell = setCell
+    var nameText: UILabel
+    var setrepText: UILabel
+    
+    init(exercise: Exercise, sets: Int, reps: Int) {
         self.exercise = exercise
         self.sets = sets
         self.reps = reps
+        self.nameText = UILabel()
+        self.setrepText = UILabel()
         super.init(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         setup()
     }
@@ -31,23 +34,15 @@ class SetSubCell: UIView {
         
         self.translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = UIColor(named: "BackgroundAccentColor2")
-        self.layer.cornerRadius = 8
-        
+        self.layer.cornerRadius = 8        
         self.isUserInteractionEnabled = true
-        let gestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swiped))
-        gestureRecognizer.direction = .left
-        gestureRecognizer.numberOfTouchesRequired = 1
         
-        self.addGestureRecognizer(gestureRecognizer)
-        
-        let nameText = createTextLabel(text: exercise.data().displayName, isBold: false, fontSize: 35)
+        nameText = createTextLabel(text: exercise.data().displayName, isBold: false, fontSize: 35)
         nameText.adjustsFontSizeToFitWidth = true
-        setCell.nameTexts.append(nameText)
         self.addSubview(nameText)
 
-        let setrepText = createTextLabel(text: "\(sets) x \(reps)", isBold: true, fontSize: 35)
+        setrepText = createTextLabel(text: "\(sets) x \(reps)", isBold: true, fontSize: 35)
         setrepText.textAlignment = .right
-        setCell.setrepTexts.append(setrepText)
         self.addSubview(setrepText)
                 
         NSLayoutConstraint.activate([
@@ -60,13 +55,7 @@ class SetSubCell: UIView {
         ])
 
     }
-    
-    @objc func swiped(_ sender: UISwipeGestureRecognizer) {
-        if(sender.state == .ended) {
-            sender.view?.backgroundColor = .systemGreen
-        }
-    }
-
+        
     private func createTextLabel(text: String, isBold: Bool, fontSize: Float) -> UILabel {
         let label: UILabel = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false

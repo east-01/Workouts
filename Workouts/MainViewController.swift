@@ -15,6 +15,9 @@ class MainViewController: UIViewController {
     @IBOutlet weak var topStack: UIStackView!
     @IBOutlet weak var greetingText: UILabel!
     
+    @IBOutlet weak var currentWorkoutViewText: UILabel!
+    @IBOutlet weak var currentWorkoutView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
                 
@@ -51,6 +54,28 @@ class MainViewController: UIViewController {
         topStack.addArrangedSubview(progCircle2)
         topStack.addArrangedSubview(progCircle3)
         
+        if(currentWorkout == nil) {
+            currentWorkout = loadCurrentWorkout()
+        }
+            
+        currentWorkoutView.layer.cornerRadius = 12
+        if(currentWorkout != nil) {
+            let currentWorkoutTile = WorkoutTile(workout: currentWorkout!)
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tappedCurrentWorkout))
+            tapGesture.numberOfTapsRequired = 1
+            tapGesture.numberOfTouchesRequired = 1
+            currentWorkoutTile.addGestureRecognizer(tapGesture)
+            currentWorkoutView.addSubview(currentWorkoutTile)
+            
+            NSLayoutConstraint.activate([
+                currentWorkoutTile.leadingAnchor.constraint(equalTo: currentWorkoutView.leadingAnchor, constant: 10),
+                currentWorkoutTile.trailingAnchor.constraint(equalTo: currentWorkoutView.trailingAnchor, constant: -10),
+                currentWorkoutTile.topAnchor.constraint(equalTo: currentWorkoutViewText.bottomAnchor, constant: 5),
+                currentWorkoutTile.bottomAnchor.constraint(equalTo: currentWorkoutView.bottomAnchor, constant: -10)
+            ])
+            
+        }
+             
     }
 
     func updateGreetingText() {
@@ -87,6 +112,10 @@ class MainViewController: UIViewController {
 
         self.present(alert, animated: true, completion: nil)
 
+    }
+    
+    @objc func tappedCurrentWorkout(_ sender: UITapGestureRecognizer) {
+        performSegue(withIdentifier: "toWorkoutView", sender: self)
     }
     
 }

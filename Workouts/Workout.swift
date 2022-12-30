@@ -9,15 +9,32 @@ import Foundation
 
 var currentWorkout: Workout?
 
-class Workout {
+func loadCurrentWorkout() -> Workout? {
+    if let data = UserDefaults.standard.data(forKey: "CurrentWorkout") {
+        if let decoded = try? JSONDecoder().decode(Workout.self, from: data) {
+            return decoded
+        }
+    }
+    return nil
+}
+
+func saveCurrentWorkout() {
+    if let encoded = try? JSONEncoder().encode(currentWorkout) {
+        UserDefaults.standard.set(encoded, forKey: "CurrentWorkout")
+    }
+}
+
+class Workout: Codable {
     
     var sets: [WorkoutSet]
     var name: String
+    var muscleGroups: [Muscle]
     
     init() {
         // Load the workouts here
         self.name = "Test"
-        sets = []
+        self.sets = []
+        self.muscleGroups = []
 //        for i in 0...0 {
 //            sets.append(WorkoutSet(name: "deads \(i)", reps: 2))
 //        }
@@ -35,6 +52,7 @@ class Workout {
     init(name: String, muscleGroups: [Muscle], exerciseCount: Int, prefersSupersets: Bool, groupExercisesByMuscle: Bool) {
         self.name = name
         self.sets = []
+        self.muscleGroups = muscleGroups
                 
         print("Generating a workout with groups: \(muscleGroups)")
         
@@ -122,6 +140,34 @@ class Workout {
             self.sets.append(WorkoutSet(exercises: superset_exercises, sets: superset_sets, reps: superset_reps))
         }
                 
+    }
+    
+    func completedSetsAmount() -> Int {
+        var cnt: Int = 0
+        for workoutSet in sets {
+            if(workoutSet.isComplete) {
+                cnt += 1
+            }
+        }
+        return cnt
+    }
+    
+    func progress() -> Float {
+        return Float(completedSetsAmount()) / Float(sets.count)
+    }
+    
+    func muscleListString() -> String {
+        if(muscleGroups.isEmpty) {
+            return ""
+        }
+        var string = ""
+        for i in 0...muscleGroups.count-1 {
+            if(i != 0) {
+                string += ", "
+            }
+            string += muscleGroups[i].getDisplayName()
+        }
+        return string
     }
     
 }

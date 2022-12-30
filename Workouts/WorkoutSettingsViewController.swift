@@ -66,6 +66,7 @@ class WorkoutSettingsViewController: UIViewController {
                                  exerciseCount: self.exerciseCount,
                                  prefersSupersets: supersetsToggle.isOn,
                                  groupExercisesByMuscle: groupToggle.isOn);
+        saveCurrentWorkout()
         
         performSegue(withIdentifier: "workoutSettingsToWorkoutView", sender: self)
         
