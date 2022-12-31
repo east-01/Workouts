@@ -49,14 +49,14 @@ class Workout: Codable {
 
     }
     
-    init(name: String, muscleGroups: [Muscle], exerciseCount: Int, prefersSupersets: Bool, groupExercisesByMuscle: Bool) {
-        self.name = name
+    init(settings: WorkoutSettings) {
+        self.name = settings.name
         self.sets = []
-        self.muscleGroups = muscleGroups
+        self.muscleGroups = settings.muscleGroups
                 
         print("Generating a workout with groups: \(muscleGroups)")
         
-        let exercisesPerMuscleGroup = exerciseCount / muscleGroups.count
+        let exercisesPerMuscleGroup = settings.exerciseCount / muscleGroups.count
                 
         // Sort and grap exercise options for each muscle group
         var groupAndOptions: [Muscle : [Exercise]] = [:]
@@ -77,7 +77,7 @@ class Workout: Codable {
         var exercises: [Exercise] = []
         
         // Shuffle the exercises to be in order
-        if(groupExercisesByMuscle) {
+        if(settings.groupExercisesByMuscle) {
             for muscle in muscleGroups {
                 exercises.append(contentsOf: groupAndOptions[muscle]!)
             }
@@ -95,7 +95,7 @@ class Workout: Codable {
         let setCount = 3
         let repCount = 10
                 
-        if(!prefersSupersets) {
+        if(!settings.prefersSupersets) {
             // Generate single-exercise sets
             for exercise in exercises {
                 self.sets.append(WorkoutSet(exercise: exercise, sets: setCount, reps: repCount))
@@ -115,7 +115,7 @@ class Workout: Codable {
                 }
                 // Check to see if we need to switch to a superset
                 var reset: Bool = false
-                if(groupExercisesByMuscle) {
+                if(settings.groupExercisesByMuscle) {
                     let currExerciseGroup = exercises[i].data().muscleGroups[0].getGeneralGroup()
                     let nextExerciseGroup = exercises[i+1].data().muscleGroups[0].getGeneralGroup()
                     // We know to reset when the exercises are grouped by muscle if the next element's

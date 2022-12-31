@@ -13,6 +13,8 @@
 		50A44A3D2957961500CDB23B /* Muscle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A44A3C2957961500CDB23B /* Muscle.swift */; };
 		50CBBBD1295E79BC005E5EB6 /* WorkoutTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CBBBD0295E79BC005E5EB6 /* WorkoutTile.swift */; };
 		50D912BC295D5586008D1A82 /* SetSubCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D912BB295D5586008D1A82 /* SetSubCell.swift */; };
+		50DA012A2960270200E6EE06 /* WorkoutSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DA01292960270200E6EE06 /* WorkoutSettings.swift */; };
+		50DA012C2960315200E6EE06 /* ScheduleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DA012B2960315200E6EE06 /* ScheduleManager.swift */; };
 		50DBA01729307CFE00C46580 /* SetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DBA01629307CFE00C46580 /* SetCell.swift */; };
 		50DBA019293311FA00C46580 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DBA018293311FA00C46580 /* Exercise.swift */; };
 		50F70639292EB13E00846AA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F70638292EB13E00846AA4 /* AppDelegate.swift */; };
@@ -33,6 +35,8 @@
 		50A44A3C2957961500CDB23B /* Muscle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Muscle.swift; sourceTree = "<group>"; };
 		50CBBBD0295E79BC005E5EB6 /* WorkoutTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTile.swift; sourceTree = "<group>"; };
 		50D912BB295D5586008D1A82 /* SetSubCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetSubCell.swift; sourceTree = "<group>"; };
+		50DA01292960270200E6EE06 /* WorkoutSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSettings.swift; sourceTree = "<group>"; };
+		50DA012B2960315200E6EE06 /* ScheduleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleManager.swift; sourceTree = "<group>"; };
 		50DBA01629307CFE00C46580 /* SetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCell.swift; sourceTree = "<group>"; };
 		50DBA018293311FA00C46580 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		50F70635292EB13E00846AA4 /* Workouts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Workouts.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,7 +96,9 @@
 				50D912BB295D5586008D1A82 /* SetSubCell.swift */,
 				50CBBBD0295E79BC005E5EB6 /* WorkoutTile.swift */,
 				50F7064E292EB91700846AA4 /* Workout.swift */,
+				50DA01292960270200E6EE06 /* WorkoutSettings.swift */,
 				50F70650292EB98900846AA4 /* WorkoutSet.swift */,
+				50DA012B2960315200E6EE06 /* ScheduleManager.swift */,
 				50DBA018293311FA00C46580 /* Exercise.swift */,
 				50A44A3C2957961500CDB23B /* Muscle.swift */,
 				503729EB293690D200CABCC9 /* ProgressCircle.swift */,
@@ -171,6 +177,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50DA012A2960270200E6EE06 /* WorkoutSettings.swift in Sources */,
 				50DBA01729307CFE00C46580 /* SetCell.swift in Sources */,
 				50CBBBD1295E79BC005E5EB6 /* WorkoutTile.swift in Sources */,
 				50D912BC295D5586008D1A82 /* SetSubCell.swift in Sources */,
@@ -178,6 +185,7 @@
 				50F7064D292EB3F900846AA4 /* WorkoutViewController.swift in Sources */,
 				50888BE129515A140019C3F2 /* WorkoutSettingsViewController.swift in Sources */,
 				50F7063D292EB13E00846AA4 /* MainViewController.swift in Sources */,
+				50DA012C2960315200E6EE06 /* ScheduleManager.swift in Sources */,
 				503729EC293690D200CABCC9 /* ProgressCircle.swift in Sources */,
 				50F70651292EB98900846AA4 /* WorkoutSet.swift in Sources */,
 				50A44A3D2957961500CDB23B /* Muscle.swift in Sources */,

@@ -33,9 +33,7 @@ class WorkoutViewController: UIViewController {
         
         titleLabel.text = workout.name
         typeLabel.text = "Default";
-        
-        print("Loading workout with \(workout.sets.count) sets")
-        
+                
         // Create and add each SetCell to the stack, dynamically expand the stack height
         for i in 0...workout.sets.count-1 {
             let currentSet = workout.sets[i]
@@ -62,22 +60,37 @@ class WorkoutViewController: UIViewController {
         }
                 
         // Initlialize the progress button
-        updateProgressButton()
+        updateDoneButton()
         
     }
         
-    func updateProgressButton() {
+    func updateDoneButton() {
         guard let workout = currentWorkout else { return }
         // If the progressLayer doesn't exist make a new one and add it
         if(progressLayer == nil) {
             progressLayer = CALayer()
-            progressLayer!.cornerRadius = 12
+            progressLayer!.cornerRadius = 8
             progressLayer!.backgroundColor = (UIColor(named: "AccentColor")?.cgColor)
             doneButton.layer.insertSublayer(progressLayer!, at: 1)
         }
         // Modify the progressLayer's width to show progress
         let progress = workout.progress()
         progressLayer!.frame = CGRect(x: doneButton.bounds.minX, y: doneButton.bounds.minY, width: doneButton.bounds.width * CGFloat(progress), height: doneButton.bounds.height)
+        // Update the button's text color
+        let nextColor = progress == 1 ? UIColor(named: "ForegroundColor") : .clear
+        UIView.transition(with: doneButton.titleLabel!, duration: 0.25, options: .transitionCrossDissolve, animations: {
+            self.doneButton.titleLabel!.textColor = nextColor
+            self.doneButton.tintColor = nextColor
+        })
+    }
+    
+    @IBAction func tappedDoneButton(_ sender: Any) {
+        guard let workout = currentWorkout else { return }
+        if(workout.progress() != 1) { return }
+        // TODO Save current workout to workout history
+        currentWorkout = nil
+        saveCurrentWorkout()
+        performSegue(withIdentifier: "toMainView", sender: self)
     }
     
     // Tapped the back button in the upper left, auto segues to main view

@@ -145,7 +145,7 @@ class SetCell: UIView {
         workout.sets[position-1].isComplete = !workout.sets[position-1].isComplete
         updateCompletedButton(button: sender)
         // Update the progress button in the workoutViewController as well
-        workoutViewController.updateProgressButton()
+        workoutViewController.updateDoneButton()
     }
     
     func updateCompletedButton(button: UIButton) {

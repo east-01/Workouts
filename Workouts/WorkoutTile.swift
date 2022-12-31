@@ -37,6 +37,7 @@ class WorkoutTile: UIView {
                 
         let completionLabelText = String(Int(round(workout.progress() * 100))) + "%"
         let completionLabel = createTextLabel(text: completionLabelText, isBold: false, fontSize: 30)
+        completionLabel.adjustsFontSizeToFitWidth = true
         completionLabel.textAlignment = .right
         self.addSubview(completionLabel)
         

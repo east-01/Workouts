@@ -32,16 +32,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        saveCurrentWorkout()
+        saveData()
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
-        saveCurrentWorkout()
+        saveData()
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        saveCurrentWorkout()
+        saveData()
     }
 
+    func saveData() {
+        saveCurrentWorkout()
+        saveScheduleSettings()
+    }
+    
 }
 
