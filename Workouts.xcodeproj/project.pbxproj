@@ -63,6 +63,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5082923A2963E1A600A29C6E /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				50F7063C292EB13E00846AA4 /* MainViewController.swift */,
+				50CBBBD0295E79BC005E5EB6 /* WorkoutTile.swift */,
+				50DA012B2960315200E6EE06 /* ScheduleManager.swift */,
+			);
+			path = MainViewController;
+			sourceTree = "<group>";
+		};
+		5082923B2963E1C100A29C6E /* WorkoutViewController */ = {
+			isa = PBXGroup;
+			children = (
+				50F7064C292EB3F900846AA4 /* WorkoutViewController.swift */,
+				50D912BB295D5586008D1A82 /* SetSubCell.swift */,
+				50DBA01629307CFE00C46580 /* SetCell.swift */,
+			);
+			path = WorkoutViewController;
+			sourceTree = "<group>";
+		};
+		5082923D2963E1ED00A29C6E /* Workout Classes */ = {
+			isa = PBXGroup;
+			children = (
+				50F7064E292EB91700846AA4 /* Workout.swift */,
+				50DA01292960270200E6EE06 /* WorkoutSettings.swift */,
+				50F70650292EB98900846AA4 /* WorkoutSet.swift */,
+				50DBA018293311FA00C46580 /* Exercise.swift */,
+				50A44A3C2957961500CDB23B /* Muscle.swift */,
+			);
+			path = "Workout Classes";
+			sourceTree = "<group>";
+		};
 		50F7062C292EB13E00846AA4 = {
 			isa = PBXGroup;
 			children = (
@@ -82,25 +114,17 @@
 		50F70637292EB13E00846AA4 /* Workouts */ = {
 			isa = PBXGroup;
 			children = (
+				50F70646292EB14000846AA4 /* Info.plist */,
 				50F70638292EB13E00846AA4 /* AppDelegate.swift */,
 				50F7063A292EB13E00846AA4 /* SceneDelegate.swift */,
-				50F7063C292EB13E00846AA4 /* MainViewController.swift */,
-				50F7064C292EB3F900846AA4 /* WorkoutViewController.swift */,
+				50F7063E292EB13E00846AA4 /* Main.storyboard */,
+				50F70643292EB14000846AA4 /* LaunchScreen.storyboard */,
+				50F70641292EB14000846AA4 /* Assets.xcassets */,
+				5082923D2963E1ED00A29C6E /* Workout Classes */,
+				5082923B2963E1C100A29C6E /* WorkoutViewController */,
+				5082923A2963E1A600A29C6E /* MainViewController */,
 				50888BE029515A140019C3F2 /* WorkoutSettingsViewController.swift */,
 				50A25355295E696D0056CC04 /* ExerciseDetailsViewController.swift */,
-				50F7063E292EB13E00846AA4 /* Main.storyboard */,
-				50F70641292EB14000846AA4 /* Assets.xcassets */,
-				50F70643292EB14000846AA4 /* LaunchScreen.storyboard */,
-				50F70646292EB14000846AA4 /* Info.plist */,
-				50DBA01629307CFE00C46580 /* SetCell.swift */,
-				50D912BB295D5586008D1A82 /* SetSubCell.swift */,
-				50CBBBD0295E79BC005E5EB6 /* WorkoutTile.swift */,
-				50F7064E292EB91700846AA4 /* Workout.swift */,
-				50DA01292960270200E6EE06 /* WorkoutSettings.swift */,
-				50F70650292EB98900846AA4 /* WorkoutSet.swift */,
-				50DA012B2960315200E6EE06 /* ScheduleManager.swift */,
-				50DBA018293311FA00C46580 /* Exercise.swift */,
-				50A44A3C2957961500CDB23B /* Muscle.swift */,
 				503729EB293690D200CABCC9 /* ProgressCircle.swift */,
 			);
 			path = Workouts;

@@ -25,9 +25,9 @@ class WorkoutSettingsViewController: UIViewController {
     
     // If this number exists, this means that we're editing the schedule menu NOT creating a workout
     var scheduleIndex: Int?
+    var currentSettings: WorkoutSettings?
     
-    private var exerciseCount: Int = 12
-    
+//    private var exerciseCount: Int = 12
     private var muscleSelections: [Bool] = []
     
     override func viewDidLoad() {
@@ -41,19 +41,22 @@ class WorkoutSettingsViewController: UIViewController {
                 
         createMuscleGroupButtons()
         
-        // TODO: Load previous settings/default values here
-        exerciseStepper.value = 12
-        supersetsToggle.isOn = true
-        groupToggle.isOn = false
+        if(currentSettings == nil) {
+            // Load default settings
+            currentSettings = WorkoutSettings(
+                name: "Generated on \(getDateString())",
+                muscleGroups: [],
+                exerciseCount: 12,
+                prefersSupersets: true,
+                groupExercisesByMuscle: false
+            )
+        }
+        
+        sync()
         
     }
     
     @IBAction func submitted(_ sender: Any) {
-        // Generate default title
-        let date = Date()
-        let format = DateFormatter()
-        format.dateFormat = "MM/dd/yy"
-        let dateString = format.string(from: date)
         
         // Figure out which muscle groups are selected from the button list
         let muscleGroupsKey = Muscle.getGeneralGroups()
@@ -63,23 +66,15 @@ class WorkoutSettingsViewController: UIViewController {
                 muscleGroups.append(muscleGroupsKey[i])
             }
         }
-                
-        let settings = WorkoutSettings(
-            name: "Generated on \(dateString)",
-            muscleGroups: muscleGroups,
-            exerciseCount: self.exerciseCount,
-            prefersSupersets: supersetsToggle.isOn,
-            groupExercisesByMuscle: groupToggle.isOn
-        )
         
         // If schedule index doesn't exist this means we're creating a workout
         if(scheduleIndex == nil) {
-            currentWorkout = Workout(settings: settings);
+            currentWorkout = Workout(settings: currentSettings!);
             // TODO Be careful of overwriting existing workout, maybe add a dialogue to warn about this
             saveCurrentWorkout()
             performSegue(withIdentifier: "workoutSettingsToWorkoutView", sender: self)
         } else { // If it exists it means we're editing schedule settings
-            setScheduleSettings(dayOfWeek: scheduleIndex!, settings: settings)
+            setScheduleSettings(dayOfWeek: scheduleIndex!, settings: currentSettings!)
             scheduleIndex = nil
             dismiss(animated: true)
         }
@@ -97,7 +92,7 @@ class WorkoutSettingsViewController: UIViewController {
             let button: UIButton = UIButton()
             button.backgroundColor = UIColor(named: "BackgroundColor")
             button.layer.cornerRadius = 8
-            button.setTitle(String(describing: muscle), for: .normal)
+            button.setTitle(muscle.getDisplayName(), for: .normal)
             button.setTitleColor(UIColor(named: "ForegroundColor"), for: .normal)
             button.addTarget(self, action: #selector(muscleGroupClicked), for: .touchUpInside)
             // Add tag and boolean value for selection list
@@ -110,14 +105,75 @@ class WorkoutSettingsViewController: UIViewController {
         
     }
     
+    // This method makes sure that the all the visual parts of the ViewController
+    //   reflect what's in the current settings, not the other way around
+    // We are responsible for changing the values in currentSettings elsewhere
+    func sync() {
+        
+        guard let settings = currentSettings else {
+            return
+        }
+            
+        let generalGroups = Muscle.getGeneralGroups()
+        for i in 0...generalGroups.count-1 {
+            var isSelectedInSettings: Bool = false
+            // Check if the current muscle group is already set in the settings, change the selection value to reflect this
+            for testMuscle in settings.muscleGroups {
+                if(testMuscle == generalGroups[i]) {
+                    isSelectedInSettings = true
+                    break
+                }
+            }
+            muscleSelections[i] = isSelectedInSettings
+            muscleGroupStack.arrangedSubviews[i].backgroundColor = muscleSelections[i] ? UIColor(named: "AccentColor") : UIColor(named: "BackgroundColor")
+        }
+        
+        exerciseStepper.value = Double(settings.exerciseCount)
+        exerciseCountText.text = "\(settings.exerciseCount)"
+
+        supersetsToggle.isOn = settings.prefersSupersets
+        groupToggle.isOn = settings.groupExercisesByMuscle
+                
+    }
+    
     @objc func muscleGroupClicked(_ sender: UIButton) {
+        let generalGroups = Muscle.getGeneralGroups()
         muscleSelections[sender.tag] = !muscleSelections[sender.tag]
+        if(muscleSelections[sender.tag]) {
+            currentSettings!.muscleGroups.append(generalGroups[sender.tag])
+        } else if(!muscleSelections[sender.tag] && currentSettings!.muscleGroups.firstIndex(of: generalGroups[sender.tag]) != nil) {
+            currentSettings!.muscleGroups.remove(at: currentSettings!.muscleGroups.firstIndex(of: generalGroups[sender.tag])!)
+        }
         sender.backgroundColor = muscleSelections[sender.tag] ? UIColor(named: "AccentColor") : UIColor(named: "BackgroundColor")
     }
 
     @IBAction func exerciseCountChanged(_ sender: Any) {
-        exerciseCount = Int(exerciseStepper.value)
-        exerciseCountText.text = "\(exerciseCount)"
+        if(currentSettings == nil) {
+            return
+        }
+        currentSettings!.exerciseCount = Int(exerciseStepper.value)
+        exerciseCountText.text = "\(currentSettings!.exerciseCount)"
+    }
+     
+    @IBAction func togglePrefersSupersets(_ sender: UISwitch) {
+        if(currentSettings == nil) {
+            return
+        }
+        currentSettings!.prefersSupersets = sender.isOn
+    }
+    
+    @IBAction func toggleGroupByMuscle(_ sender: UISwitch) {
+        if(currentSettings == nil) {
+            return
+        }
+        currentSettings!.groupExercisesByMuscle = sender.isOn
+    }
+    
+    private func getDateString() -> String {
+        let date = Date()
+        let format = DateFormatter()
+        format.dateFormat = "MM/dd/yy"
+        return format.string(from: date)
     }
     
 }

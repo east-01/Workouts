@@ -20,6 +20,12 @@ func setScheduleSettings(dayOfWeek: Int, settings: WorkoutSettings) {
     saveScheduleSettings()
 }
 
+func clearScheduleSettings(dayOfWeek: Int) {
+    if(scheduleSettings == nil) { loadScheduleSettings() }
+    scheduleSettings![dayOfWeek] = nil
+    saveScheduleSettings()
+}
+
 func loadScheduleSettings() {
     if let data = UserDefaults.standard.data(forKey: "ScheduleWorkoutSettings") {
         if let decoded = try? JSONDecoder().decode([WorkoutSettings?].self, from: data) {
