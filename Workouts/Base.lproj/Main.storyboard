@@ -273,7 +273,7 @@
                                             <color key="baseForegroundColor" name="ForegroundColor"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <segue destination="TjB-YR-kbQ" kind="presentation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="coverVertical" id="wBg-3C-2bY"/>
+                                            <action selector="newWorkoutClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vyM-U2-SjV"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GGf-ae-a67">
@@ -417,12 +417,17 @@
                     </view>
                     <navigationItem key="navigationItem" id="SMT-Fa-PXO"/>
                     <connections>
+                        <outlet property="bottomView" destination="bws-O1-Rqy" id="3hP-3S-2lb"/>
                         <outlet property="greetingText" destination="Jxn-lo-53E" id="3eT-aa-m62"/>
+                        <outlet property="newWorkoutButton" destination="wAH-Vq-JP4" id="iu4-5k-77B"/>
+                        <outlet property="newWorkoutButtonHeight" destination="vKn-F4-Fwk" id="Bpy-vh-4Jt"/>
+                        <outlet property="newWorkoutButtonWidth" destination="ZvX-27-eZb" id="oht-Ht-PAl"/>
                         <outlet property="scheduleStack" destination="6Mn-uE-Ovt" id="mmw-wx-dGb"/>
                         <outlet property="scheduleView" destination="4Fw-m9-GD1" id="yLb-Pc-Jff"/>
                         <outlet property="topStack" destination="7GP-hF-5Xq" id="fEC-xU-9y1"/>
                         <outlet property="topView" destination="cgp-cC-e2R" id="5ha-Qe-1en"/>
                         <segue destination="H7S-Np-35s" kind="presentation" identifier="toWorkoutView" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="NX9-9c-5w5"/>
+                        <segue destination="TjB-YR-kbQ" kind="presentation" identifier="toWorkoutSettingsView" modalPresentationStyle="currentContext" modalTransitionStyle="coverVertical" id="Z1n-DQ-4Mt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
