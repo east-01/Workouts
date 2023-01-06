@@ -49,6 +49,7 @@ class WorkoutSettingsViewController: UIViewController {
             currentSettings = WorkoutSettings(
                 name: "Generated on \(getDateString())",
                 muscleGroups: [],
+                gym: getGyms()[0],
                 exerciseCount: 12,
                 prefersSupersets: true,
                 groupExercisesByMuscle: false
@@ -71,6 +72,8 @@ class WorkoutSettingsViewController: UIViewController {
                 muscleGroups.append(muscleGroupsKey[i])
             }
         }
+        
+        currentSettings!.printSettings()
         
         // If schedule index doesn't exist this means we're creating a workout
         if(scheduleIndex == nil) {
@@ -139,6 +142,8 @@ class WorkoutSettingsViewController: UIViewController {
         supersetsToggle.isOn = settings.prefersSupersets
         groupToggle.isOn = settings.groupExercisesByMuscle
                 
+        gymPicker.selectRow(getGyms().firstIndex(of: settings.gym)!, inComponent: 0, animated: true)
+        
     }
     
     @objc func muscleGroupClicked(_ sender: UIButton) {

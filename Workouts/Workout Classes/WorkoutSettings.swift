@@ -10,6 +10,7 @@ import Foundation
 struct WorkoutSettings: Codable {
     var name: String
     var muscleGroups: [Muscle]
+    var gym: Gym
     var exerciseCount: Int
     var prefersSupersets: Bool
     var groupExercisesByMuscle: Bool
@@ -17,6 +18,7 @@ struct WorkoutSettings: Codable {
         print("Exercise settings:")
         print("  Name: \(name)")
         print("  Groups: \(muscleGroups)")
+        print("  Gym: \(gym.name)")
         print("  Exercise count: \(exerciseCount)")
         print("  Prefers supersets: \(prefersSupersets)")
         print("  Group by muscle: \(groupExercisesByMuscle)")

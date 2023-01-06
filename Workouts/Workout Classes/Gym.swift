@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Gym: Codable {
+struct Gym: Codable, Equatable {
     var name: String
     var equipment: [Equipment]
 }
