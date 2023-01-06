@@ -23,6 +23,9 @@ class WorkoutSettingsViewController: UIViewController {
     @IBOutlet weak var supersetsToggle: UISwitch!
     @IBOutlet weak var groupToggle: UISwitch!
     
+    @IBOutlet weak var gymView: UIView!
+    @IBOutlet weak var gymPicker: UIPickerView!
+    
     // If this number exists, this means that we're editing the schedule menu NOT creating a workout
     var scheduleIndex: Int?
     var currentSettings: WorkoutSettings?
@@ -51,6 +54,8 @@ class WorkoutSettingsViewController: UIViewController {
                 groupExercisesByMuscle: false
             )
         }
+        
+        loadGymView()
         
         sync()
         

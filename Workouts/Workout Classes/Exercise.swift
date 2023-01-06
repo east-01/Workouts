@@ -1,14 +1,12 @@
+// Exercise.swift
+// Workouts
 //
-//  Exercise.swift
-//  Workouts
-//
-//  Created by Ethan Mullen on 11/26/22.
-//
+// Created by Ethan Mullen on 11/26/22.
 
 import Foundation
 
 enum Exercise: CaseIterable, Codable {
-    
+
     case ALTERNATING_DUMBBELL_FRONT_RAISES; case ARNOLD_DUMBBELL_PRESS; case ASSISTED_PULL_UPS; case ASSISTED_REVERSE_CHIN_UPS; case ASSISTED_TRICEP_DIPS_MACHINE;
     case BACK_EXTENSIONS; case BARBELL_BENCH_PRESS; case BARBELL_DECLINE_BENCH_PRESS; case BARBELL_INCLINE_BENCH_PRESS; case BARBELL_BICEP_CURLS;
     case BARBELL_DEADLIFTS; case BARBELL_FRONT_SQUATS; case BARBELL_GOOD_MORNINGS; case BARBELL_LUNGES; case BARBELL_ROMANIAN_DEADLIFTS;
@@ -34,369 +32,470 @@ enum Exercise: CaseIterable, Codable {
     case TRAP_BAR_DEADLIFT; case TRICEP_DIPS; case TRICEP_DIPS_OFF_BENCH; case UPRIGHT_ROWS; case WIDE_GRIP_LAT_PULLDOWN;
     case WIDE_GRIP_SEATED_CABLE_ROWS;
 
-      func data() -> ExerciseData {
-          switch self {
-          case .ALTERNATING_DUMBBELL_FRONT_RAISES:
-              return ExerciseData("Alternating Dumbbell Front Raises")
-                  .setMuscleGroups([.GEN_SHOULDERS, .FRONT_DELTS])
-          case .ARNOLD_DUMBBELL_PRESS:
-              return ExerciseData("Arnold Dumbbell Press")
-                  .setMuscleGroups([.GEN_SHOULDERS, .FRONT_DELTS, .GEN_TRICEP])
-          case .ASSISTED_PULL_UPS:
-              return ExerciseData("Assisted Pull-Ups")
-                  .setMuscleGroups([.LATS, .GEN_BICEP])
-          case .ASSISTED_REVERSE_CHIN_UPS:
-              return ExerciseData("Assisted Reverse Chin-Ups")
-                  .setMuscleGroups([.LATS, .GEN_BICEP])
-          case .ASSISTED_TRICEP_DIPS_MACHINE:
-              return ExerciseData("Assisted Tricep Dips Machine")
-                  .setMuscleGroups([.GEN_TRICEP])
-          case .BACK_EXTENSIONS:
-              return ExerciseData("Back Extensions")
-                  .setMuscleGroups([.HAMSTRING, .LOWER_BACK])
-          case .BARBELL_BENCH_PRESS:
-              return ExerciseData("Barbell Bench Press")
-                  .setMuscleGroups([.GEN_CHEST, .GEN_TRICEP, .FRONT_DELTS])
-          case .BARBELL_DECLINE_BENCH_PRESS:
-              return ExerciseData("Barbell Decline Bench Press")
-                  .setMuscleGroups([.LOWER_CHEST])
-          case .BARBELL_INCLINE_BENCH_PRESS:
-              return ExerciseData("Barbell Incline Bench Press")
-                  .setMuscleGroups([.UPPER_CHEST])
-          case .BARBELL_BICEP_CURLS:
-              return ExerciseData("Barbell Bicep Curls")
-                  .setMuscleGroups([.GEN_BICEP])
-          case .BARBELL_DEADLIFTS:
-              return ExerciseData("Barbell Deadlifts")
-                  .setMuscleGroups([.GLUTES, .HAMSTRING])
-          case .BARBELL_FRONT_SQUATS:
-              return ExerciseData("Barbell Front Squats")
-                  .setMuscleGroups([.QUADS])
-          case .BARBELL_GOOD_MORNINGS:
-              return ExerciseData("Barbell Good Mornings")
-                  .setMuscleGroups([.LOWER_BACK, .GLUTES, .HAMSTRING])
-          case .BARBELL_LUNGES:
-              return ExerciseData("Barbell Lunges")
-                  .setMuscleGroups([.QUADS, .GLUTES, .HAMSTRING])
-          case .BARBELL_ROMANIAN_DEADLIFTS:
-              return ExerciseData("Barbell Romanian Deadlifts")
-                  .setMuscleGroups([.GLUTES, .HAMSTRING])
-          case .BARBELL_ROWS:
-              return ExerciseData("Barbell Rows")
-                  .setMuscleGroups([.LATS, .REAR_DELTS, .GEN_BICEP, .TRAPS])
-          case .BARBELL_SHRUGS:
-              return ExerciseData("Barbell Shrugs")
-                  .setMuscleGroups([.TRAPS])
-          case .BARBELL_SQUAT:
-              return ExerciseData("Barbell Squat")
-                  .setMuscleGroups([.QUADS, .GLUTES])
-          case .BARBELL_SUMO_DEADLIFTS:
-              return ExerciseData("Barbell Sumo Deadlifts")
-                  .setMuscleGroups([.GLUTES, .HAMSTRING])
-          case .BARBELL_UPRIGHT_ROWS:
-              return ExerciseData("Barbell Upright Rows")
-                  .setMuscleGroups([.GEN_SHOULDERS, .MIDDLE_DELTS, .TRAPS, .GEN_BICEP])
-          case .BEHIND_THE_NECK_BARBELL_OVERHEAD_PRESS:
-              return ExerciseData("Behind the Neck Barbell Overhead Press")
-                  .setMuscleGroups([.GEN_SHOULDERS, .GEN_SHOULDERS])
-          case .BEHIND_THE_NECK_LAT_PULLDOWN:
-              return ExerciseData("Behind the Neck Lat Pulldown")
-                  .setMuscleGroups([.LATS, .GEN_BICEP])
-          case .BENT_OVER_CALF_RAISE_MACHINE:
-              return ExerciseData("Bent-Over Calf Raise Machine")
-                  .setMuscleGroups([.CALVES])
-          case .BENT_OVER_DUMBBELL_ROWS:
-              return ExerciseData("Bent-Over Dumbbell Rows")
-                  .setMuscleGroups([.LATS, .REAR_DELTS, .GEN_BICEP, .TRAPS])
-          case .BENT_OVER_DUMBBELL_TRICEP_KICKBACKS:
-              return ExerciseData("Bent-Over Dumbbell Tricep Kickbacks")
-                  .setMuscleGroups([.GEN_TRICEP])
-          case .BENT_OVER_REAR_DELT_FLYS:
-              return ExerciseData("Bent-Over Rear Delt Flys")
-                  .setMuscleGroups([.GEN_SHOULDERS, .REAR_DELTS, .TRAPS])
-          case .BODYWEIGHT_CALF_RAISES:
-              return ExerciseData("Bodyweight Calf Raises")
-                  .setMuscleGroups([.CALVES])
-          case .BOX_SQUATS:
-              return ExerciseData("Box Squats")
-                  .setMuscleGroups([.QUADS, .GLUTES, .HAMSTRING])
-          case .CABLE_ABDUCTIONS:
-              return ExerciseData("Cable Abductions")
-                  .setMuscleGroups([.GLUTES])
-          case .CABLE_BENT_OVER_REAR_DELT_FLY:
-              return ExerciseData("Cable Bent-Over Rear Delt Fly")
-                  .setMuscleGroups([.GEN_SHOULDERS, .REAR_DELTS])
-          case .INCLINE_CHEST_FLY:
-              return ExerciseData("Incline Chest Fly")
-                  .setMuscleGroups([.GEN_CHEST, .GEN_SHOULDERS, .GEN_TRICEP])
-          case .CABLE_BICEP_CURLS:
-              return ExerciseData("Cable Bicep Curls")
-                  .setMuscleGroups([.GEN_BICEP])
-          case .CABLE_CROSSOVER_FLYS:
-              return ExerciseData("Cable Crossover Flys")
-                  .setMuscleGroups([.GEN_CHEST])
-          case .CABLE_CRUNCHES:
-              return ExerciseData("Cable Crunches")
-                  .setMuscleGroups([.GEN_ABS])
-          case .CABLE_EXTERNAL_SHOULDER_ROTATIONS:
-              return ExerciseData("Cable External Shoulder Rotations")
-                  .setMuscleGroups([.GEN_SHOULDERS, .ROTATOR_CUFF, .REAR_DELTS])
-          case .CABLE_FRONT_RAISES_OVERHAND_GRIP:
-              return ExerciseData("Cable Front Raises (Overhand Grip)")
-                  .setMuscleGroups([.GEN_SHOULDERS, .FRONT_DELTS])
-          case .CABLE_KICKBACKS:
-              return ExerciseData("Cable Kickbacks")
-                  .setMuscleGroups([.GLUTES])
-          case .CABLE_ROPE_FRONT_RAISES_NEUTRAL_GRIP:
-              return ExerciseData("Cable Rope Front Raises (Neutral Grip)")
-                  .setMuscleGroups([.GEN_SHOULDERS, .FRONT_DELTS])
-          case .CABLE_SIDE_RAISE:
-              return ExerciseData("Cable Side Raise")
-                  .setMuscleGroups([.GEN_SHOULDERS, .MIDDLE_DELTS])
-          case .CABLE_TRICEP_PUSHDOWNS:
-              return ExerciseData("Cable Tricep Pushdowns")
-                  .setMuscleGroups([.GEN_TRICEP])
-          case .CLOSE_GRIP_BENCH_PRESS:
-              return ExerciseData("Close Grip Bench Press")
-                  .setMuscleGroups([.GEN_CHEST, .GEN_TRICEP, .FRONT_DELTS])
-          case .CLOSE_GRIP_LAT_PULLDOWNS:
-              return ExerciseData("Close Grip Lat Pulldowns")
-                  .setMuscleGroups([.LATS, .GEN_BICEP])
-          case .CRUNCHES:
-              return ExerciseData("Crunches")
-                  .setMuscleGroups([.GEN_ABS])
-          case .DECLINE_BENCH_PRESS:
-              return ExerciseData("Decline Bench Press")
-                  .setMuscleGroups([.GEN_CHEST, .GEN_TRICEP, .FRONT_DELTS])
-          case .DECLINE_REVERSE_CRUNCHES:
-              return ExerciseData("Decline Reverse Crunches")
-                  .setMuscleGroups([.GEN_ABS])
-          case .DECLINE_SIT_UPS:
-              return ExerciseData("Decline Sit-Ups")
-                  .setMuscleGroups([.GEN_ABS])
-          case .DONKEY_KICKS:
-              return ExerciseData("Donkey Kicks")
-                  .setMuscleGroups([.GLUTES])
-          case .DUMBBELL_BENCH_PRESS:
-              return ExerciseData("Dumbbell Bench Press")
-                  .setMuscleGroups([.GEN_CHEST, .GEN_TRICEP, .FRONT_DELTS])
-          case .DUMBBELL_DECLINE_BENCH:
-              return ExerciseData("Dumbbell Decline Bench")
-                  .setMuscleGroups([.LOWER_CHEST])
-          case .DUMBBELL_INCLINE_BENCH:
-              return ExerciseData("Dumbbell Incline Bench")
-                  .setMuscleGroups([.UPPER_CHEST])
-          case .DUMBBELL_BICEP_CURL:
-              return ExerciseData("Dumbbell Bicep Curl")
-                  .setMuscleGroups([.GEN_BICEP, .FRONT_DELTS])
-          case .DUMBBELL_CALF_RAISES:
-              return ExerciseData("Dumbbell Calf Raises")
-                  .setMuscleGroups([.CALVES])
-          case .DUMBBELL_DEADLIFTS:
-              return ExerciseData("Dumbbell Deadlifts")
-                  .setMuscleGroups([.GLUTES, .HAMSTRING])
-          case .DUMBBELL_FRONT_RAISES:
-              return ExerciseData("Dumbbell Front Raises")
-                  .setMuscleGroups([.GEN_SHOULDERS, .FRONT_DELTS])
-          case .DUMBBELL_HAMMER_CURL:
-              return ExerciseData("Dumbbell Hammer Curl")
-                  .setMuscleGroups([.GEN_BICEP])
-          case .DUMBBELL_LUNGES:
-              return ExerciseData("Dumbbell Lunges")
-                  .setMuscleGroups([.QUADS, .GLUTES, .HAMSTRING])
-          case .DUMBBELL_ROMANIAN_DEADLIFTS:
-              return ExerciseData("Dumbbell Romanian Deadlifts")
-                  .setMuscleGroups([.GLUTES, .HAMSTRING])
-          case .DUMBBELL_SHRUGS:
-              return ExerciseData("Dumbbell Shrugs")
-                  .setMuscleGroups([.TRAPS])
-          case .DUMBBELL_SIDE_BENDS:
-              return ExerciseData("Dumbbell Side Bends")
-                  .setMuscleGroups([.GEN_ABS])
-          case .DUMBBELL_SIDE_RAISES:
-              return ExerciseData("Dumbbell Side Raises")
-                  .setMuscleGroups([.GEN_SHOULDERS, .MIDDLE_DELTS])
-          case .DUMBBELL_SQUATS:
-              return ExerciseData("Dumbbell Squats")
-                  .setMuscleGroups([.QUADS, .GLUTES])
-          case .DUMBBELL_SUMO_DEADLIFTS:
-              return ExerciseData("Dumbbell Sumo Deadlifts")
-                  .setMuscleGroups([.GLUTES, .HAMSTRING])
-          case .DUMBBELL_UPRIGHT_ROWS:
-              return ExerciseData("Dumbbell Upright Rows")
-                  .setMuscleGroups([.GEN_SHOULDERS, .MIDDLE_DELTS, .TRAPS, .GEN_BICEP])
-          case .ELEVATED_CRUNCHES:
-              return ExerciseData("Elevated Crunches")
-                  .setMuscleGroups([.GEN_ABS])
-          case .EZ_BAR_PREACHER_CURLS:
-              return ExerciseData("EZ Bar Preacher Curls")
-                  .setMuscleGroups([.GEN_BICEP])
-          case .EZ_BAR_SKULL_CRUSHERS:
-              return ExerciseData("EZ Bar Skull Crushers")
-                  .setMuscleGroups([.GEN_TRICEP])
-          case .FLAT_LYING_DUMBBELL_FLYS:
-              return ExerciseData("Flat Lying Dumbbell Flys")
-                  .setMuscleGroups([.GEN_CHEST])
-          case .GLUTE_BRIDGES:
-              return ExerciseData("Glute Bridges")
-                  .setMuscleGroups([.GLUTES])
-          case .HACK_SQUATS:
-              return ExerciseData("Hack Squats")
-                  .setMuscleGroups([.QUADS, .GLUTES, .HAMSTRING])
-          case .HAMMER_CURLS:
-              return ExerciseData("Hammer Curls")
-                  .setMuscleGroups([.GEN_BICEP])
-          case .HANGING_CRUNCHES:
-              return ExerciseData("Hanging Crunches")
-                  .setMuscleGroups([.GEN_ABS])
-          case .INCLINE_BARBELL_BENCH_PRESS:
-              return ExerciseData("Incline Barbell Bench Press")
-                  .setMuscleGroups([.GEN_CHEST, .GEN_TRICEP, .FRONT_DELTS])
-          case .INCLINE_DUMBBELL_BENCH_PRESS:
-              return ExerciseData("Incline Dumbbell Bench Press")
-                  .setMuscleGroups([.GEN_CHEST, .GEN_TRICEP, .FRONT_DELTS])
-          case .INCLINE_DUMBBELL_CURLS:
-              return ExerciseData("Incline Dumbbell Curls")
-                  .setMuscleGroups([.GEN_BICEP])
-          case .INCLINE_DUMBBELL_FLYS:
-              return ExerciseData("Incline Dumbbell Flys")
-                  .setMuscleGroups([.GEN_CHEST])
-          case .KNEE_PUSH_UPS:
-              return ExerciseData("Knee Push-Ups")
-                  .setMuscleGroups([.GEN_CHEST, .GEN_TRICEP, .FRONT_DELTS])
-          case .LEG_EXTENSION_MACHINE:
-              return ExerciseData("Leg Extension Machine")
-                  .setMuscleGroups([.QUADS])
-          case .LUNGES:
-              return ExerciseData("Lunges")
-                  .setMuscleGroups([.QUADS, .GLUTES, .HAMSTRING])
-          case .LYING_DUMBBELL_PULLOVERS:
-              return ExerciseData("Lying Dumbbell Pullovers")
-                  .setMuscleGroups([.GEN_CHEST, .LATS, .GEN_ABS])
-          case .LYING_DUMBBELL_TRICEP_EXTENSIONS:
-              return ExerciseData("Lying Dumbbell Tricep Extensions")
-                  .setMuscleGroups([.GEN_TRICEP])
-          case .LYING_HAMSTRING_CURL:
-              return ExerciseData("Lying Hamstring Curl")
-                  .setMuscleGroups([.HAMSTRING])
-          case .LYING_HIP_ABDUCTIONS:
-              return ExerciseData("Lying Hip Abductions")
-                  .setMuscleGroups([.GLUTES])
-          case .MACHINE_ABDUCTIONS:
-              return ExerciseData("Machine Abductions")
-                  .setMuscleGroups([.GLUTES])
-          case .MACHINE_BICEP_CURLS:
-              return ExerciseData("Machine Bicep Curls")
-                  .setMuscleGroups([.GEN_BICEP])
-          case .MACHINE_CHEST_PRESS:
-              return ExerciseData("Machine Chest Press")
-                  .setMuscleGroups([.GEN_CHEST, .GEN_TRICEP, .FRONT_DELTS])
-          case .MACHINE_CRUNCHES:
-              return ExerciseData("Machine Crunches")
-                  .setMuscleGroups([.GEN_ABS])
-          case .MACHINE_LATERAL_SHOULDER_RAISES:
-              return ExerciseData("Machine Lateral Shoulder Raises")
-                  .setMuscleGroups([.GEN_SHOULDERS, .GEN_SHOULDERS])
-          case .DUMBBELL_LATERAL_RAISE:
-              return ExerciseData("Dumbbell Lateral Raise")
-                  .setMuscleGroups([.GEN_SHOULDERS])
-          case .MINI_CRUNCHES:
-              return ExerciseData("Mini Crunches")
-                  .setMuscleGroups([.GEN_ABS])
-          case .PEC_DECK_FLYS:
-              return ExerciseData("Pec Deck Flys")
-                  .setMuscleGroups([.GEN_CHEST])
-          case .PULL_UPS:
-              return ExerciseData("Pull-Ups")
-                  .setMuscleGroups([.LATS, .GEN_BICEP])
-          case .PUSH_UPS:
-              return ExerciseData("Push-Ups")
-                  .setMuscleGroups([.GEN_CHEST, .GEN_TRICEP, .FRONT_DELTS])
-          case .PUSHBACK_MACHINE:
-              return ExerciseData("Pushback Machine")
-                  .setMuscleGroups([.GLUTES])
-          case .REAR_DELT_FLY_MACHINE:
-              return ExerciseData("Rear Delt Fly Machine")
-                  .setMuscleGroups([.GEN_SHOULDERS, .REAR_DELTS])
-          case .REVERSE_CHIN_UPS:
-              return ExerciseData("Reverse Chin-Ups")
-                  .setMuscleGroups([.LATS, .GEN_BICEP])
-          case .SEATED_BARBELL_OVERHEAD_PRESS:
-              return ExerciseData("Seated Barbell Overhead Press")
-                  .setMuscleGroups([.GEN_SHOULDERS, .GEN_SHOULDERS, .GEN_TRICEP, .TRAPS])
-          case .SEATED_CABLE_ROWS:
-              return ExerciseData("Seated Cable Rows")
-                  .setMuscleGroups([.LATS, .REAR_DELTS, .GEN_BICEP, .TRAPS])
-          case .SEATED_CALF_RAISE_MACHINE:
-              return ExerciseData("Seated Calf Raise Machine")
-                  .setMuscleGroups([.CALVES])
-          case .SEATED_DUMBBELL_OVERHEAD_PRESS:
-              return ExerciseData("Seated Dumbbell Overhead Press")
-                  .setMuscleGroups([.GEN_SHOULDERS, .MIDDLE_DELTS, .TRAPS, .GEN_TRICEP])
-          case .SEATED_HAMSTRING_CURL:
-              return ExerciseData("Seated Hamstring Curl")
-                  .setMuscleGroups([.HAMSTRING])
-          case .SEATED_LEG_PRESS:
-              return ExerciseData("Seated Leg Press")
-                  .setMuscleGroups([.QUADS, .GLUTES, .HAMSTRING])
-          case .SEATED_OVERHEAD_DUMBBELL_TRICEPS_EXTENSIONS:
-              return ExerciseData("Seated Overhead Dumbbell Triceps Extensions")
-                  .setMuscleGroups([.GEN_TRICEP])
-          case .SINGLE_ARM_BENT_OVER_DUMBBELL_ROWS:
-              return ExerciseData("Single-Arm Bent-Over Dumbbell Rows")
-                  .setMuscleGroups([.LATS, .REAR_DELTS, .GEN_BICEP, .TRAPS])
-          case .SINGLE_ARM_DUMBBELL_OVERHEAD_TRICEP_EXTENSIONS:
-              return ExerciseData("Single-Arm Dumbbell Overhead Tricep Extensions")
-                  .setMuscleGroups([.GEN_TRICEP])
-          case .SIT_UPS:
-              return ExerciseData("Sit-Ups")
-                  .setMuscleGroups([.GEN_ABS])
-          case .STANDING_CALF_RAISE_MACHINE:
-              return ExerciseData("Standing Calf Raise Machine")
-                  .setMuscleGroups([.CALVES])
-          case .STANDING_SINGLE_LEG_HAMSTRING_CURL:
-              return ExerciseData("Standing Single-Leg Hamstring Curl")
-                  .setMuscleGroups([.HAMSTRING])
-          case .STRAIGHT_ARM_LAT_PULLDOWN:
-              return ExerciseData("Straight Arm Lat Pulldown")
-                  .setMuscleGroups([.LATS])
-          case .SUMO_DUMBBELL_SQUATS:
-              return ExerciseData("Sumo Dumbbell Squats")
-                  .setMuscleGroups([.QUADS, .GLUTES, .HAMSTRING])
-          case .T_BAR_ROWS:
-              return ExerciseData("T-Bar Rows")
-                  .setMuscleGroups([.LATS, .REAR_DELTS, .GEN_BICEP, .TRAPS])
-          case .TRAP_BAR_DEADLIFT:
-              return ExerciseData("Trap Bar Deadlift")
-                  .setMuscleGroups([.QUADS, .HAMSTRING])
-          case .TRICEP_DIPS:
-              return ExerciseData("Tricep Dips")
-                  .setMuscleGroups([.GEN_TRICEP])
-          case .TRICEP_DIPS_OFF_BENCH:
-              return ExerciseData("Tricep Dips Off Bench")
-                  .setMuscleGroups([.GEN_TRICEP])
-          case .UPRIGHT_ROWS:
-              return ExerciseData("Upright Rows")
-                  .setMuscleGroups([.MIDDLE_DELTS, .REAR_DELTS, .TRAPS, .MID_BACK])
-          case .WIDE_GRIP_LAT_PULLDOWN:
-              return ExerciseData("Wide Grip Lat Pulldown")
-                  .setMuscleGroups([.LATS, .GEN_BICEP])
-          case .WIDE_GRIP_SEATED_CABLE_ROWS:
-              return ExerciseData("Wide Grip Seated Cable Rows")
-                  .setMuscleGroups([.LATS, .REAR_DELTS, .GEN_BICEP, .TRAPS])
-          }
-      }
-}
-
-class ExerciseData {
-    var displayName: String
-    var muscleGroups: [Muscle]
-    init(_ dispName: String) {
-        self.displayName = dispName
-        self.muscleGroups = []
-    }
-    func setMuscleGroups(_ g: [Muscle]) -> ExerciseData {
-        self.muscleGroups = g
-        return self
-    }
-}
+    func data() -> ExerciseData {
+        switch self {
+        case .ALTERNATING_DUMBBELL_FRONT_RAISES:
+            return ExerciseData("Alternating Dumbbell Front Raises")
+                .setMuscleGroups([.GEN_SHOULDERS, .FRONT_DELTS])
+                .setEquipment([.DUMBBELLS, .BENCH])
+        case .ARNOLD_DUMBBELL_PRESS:
+            return ExerciseData("Arnold Dumbbell Press")
+                .setMuscleGroups([.GEN_SHOULDERS, .FRONT_DELTS, .GEN_TRICEP])
+                .setEquipment([.BENCH, .DUMBBELLS])
+        case .ASSISTED_PULL_UPS:
+            return ExerciseData("Assisted Pull-Ups")
+                .setMuscleGroups([.LATS, .GEN_BICEP])
+                .setEquipment([.ASSISTED_PULL_UP_DIPS_MACHINE])
+        case .ASSISTED_REVERSE_CHIN_UPS:
+            return ExerciseData("Assisted Reverse Chin-Ups")
+                .setMuscleGroups([.LATS, .GEN_BICEP])
+                .setEquipment([.PULL_UP_BAR, .LONG_BAND])
+        case .ASSISTED_TRICEP_DIPS_MACHINE:
+            return ExerciseData("Assisted Tricep Dips Machine")
+                .setMuscleGroups([.GEN_TRICEP])
+                .setEquipment([.ASSISTED_PULL_UP_DIPS_MACHINE])
+        case .BACK_EXTENSIONS:
+            return ExerciseData("Back Extensions")
+                .setMuscleGroups([.HAMSTRING, .LOWER_BACK])
+                .setEquipment([.ROMAN_CHAIR_APPARATUS])
+        case .BARBELL_BENCH_PRESS:
+            return ExerciseData("Barbell Bench Press")
+                .setMuscleGroups([.GEN_CHEST, .GEN_TRICEP, .FRONT_DELTS])
+                .setEquipment([.BENCH, .BARBELL])
+        case .BARBELL_DECLINE_BENCH_PRESS:
+            return ExerciseData("Barbell Decline Bench Press")
+                .setMuscleGroups([.LOWER_CHEST])
+                .setEquipment([.BARBELL, .INCLINE_BENCH])
+        case .BARBELL_INCLINE_BENCH_PRESS:
+            return ExerciseData("Barbell Incline Bench Press")
+                .setMuscleGroups([.UPPER_CHEST])
+                .setEquipment([.BARBELL, .INCLINE_BENCH])
+        case .BARBELL_BICEP_CURLS:
+            return ExerciseData("Barbell Bicep Curls")
+                .setMuscleGroups([.GEN_BICEP])
+                .setEquipment([.PRE_WEIGHTED_BARBELL])
+        case .BARBELL_DEADLIFTS:
+            return ExerciseData("Barbell Deadlifts")
+                .setMuscleGroups([.GLUTES, .HAMSTRING])
+                .setEquipment([.BARBELL])
+        case .BARBELL_FRONT_SQUATS:
+            return ExerciseData("Barbell Front Squats")
+                .setMuscleGroups([.QUADS])
+                .setEquipment([.BARBELL])
+        case .BARBELL_GOOD_MORNINGS:
+            return ExerciseData("Barbell Good Mornings")
+                .setMuscleGroups([.LOWER_BACK, .GLUTES, .HAMSTRING])
+                .setEquipment([.PRE_WEIGHTED_BARBELL])
+        case .BARBELL_LUNGES:
+            return ExerciseData("Barbell Lunges")
+                .setMuscleGroups([.QUADS, .GLUTES, .HAMSTRING])
+                .setEquipment([.BENCH, .BARBELL])
+        case .BARBELL_ROMANIAN_DEADLIFTS:
+            return ExerciseData("Barbell Romanian Deadlifts")
+                .setMuscleGroups([.GLUTES, .HAMSTRING])
+                .setEquipment([.BARBELL])
+        case .BARBELL_ROWS:
+            return ExerciseData("Barbell Rows")
+                .setMuscleGroups([.LATS, .REAR_DELTS, .GEN_BICEP, .TRAPS])
+                .setEquipment([.BARBELL])
+        case .BARBELL_SHRUGS:
+            return ExerciseData("Barbell Shrugs")
+                .setMuscleGroups([.TRAPS])
+                .setEquipment([.BARBELL])
+        case .BARBELL_SQUAT:
+            return ExerciseData("Barbell Squat")
+                .setMuscleGroups([.QUADS, .GLUTES])
+                .setEquipment([.BARBELL, .SQUAT_RACK])
+        case .BARBELL_SUMO_DEADLIFTS:
+            return ExerciseData("Barbell Sumo Deadlifts")
+                .setMuscleGroups([.GLUTES, .HAMSTRING])
+                .setEquipment([.BARBELL])
+        case .BARBELL_UPRIGHT_ROWS:
+            return ExerciseData("Barbell Upright Rows")
+                .setMuscleGroups([.GEN_SHOULDERS, .MIDDLE_DELTS, .TRAPS, .GEN_BICEP])
+                .setEquipment([.PRE_WEIGHTED_BARBELL])
+        case .BEHIND_THE_NECK_BARBELL_OVERHEAD_PRESS:
+            return ExerciseData("Behind the Neck Barbell Overhead Press")
+                .setMuscleGroups([.GEN_SHOULDERS, .GEN_SHOULDERS])
+                .setEquipment([.BENCH, .PRE_WEIGHTED_BARBELL])
+        case .BEHIND_THE_NECK_LAT_PULLDOWN:
+            return ExerciseData("Behind the Neck Lat Pulldown")
+                .setMuscleGroups([.LATS, .GEN_BICEP])
+                .setEquipment([.CABLE_MACHINE, .LONG_BAR_ATTACHMENT])
+        case .BENT_OVER_CALF_RAISE_MACHINE:
+            return ExerciseData("Bent-Over Calf Raise Machine")
+                .setMuscleGroups([.CALVES])
+                .setEquipment([.BENT_OVER_CALF_RAISE_MACHINE])
+        case .BENT_OVER_DUMBBELL_ROWS:
+            return ExerciseData("Bent-Over Dumbbell Rows")
+                .setMuscleGroups([.LATS, .REAR_DELTS, .GEN_BICEP, .TRAPS])
+                .setEquipment([.DUMBBELLS])
+        case .BENT_OVER_DUMBBELL_TRICEP_KICKBACKS:
+            return ExerciseData("Bent-Over Dumbbell Tricep Kickbacks")
+                .setMuscleGroups([.GEN_TRICEP])
+                .setEquipment([.BENCH, .DUMBBELLS])
+        case .BENT_OVER_REAR_DELT_FLYS:
+            return ExerciseData("Bent-Over Rear Delt Flys")
+                .setMuscleGroups([.GEN_SHOULDERS, .REAR_DELTS, .TRAPS])
+                .setEquipment([.DUMBBELLS, .BENCH])
+        case .BODYWEIGHT_CALF_RAISES:
+            return ExerciseData("Bodyweight Calf Raises")
+                .setMuscleGroups([.CALVES])
+                .setEquipment([.BODYWEIGHT])
+        case .BOX_SQUATS:
+            return ExerciseData("Box Squats")
+                .setMuscleGroups([.QUADS, .GLUTES, .HAMSTRING])
+                .setEquipment([.BENCH, .BARBELL])
+        case .CABLE_ABDUCTIONS:
+            return ExerciseData("Cable Abductions")
+                .setMuscleGroups([.GLUTES])
+                .setEquipment([.ANKLE_STRAP_ATTACHMENT])
+        case .CABLE_BENT_OVER_REAR_DELT_FLY:
+            return ExerciseData("Cable Bent-Over Rear Delt Fly")
+                .setMuscleGroups([.GEN_SHOULDERS, .REAR_DELTS])
+                .setEquipment([.CABLE_MACHINE, .HANDLE_ATTACHMENT])
+        case .INCLINE_CHEST_FLY:
+            return ExerciseData("Incline Chest Fly")
+                .setMuscleGroups([.GEN_CHEST, .GEN_SHOULDERS, .GEN_TRICEP])
+                .setEquipment([.DUMBBELLS, .INCLINE_BENCH])
+        case .CABLE_BICEP_CURLS:
+            return ExerciseData("Cable Bicep Curls")
+                .setMuscleGroups([.GEN_BICEP])
+                .setEquipment([.CABLE_MACHINE, .SMALL_STRAIGHT_BAR_ATTACHMENT])
+        case .CABLE_CROSSOVER_FLYS:
+            return ExerciseData("Cable Crossover Flys")
+                .setMuscleGroups([.GEN_CHEST])
+                .setEquipment([.CABLE_MACHINE, .TWO_HANDLE_ATTACHMENTS])
+        case .CABLE_CRUNCHES:
+            return ExerciseData("Cable Crunches")
+                .setMuscleGroups([.GEN_ABS])
+                .setEquipment([.CABLE_MACHINE, .ROPE_ATTACHMENT])
+        case .CABLE_EXTERNAL_SHOULDER_ROTATIONS:
+            return ExerciseData("Cable External Shoulder Rotations")
+                .setMuscleGroups([.GEN_SHOULDERS, .ROTATOR_CUFF, .REAR_DELTS])
+                .setEquipment([.CABLE_MACHINE, .HANDLE_ATTACHMENT])
+        case .CABLE_FRONT_RAISES_OVERHAND_GRIP:
+            return ExerciseData("Cable Front Raises (Overhand Grip)")
+                .setMuscleGroups([.GEN_SHOULDERS, .FRONT_DELTS])
+                .setEquipment([.CABLE_MACHINE, .HANDLE_ATTACHMENT])
+        case .CABLE_KICKBACKS:
+            return ExerciseData("Cable Kickbacks")
+                .setMuscleGroups([.GLUTES])
+                .setEquipment([.CABLE_MACHINE, .ANKLE_STRAP_ATTACHMENT])
+        case .CABLE_ROPE_FRONT_RAISES_NEUTRAL_GRIP:
+            return ExerciseData("Cable Rope Front Raises (Neutral Grip)")
+                .setMuscleGroups([.GEN_SHOULDERS, .FRONT_DELTS])
+                .setEquipment([.CABLE_MACHINE, .ROPE_ATTACHMENT])
+        case .CABLE_SIDE_RAISE:
+            return ExerciseData("Cable Side Raise")
+                .setMuscleGroups([.GEN_SHOULDERS, .MIDDLE_DELTS])
+                .setEquipment([.CABLE_MACHINE, .HANDLE_ATTACHMENT])
+        case .CABLE_TRICEP_PUSHDOWNS:
+            return ExerciseData("Cable Tricep Pushdowns")
+                .setMuscleGroups([.GEN_TRICEP])
+                .setEquipment([.CABLE_MACHINE, .HANDLE_ATTACHMENT])
+        case .CLOSE_GRIP_BENCH_PRESS:
+            return ExerciseData("Close Grip Bench Press")
+                .setMuscleGroups([.GEN_CHEST, .GEN_TRICEP, .FRONT_DELTS])
+                .setEquipment([.BENCH, .BARBELL])
+        case .CLOSE_GRIP_LAT_PULLDOWNS:
+            return ExerciseData("Close Grip Lat Pulldowns")
+                .setMuscleGroups([.LATS, .GEN_BICEP])
+                .setEquipment([.CABLE_MACHINE, .CLOSE_GRIP_ATTACHMENT])
+        case .CRUNCHES:
+            return ExerciseData("Crunches")
+                .setMuscleGroups([.GEN_ABS])
+                .setEquipment([.BODYWEIGHT])
+        case .DECLINE_BENCH_PRESS:
+            return ExerciseData("Decline Bench Press")
+                .setMuscleGroups([.GEN_CHEST, .GEN_TRICEP, .FRONT_DELTS])
+                .setEquipment([.BENCH, .BARBELL])
+        case .DECLINE_REVERSE_CRUNCHES:
+            return ExerciseData("Decline Reverse Crunches")
+                .setMuscleGroups([.GEN_ABS])
+                .setEquipment([.INCLINE_BENCH])
+        case .DECLINE_SIT_UPS:
+            return ExerciseData("Decline Sit-Ups")
+                .setMuscleGroups([.GEN_ABS])
+                .setEquipment([.INCLINE_BENCH])
+        case .DONKEY_KICKS:
+            return ExerciseData("Donkey Kicks")
+                .setMuscleGroups([.GLUTES])
+                .setEquipment([.BODYWEIGHT])
+        case .DUMBBELL_BENCH_PRESS:
+            return ExerciseData("Dumbbell Bench Press")
+                .setMuscleGroups([.GEN_CHEST, .GEN_TRICEP, .FRONT_DELTS])
+                .setEquipment([.BENCH, .DUMBBELLS])
+        case .DUMBBELL_DECLINE_BENCH:
+            return ExerciseData("Dumbbell Decline Bench")
+                .setMuscleGroups([.LOWER_CHEST])
+                .setEquipment([.DUMBBELLS, .INCLINE_BENCH])
+        case .DUMBBELL_INCLINE_BENCH:
+            return ExerciseData("Dumbbell Incline Bench")
+                .setMuscleGroups([.UPPER_CHEST])
+                .setEquipment([.DUMBBELLS, .INCLINE_BENCH])
+        case .DUMBBELL_BICEP_CURL:
+            return ExerciseData("Dumbbell Bicep Curl")
+                .setMuscleGroups([.GEN_BICEP, .FRONT_DELTS])
+                .setEquipment([.DUMBBELLS, .BENCH])
+        case .DUMBBELL_CALF_RAISES:
+            return ExerciseData("Dumbbell Calf Raises")
+                .setMuscleGroups([.CALVES])
+                .setEquipment([.DUMBBELLS])
+        case .DUMBBELL_DEADLIFTS:
+            return ExerciseData("Dumbbell Deadlifts")
+                .setMuscleGroups([.GLUTES, .HAMSTRING])
+                .setEquipment([.DUMBBELLS])
+        case .DUMBBELL_FRONT_RAISES:
+            return ExerciseData("Dumbbell Front Raises")
+                .setMuscleGroups([.GEN_SHOULDERS, .FRONT_DELTS])
+                .setEquipment([.DUMBBELLS, .BENCH])
+        case .DUMBBELL_HAMMER_CURL:
+            return ExerciseData("Dumbbell Hammer Curl")
+                .setMuscleGroups([.GEN_BICEP])
+                .setEquipment([.DUMBBELLS])
+        case .DUMBBELL_LUNGES:
+            return ExerciseData("Dumbbell Lunges")
+                .setMuscleGroups([.QUADS, .GLUTES, .HAMSTRING])
+                .setEquipment([.DUMBBELLS])
+        case .DUMBBELL_ROMANIAN_DEADLIFTS:
+            return ExerciseData("Dumbbell Romanian Deadlifts")
+                .setMuscleGroups([.GLUTES, .HAMSTRING])
+                .setEquipment([.DUMBBELLS])
+        case .DUMBBELL_SHRUGS:
+            return ExerciseData("Dumbbell Shrugs")
+                .setMuscleGroups([.TRAPS])
+                .setEquipment([.DUMBBELLS])
+        case .DUMBBELL_SIDE_BENDS:
+            return ExerciseData("Dumbbell Side Bends")
+                .setMuscleGroups([.GEN_ABS])
+                .setEquipment([.DUMBBELLS])
+        case .DUMBBELL_SIDE_RAISES:
+            return ExerciseData("Dumbbell Side Raises")
+                .setMuscleGroups([.GEN_SHOULDERS, .MIDDLE_DELTS])
+                .setEquipment([.DUMBBELLS, .BENCH])
+        case .DUMBBELL_SQUATS:
+            return ExerciseData("Dumbbell Squats")
+                .setMuscleGroups([.QUADS, .GLUTES])
+                .setEquipment([.DUMBBELLS])
+        case .DUMBBELL_SUMO_DEADLIFTS:
+            return ExerciseData("Dumbbell Sumo Deadlifts")
+                .setMuscleGroups([.GLUTES, .HAMSTRING])
+                .setEquipment([.DUMBBELLS])
+        case .DUMBBELL_UPRIGHT_ROWS:
+            return ExerciseData("Dumbbell Upright Rows")
+                .setMuscleGroups([.GEN_SHOULDERS, .MIDDLE_DELTS, .TRAPS, .GEN_BICEP])
+                .setEquipment([.DUMBBELLS])
+        case .ELEVATED_CRUNCHES:
+            return ExerciseData("Elevated Crunches")
+                .setMuscleGroups([.GEN_ABS])
+                .setEquipment([.ELBOW_SUPPORTED_APPARATUS])
+        case .EZ_BAR_PREACHER_CURLS:
+            return ExerciseData("EZ Bar Preacher Curls")
+                .setMuscleGroups([.GEN_BICEP])
+                .setEquipment([.EZ_BAR, .PREACHER_CURL_BENCH])
+        case .EZ_BAR_SKULL_CRUSHERS:
+            return ExerciseData("EZ Bar Skull Crushers")
+                .setMuscleGroups([.GEN_TRICEP])
+                .setEquipment([.BENCH, .PRE_WEIGHTED_EZ_BAR])
+        case .FLAT_LYING_DUMBBELL_FLYS:
+            return ExerciseData("Flat Lying Dumbbell Flys")
+                .setMuscleGroups([.GEN_CHEST])
+                .setEquipment([.DUMBBELLS, .BENCH])
+        case .GLUTE_BRIDGES:
+            return ExerciseData("Glute Bridges")
+                .setMuscleGroups([.GLUTES])
+                .setEquipment([.BODYWEIGHT])
+        case .HACK_SQUATS:
+            return ExerciseData("Hack Squats")
+                .setMuscleGroups([.QUADS, .GLUTES, .HAMSTRING])
+                .setEquipment([.HACK_SQUAT_MACHINE])
+        case .HAMMER_CURLS:
+            return ExerciseData("Hammer Curls")
+                .setMuscleGroups([.GEN_BICEP])
+                .setEquipment([.BENCH, .DUMBBELLS])
+        case .HANGING_CRUNCHES:
+            return ExerciseData("Hanging Crunches")
+                .setMuscleGroups([.GEN_ABS])
+                .setEquipment([.PULL_UP_BAR])
+        case .INCLINE_BARBELL_BENCH_PRESS:
+            return ExerciseData("Incline Barbell Bench Press")
+                .setMuscleGroups([.GEN_CHEST, .GEN_TRICEP, .FRONT_DELTS])
+                .setEquipment([.INCLINE_BENCH, .BARBELL])
+        case .INCLINE_DUMBBELL_BENCH_PRESS:
+            return ExerciseData("Incline Dumbbell Bench Press")
+                .setMuscleGroups([.GEN_CHEST, .GEN_TRICEP, .FRONT_DELTS])
+                .setEquipment([.BENCH, .DUMBBELLS])
+        case .INCLINE_DUMBBELL_CURLS:
+            return ExerciseData("Incline Dumbbell Curls")
+                .setMuscleGroups([.GEN_BICEP])
+                .setEquipment([.BENCH, .DUMBBELLS])
+        case .INCLINE_DUMBBELL_FLYS:
+            return ExerciseData("Incline Dumbbell Flys")
+                .setMuscleGroups([.GEN_CHEST])
+                .setEquipment([.DUMBBELLS, .BENCH])
+        case .KNEE_PUSH_UPS:
+            return ExerciseData("Knee Push-Ups")
+                .setMuscleGroups([.GEN_CHEST, .GEN_TRICEP, .FRONT_DELTS])
+                .setEquipment([.BODYWEIGHT])
+        case .LEG_EXTENSION_MACHINE:
+            return ExerciseData("Leg Extension Machine")
+                .setMuscleGroups([.QUADS])
+                .setEquipment([.LEG_EXTENSION_MACHINE])
+        case .LUNGES:
+            return ExerciseData("Lunges")
+                .setMuscleGroups([.QUADS, .GLUTES, .HAMSTRING])
+                .setEquipment([.BODYWEIGHT])
+        case .LYING_DUMBBELL_PULLOVERS:
+            return ExerciseData("Lying Dumbbell Pullovers")
+                .setMuscleGroups([.GEN_CHEST, .LATS, .GEN_ABS])
+                .setEquipment([.BENCH, .DUMBBELLS])
+        case .LYING_DUMBBELL_TRICEP_EXTENSIONS:
+            return ExerciseData("Lying Dumbbell Tricep Extensions")
+                .setMuscleGroups([.GEN_TRICEP])
+                .setEquipment([.BENCH, .DUMBBELLS])
+        case .LYING_HAMSTRING_CURL:
+            return ExerciseData("Lying Hamstring Curl")
+                .setMuscleGroups([.HAMSTRING])
+                .setEquipment([.LYING_HAMSTRING_CURL_MACHINE])
+        case .LYING_HIP_ABDUCTIONS:
+            return ExerciseData("Lying Hip Abductions")
+                .setMuscleGroups([.GLUTES])
+                .setEquipment([.BODYWEIGHT])
+        case .MACHINE_ABDUCTIONS:
+            return ExerciseData("Machine Abductions")
+                .setMuscleGroups([.GLUTES])
+                .setEquipment([.ABDUCTION_MACHINE])
+        case .MACHINE_BICEP_CURLS:
+            return ExerciseData("Machine Bicep Curls")
+                .setMuscleGroups([.GEN_BICEP])
+                .setEquipment([.BICEP_CURL_MACHINE])
+        case .MACHINE_CHEST_PRESS:
+            return ExerciseData("Machine Chest Press")
+                .setMuscleGroups([.GEN_CHEST, .GEN_TRICEP, .FRONT_DELTS])
+                .setEquipment([.CHEST_PRESS_MACHINE])
+        case .MACHINE_CRUNCHES:
+            return ExerciseData("Machine Crunches")
+                .setMuscleGroups([.GEN_ABS])
+                .setEquipment([.CRUNCH_MACHINE])
+        case .MACHINE_LATERAL_SHOULDER_RAISES:
+            return ExerciseData("Machine Lateral Shoulder Raises")
+                .setMuscleGroups([.GEN_SHOULDERS, .GEN_SHOULDERS])
+                .setEquipment([.LATERAL_SHOULDER_RAISE_MACHINE])
+        case .DUMBBELL_LATERAL_RAISE:
+            return ExerciseData("Dumbbell Lateral Raise")
+                .setMuscleGroups([.GEN_SHOULDERS])
+                .setEquipment([.DUMBBELLS])
+        case .MINI_CRUNCHES:
+            return ExerciseData("Mini Crunches")
+                .setMuscleGroups([.GEN_ABS])
+                .setEquipment([.BODYWEIGHT])
+        case .PEC_DECK_FLYS:
+            return ExerciseData("Pec Deck Flys")
+                .setMuscleGroups([.GEN_CHEST])
+                .setEquipment([.PEC_DECK_MACHINE])
+        case .PULL_UPS:
+            return ExerciseData("Pull-Ups")
+                .setMuscleGroups([.LATS, .GEN_BICEP])
+                .setEquipment([.PULL_UP_BAR])
+        case .PUSH_UPS:
+            return ExerciseData("Push-Ups")
+                .setMuscleGroups([.GEN_CHEST, .GEN_TRICEP, .FRONT_DELTS])
+                .setEquipment([.BODYWEIGHT])
+        case .PUSHBACK_MACHINE:
+            return ExerciseData("Pushback Machine")
+                .setMuscleGroups([.GLUTES])
+                .setEquipment([.GLUTE_PUSHBACK_MACHINE])
+        case .REAR_DELT_FLY_MACHINE:
+            return ExerciseData("Rear Delt Fly Machine")
+                .setMuscleGroups([.GEN_SHOULDERS, .REAR_DELTS])
+                .setEquipment([.PEC_DECK_MACHINE])
+        case .REVERSE_CHIN_UPS:
+            return ExerciseData("Reverse Chin-Ups")
+                .setMuscleGroups([.LATS, .GEN_BICEP])
+                .setEquipment([.PULL_UP_BAR])
+        case .SEATED_BARBELL_OVERHEAD_PRESS:
+            return ExerciseData("Seated Barbell Overhead Press")
+                .setMuscleGroups([.GEN_SHOULDERS, .GEN_SHOULDERS, .GEN_TRICEP, .TRAPS])
+                .setEquipment([.BENCH, .PRE_WEIGHTED_BARBELL])
+        case .SEATED_CABLE_ROWS:
+            return ExerciseData("Seated Cable Rows")
+                .setMuscleGroups([.LATS, .REAR_DELTS, .GEN_BICEP, .TRAPS])
+                .setEquipment([.CABLE_MACHINE, .CLOSE_GRIP_ATTACHMENT])
+        case .SEATED_CALF_RAISE_MACHINE:
+            return ExerciseData("Seated Calf Raise Machine")
+                .setMuscleGroups([.CALVES])
+                .setEquipment([.SEATED_CALF_RAISE_MACHINE])
+        case .SEATED_DUMBBELL_OVERHEAD_PRESS:
+            return ExerciseData("Seated Dumbbell Overhead Press")
+                .setMuscleGroups([.GEN_SHOULDERS, .MIDDLE_DELTS, .TRAPS, .GEN_TRICEP])
+                .setEquipment([.BENCH, .DUMBBELLS])
+        case .SEATED_HAMSTRING_CURL:
+            return ExerciseData("Seated Hamstring Curl")
+                .setMuscleGroups([.HAMSTRING])
+                .setEquipment([.SEATED_HAMSTRING_CURL_MACHINE])
+        case .SEATED_LEG_PRESS:
+            return ExerciseData("Seated Leg Press")
+                .setMuscleGroups([.QUADS, .GLUTES, .HAMSTRING])
+                .setEquipment([.LEG_PRESS_MACHINE])
+        case .SEATED_OVERHEAD_DUMBBELL_TRICEPS_EXTENSIONS:
+            return ExerciseData("Seated Overhead Dumbbell Triceps Extensions")
+                .setMuscleGroups([.GEN_TRICEP])
+                .setEquipment([.BENCH, .DUMBBELLS])
+        case .SINGLE_ARM_BENT_OVER_DUMBBELL_ROWS:
+            return ExerciseData("Single-Arm Bent-Over Dumbbell Rows")
+                .setMuscleGroups([.LATS, .REAR_DELTS, .GEN_BICEP, .TRAPS])
+                .setEquipment([.DUMBBELLS, .BENCH])
+        case .SINGLE_ARM_DUMBBELL_OVERHEAD_TRICEP_EXTENSIONS:
+            return ExerciseData("Single-Arm Dumbbell Overhead Tricep Extensions")
+                .setMuscleGroups([.GEN_TRICEP])
+                .setEquipment([.DUMBBELLS, .BENCH])
+        case .SIT_UPS:
+            return ExerciseData("Sit-Ups")
+                .setMuscleGroups([.GEN_ABS])
+                .setEquipment([.BODYWEIGHT])
+        case .STANDING_CALF_RAISE_MACHINE:
+            return ExerciseData("Standing Calf Raise Machine")
+                .setMuscleGroups([.CALVES])
+                .setEquipment([.STANDING_CALF_RAISE_MACHINE])
+        case .STANDING_SINGLE_LEG_HAMSTRING_CURL:
+            return ExerciseData("Standing Single-Leg Hamstring Curl")
+                .setMuscleGroups([.HAMSTRING])
+                .setEquipment([.SEATED_HAMSTRING_CURL_MACHINE])
+        case .STRAIGHT_ARM_LAT_PULLDOWN:
+            return ExerciseData("Straight Arm Lat Pulldown")
+                .setMuscleGroups([.LATS])
+                .setEquipment([.CABLE_MACHINE, .LONG_BAR_ATTACHMENT])
+        case .SUMO_DUMBBELL_SQUATS:
+            return ExerciseData("Sumo Dumbbell Squats")
+                .setMuscleGroups([.QUADS, .GLUTES, .HAMSTRING])
+                .setEquipment([.DUMBBELLS])
+        case .T_BAR_ROWS:
+            return ExerciseData("T-Bar Rows")
+                .setMuscleGroups([.LATS, .REAR_DELTS, .GEN_BICEP, .TRAPS])
+                .setEquipment([.BARBELL, .V_HANDLE, .T_BAR_ROW_STATION])
+        case .TRAP_BAR_DEADLIFT:
+            return ExerciseData("Trap Bar Deadlift")
+                .setMuscleGroups([.QUADS, .HAMSTRING])
+                .setEquipment([.TRAP_BAR])
+        case .TRICEP_DIPS:
+            return ExerciseData("Tricep Dips")
+                .setMuscleGroups([.GEN_TRICEP])
+                .setEquipment([.DIPS_HANDLES])
+        case .TRICEP_DIPS_OFF_BENCH:
+            return ExerciseData("Tricep Dips Off Bench")
+                .setMuscleGroups([.GEN_TRICEP])
+                .setEquipment([.BENCH])
+        case .UPRIGHT_ROWS:
+            return ExerciseData("Upright Rows")
+                .setMuscleGroups([.MIDDLE_DELTS, .REAR_DELTS, .TRAPS, .MID_BACK])
+                .setEquipment([.PRE_WEIGHTED_BARBELL])
+        case .WIDE_GRIP_LAT_PULLDOWN:
+            return ExerciseData("Wide Grip Lat Pulldown")
+                .setMuscleGroups([.LATS, .GEN_BICEP])
+                .setEquipment([.CABLE_MACHINE, .LONG_BAR_ATTACHMENT])
+        case .WIDE_GRIP_SEATED_CABLE_ROWS:
+            return ExerciseData("Wide Grip Seated Cable Rows")
+                .setMuscleGroups([.LATS, .REAR_DELTS, .GEN_BICEP, .TRAPS])
+                .setEquipment([.CABLE_MACHINE, .LONG_BAR_ATTACHMENT])
+        }    }}

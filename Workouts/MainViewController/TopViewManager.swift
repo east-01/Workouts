@@ -12,6 +12,8 @@ extension MainViewController {
     
     func loadTopView() {
         
+        topView.layer.cornerRadius = 12
+
         // Load user profile
         if let data = UserDefaults.standard.data(forKey: "UserName") {
             if let decoded = try? JSONDecoder().decode(String.self, from: data) {

@@ -9,14 +9,16 @@ import UIKit
 
 @IBDesignable
 class SetCell: UIView {
+
+    static let HEADER_HEIGHT: Int = 65 // The height of the header
+    static let HEADER_BUTTON_SIZE: Int = 40 // The size of the completion button
+
+    static let STACK_SPACING: Int = 5 // The spacing in the subcell stack
+
+    static let SUBCELL_SIZE: Int = 120 // The size of each individual subcell
+    static let SUBCELL_INTERIOR_PADDING: Int = 10 // The interior padding INSIDE the subcell, nothing to do with this class
     
-    static let SUBCELL_SIZE: Int = 120
-    static let SUBCELL_SPACING: Int = 5
-    static let SUBCELL_STACK_PADDING: Int = 5
-    static let SUBCELL_INTERIOR_PADDING: Int = 10
-    static let HEADER_HEIGHT: Int = 65
-    static let HEADER_BUTTON_SIZE: Int = 40
-    static let SPACE_HEIGHT: Int = 15
+    static let BOTTOM_SPACE_HEIGHT: Int = 5 // The space you want in between the bottom of the subcellStack and the bottom of the subcell
 
     var workoutViewController: WorkoutViewController
     
@@ -60,25 +62,24 @@ class SetCell: UIView {
         self.addSubview(subcellStack)
         subcellStack.translatesAutoresizingMaskIntoConstraints = false
         subcellStack.axis = .vertical
-        subcellStack.spacing = CGFloat(SetCell.SUBCELL_SPACING)
+        subcellStack.spacing = CGFloat(SetCell.STACK_SPACING)
         subcellStack.distribution = .equalSpacing
 
         NSLayoutConstraint.activate([
             subcellStack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: CGFloat(5)),
             subcellStack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: CGFloat(-5)),
             subcellStack.topAnchor.constraint(equalTo: cellHeader.bottomAnchor),
-            subcellStack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: CGFloat(-SetCell.SUBCELL_STACK_PADDING))
+            subcellStack.heightAnchor.constraint(
+                equalToConstant: CGFloat(workoutSet.exercises.count*SetCell.SUBCELL_SIZE + (workoutSet.exercises.count-1)*SetCell.STACK_SPACING)
+            )
         ])
         
         for i in 0...workoutSet.exercises.count - 1 {
             let cell: SetSubCell = SetSubCell(exercise: workoutSet.exercises[i], sets: workoutSet.sets[i], reps: workoutSet.reps[i])
-            
             NSLayoutConstraint.activate([
                 cell.heightAnchor.constraint(equalToConstant: CGFloat(SetCell.SUBCELL_SIZE))
             ])
-
             subcellStack.addArrangedSubview(cell)
-
         }
         
     }
@@ -161,8 +162,8 @@ class SetCell: UIView {
         let exCnt = workoutSet!.exercises.count
         return SetCell.HEADER_HEIGHT +
             SetCell.SUBCELL_SIZE * exCnt +
-            SetCell.SUBCELL_SPACING * (exCnt - 1) +
-            SetCell.SPACE_HEIGHT
+            SetCell.STACK_SPACING * (exCnt - 1) +
+            SetCell.BOTTOM_SPACE_HEIGHT
     }
     
 }

@@ -23,11 +23,13 @@ extension MainViewController {
         ])
         
         newWorkoutView!.isHidden = true
-
+        setToggleButtonLarge(val: true)
+        
     }
     
     @IBAction func newWorkoutClicked(_ sender: Any) {
         setToggleButtonLarge(val: false)
+        newWorkoutView!.updateButtons()
         newWorkoutView!.isHidden = false
         newWorkoutView!.showButtons(val: true)
     }
@@ -43,14 +45,17 @@ extension MainViewController {
     }
     
     @objc func tappedFromSchedule(_ sender: UIButton) {
+        let todaysSettings = getTodaysSettings()
+        if(todaysSettings == nil) { return }
         newWorkoutView!.showButtons(val: false)
-        currentWorkout = Workout(settings: getTodaysSettings()!)
+        currentWorkout = Workout(settings: todaysSettings!)
         performSegue(withIdentifier: "toWorkoutView", sender: self)
     }
     
     func setToggleButtonLarge(val: Bool) {
-        self.newWorkoutButtonWidth.constant = val ? 120 : 80
-        self.newWorkoutButtonHeight.constant = val ? 120 : 80
+        newWorkoutButtonWidth.constant = val ? 120 : 100
+        newWorkoutButtonHeight.constant = val ? 120 : 100
+        newWorkoutButtonBottomConstraint.constant = val ? 40 : 20
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
             self.view.layoutIfNeeded()
         })
@@ -76,6 +81,9 @@ class NewWorkoutView: UIView {
     var buttons: [UIButton] = []
     var stackBottomAnchor: NSLayoutConstraint = NSLayoutConstraint()
     
+    var fromSchedule: UIButton = UIButton()
+    var fromSettings: UIButton = UIButton()
+    
     init(mainViewController: MainViewController) {
 
         self.mainViewController = mainViewController
@@ -94,14 +102,13 @@ class NewWorkoutView: UIView {
         stack.distribution = .fillEqually
         self.addSubview(stack)
 
+        fromSchedule = createButton(text: "Create from schedule", selector: #selector(mainViewController.tappedFromSchedule))
+        fromSettings = createButton(text: "Create from settings", selector: #selector(mainViewController.tappedFromSettings))
+
         buttons = []
-        if(getTodaysSettings() != nil) {
-            let fromSchedule = createButton(text: "Create from schedule", selector: #selector(mainViewController.tappedFromSchedule))
-            buttons.append(fromSchedule)
-        }
-        let fromSettings = createButton(text: "Create from settings", selector: #selector(mainViewController.tappedFromSettings))
+        buttons.append(fromSchedule)
         buttons.append(fromSettings)
-        
+
         stackHeight = CGFloat((buttons.count * NewWorkoutView.BUTTON_HEIGHT) + (Int(buttons.count-1) * NewWorkoutView.BUTTON_SPACING))
         stackBottomAnchor = stack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: CGFloat(stackHeight)) // Start at this position because it's "offscreen"
         NSLayoutConstraint.activate([
@@ -115,14 +122,20 @@ class NewWorkoutView: UIView {
             stack.addArrangedSubview(button)
         }
         
+        updateButtons()
+        
     }
-    
+        
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func updateButtons() {
+        fromSchedule.backgroundColor = UIColor(named: getTodaysSettings() == nil ? "BackgroundAccentColor" : "AccentColor")
+    }
+
     func showButtons(val: Bool) {
-        
+                
         stackBottomAnchor.constant = CGFloat(val ? NewWorkoutView.STACK_BOTTOM_POSITION : 1000)
         UIView.animate(withDuration: 0.2, delay: 0, animations: {
             self.layoutIfNeeded()

@@ -35,7 +35,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5G5-Pc-CnB">
-                                <rect key="frame" x="15" y="152" width="360" height="275"/>
+                                <rect key="frame" x="15" y="152" width="360" height="250"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to pick muscle groups:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6uq-12-Roh">
                                         <rect key="frame" x="15" y="15" width="234" height="24"/>
@@ -44,7 +44,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s7S-Yv-W8e">
-                                        <rect key="frame" x="15" y="49" width="330" height="211"/>
+                                        <rect key="frame" x="15" y="49" width="330" height="186"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="2RZ-0C-5Ph">
                                                 <rect key="frame" x="0.0" y="0.0" width="330" height="180"/>
@@ -71,13 +71,13 @@
                                     <constraint firstAttribute="trailing" secondItem="s7S-Yv-W8e" secondAttribute="trailing" constant="15" id="NcO-Pg-LNT"/>
                                     <constraint firstItem="s7S-Yv-W8e" firstAttribute="leading" secondItem="5G5-Pc-CnB" secondAttribute="leading" constant="15" id="hv5-Cg-Q5T"/>
                                     <constraint firstItem="s7S-Yv-W8e" firstAttribute="top" secondItem="6uq-12-Roh" secondAttribute="bottom" constant="10" id="uJ5-Yr-x29"/>
-                                    <constraint firstAttribute="height" constant="275" id="uXu-EF-Qpg"/>
+                                    <constraint firstAttribute="height" constant="250" id="uXu-EF-Qpg"/>
                                     <constraint firstItem="6uq-12-Roh" firstAttribute="top" secondItem="5G5-Pc-CnB" secondAttribute="top" constant="15" id="vnK-Ze-CyR"/>
                                     <constraint firstAttribute="bottom" secondItem="s7S-Yv-W8e" secondAttribute="bottom" constant="15" id="z80-o4-mrL"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q3j-OI-vOd">
-                                <rect key="frame" x="15" y="442" width="360" height="145"/>
+                                <rect key="frame" x="15" y="417" width="360" height="145"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercise Count:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVb-iB-48Z">
                                         <rect key="frame" x="15" y="15" width="136.33333333333334" height="24"/>
@@ -143,7 +143,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsi-vB-Lk9">
-                                <rect key="frame" x="25" y="720" width="340" height="60"/>
+                                <rect key="frame" x="25" y="735" width="340" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="OOT-Vn-QAl"/>
                                 </constraints>
@@ -159,6 +159,30 @@
                                     <action selector="submitted:" destination="TjB-YR-kbQ" eventType="touchUpInside" id="IBa-6K-KRy"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wGy-kB-Bbw">
+                                <rect key="frame" x="15" y="577" width="360" height="80"/>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XVi-7F-sBK">
+                                        <rect key="frame" x="72" y="5" width="283" height="70"/>
+                                    </pickerView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Gym:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zBs-LQ-UMr">
+                                        <rect key="frame" x="20" y="28" width="47" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" name="ForegroundColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="BackgroundAccentColor"/>
+                                <constraints>
+                                    <constraint firstItem="XVi-7F-sBK" firstAttribute="top" secondItem="wGy-kB-Bbw" secondAttribute="top" constant="5" id="7Aq-wv-zVi"/>
+                                    <constraint firstItem="zBs-LQ-UMr" firstAttribute="centerY" secondItem="wGy-kB-Bbw" secondAttribute="centerY" id="Dkc-EA-Yp1"/>
+                                    <constraint firstAttribute="height" constant="80" id="Rdk-Oq-YRd"/>
+                                    <constraint firstItem="XVi-7F-sBK" firstAttribute="leading" secondItem="zBs-LQ-UMr" secondAttribute="trailing" constant="5" id="gbQ-Uy-FwF"/>
+                                    <constraint firstAttribute="bottom" secondItem="XVi-7F-sBK" secondAttribute="bottom" constant="5" id="lbt-Pt-GlP"/>
+                                    <constraint firstItem="zBs-LQ-UMr" firstAttribute="leading" secondItem="wGy-kB-Bbw" secondAttribute="leading" constant="20" id="v6Q-Xy-Y9C"/>
+                                    <constraint firstAttribute="trailing" secondItem="XVi-7F-sBK" secondAttribute="trailing" constant="5" id="vfP-9S-byO"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cjX-RP-XcC"/>
                         <color key="backgroundColor" name="BackgroundColor"/>
@@ -169,18 +193,23 @@
                             <constraint firstItem="q3j-OI-vOd" firstAttribute="leading" secondItem="cjX-RP-XcC" secondAttribute="leading" constant="15" id="J1h-kR-lhn"/>
                             <constraint firstItem="q3j-OI-vOd" firstAttribute="top" secondItem="5G5-Pc-CnB" secondAttribute="bottom" constant="15" id="KBZ-D5-64n"/>
                             <constraint firstItem="cjX-RP-XcC" firstAttribute="trailing" secondItem="ZDg-cY-CQc" secondAttribute="trailing" constant="15" id="UYc-SD-pw0"/>
+                            <constraint firstItem="wGy-kB-Bbw" firstAttribute="top" secondItem="q3j-OI-vOd" secondAttribute="bottom" constant="15" id="WRV-0R-xLI"/>
                             <constraint firstItem="dsi-vB-Lk9" firstAttribute="leading" secondItem="cjX-RP-XcC" secondAttribute="leading" constant="25" id="eHs-Ni-XeC"/>
                             <constraint firstItem="cjX-RP-XcC" firstAttribute="trailing" secondItem="5G5-Pc-CnB" secondAttribute="trailing" constant="15" id="fEc-YB-eSg"/>
-                            <constraint firstItem="cjX-RP-XcC" firstAttribute="bottom" secondItem="dsi-vB-Lk9" secondAttribute="bottom" constant="30" id="gLm-fm-6nW"/>
+                            <constraint firstItem="cjX-RP-XcC" firstAttribute="trailing" secondItem="wGy-kB-Bbw" secondAttribute="trailing" constant="15" id="frP-fj-odx"/>
+                            <constraint firstItem="cjX-RP-XcC" firstAttribute="bottom" secondItem="dsi-vB-Lk9" secondAttribute="bottom" constant="15" id="gLm-fm-6nW"/>
                             <constraint firstItem="5G5-Pc-CnB" firstAttribute="top" secondItem="ZDg-cY-CQc" secondAttribute="bottom" constant="15" id="n7n-9k-rmB"/>
                             <constraint firstItem="cjX-RP-XcC" firstAttribute="trailing" secondItem="q3j-OI-vOd" secondAttribute="trailing" constant="15" id="qve-Gg-rnL"/>
                             <constraint firstItem="5G5-Pc-CnB" firstAttribute="leading" secondItem="cjX-RP-XcC" secondAttribute="leading" constant="15" id="w9B-ue-0EX"/>
+                            <constraint firstItem="wGy-kB-Bbw" firstAttribute="leading" secondItem="cjX-RP-XcC" secondAttribute="leading" constant="15" id="wVD-5Z-oaj"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="exerciseCountText" destination="LRV-TL-vhb" id="rwO-Us-XSG"/>
                         <outlet property="exerciseStepper" destination="d3z-wm-07k" id="lzA-IZ-WrW"/>
                         <outlet property="groupToggle" destination="VJF-CJ-zl3" id="hbA-uu-aKj"/>
+                        <outlet property="gymPicker" destination="XVi-7F-sBK" id="lwa-9u-g7S"/>
+                        <outlet property="gymView" destination="wGy-kB-Bbw" id="Y2K-Zd-kZQ"/>
                         <outlet property="muscleGroupScrollView" destination="s7S-Yv-W8e" id="AXq-k3-C9T"/>
                         <outlet property="muscleGroupStack" destination="2RZ-0C-5Ph" id="CuC-QT-KuP"/>
                         <outlet property="muscleGroupStackHeight" destination="YsX-bU-1gR" id="6WJ-Cc-fQX"/>
@@ -256,7 +285,7 @@
                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bws-O1-Rqy">
                                 <rect key="frame" x="0.0" y="724" width="390" height="120"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wAH-Vq-JP4">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wAH-Vq-JP4">
                                         <rect key="frame" x="135" y="-40" width="120" height="120"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="ZvX-27-eZb"/>
@@ -264,12 +293,13 @@
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain">
-                                            <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
+                                            <imageReference key="image" image="plus" catalog="system"/>
                                             <backgroundConfiguration key="background" cornerRadius="75" strokeWidth="15">
                                                 <color key="backgroundColor" name="AccentColor"/>
                                                 <color key="strokeColor" name="BackgroundAccentColor"/>
                                             </backgroundConfiguration>
-                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="30"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="25" scale="large"/>
+                                            <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
                                             <color key="baseForegroundColor" name="ForegroundColor"/>
                                         </buttonConfiguration>
                                         <connections>
@@ -420,6 +450,7 @@
                         <outlet property="bottomView" destination="bws-O1-Rqy" id="3hP-3S-2lb"/>
                         <outlet property="greetingText" destination="Jxn-lo-53E" id="3eT-aa-m62"/>
                         <outlet property="newWorkoutButton" destination="wAH-Vq-JP4" id="iu4-5k-77B"/>
+                        <outlet property="newWorkoutButtonBottomConstraint" destination="zRx-e4-svX" id="WFU-Vk-G3p"/>
                         <outlet property="newWorkoutButtonHeight" destination="vKn-F4-Fwk" id="Bpy-vh-4Jt"/>
                         <outlet property="newWorkoutButtonWidth" destination="ZvX-27-eZb" id="oht-Ht-PAl"/>
                         <outlet property="scheduleStack" destination="6Mn-uE-Ovt" id="mmw-wx-dGb"/>
@@ -458,7 +489,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="3" translatesAutoresizingMaskIntoConstraints="NO" id="TMa-Jg-C6c">
                                 <rect key="frame" x="10" y="191.66666666666669" width="370" height="543.33333333333326"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="500" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="AyP-d4-ysC">
+                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="500" axis="vertical" distribution="equalCentering" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="AyP-d4-ysC">
                                         <rect key="frame" x="0.0" y="0.0" width="370" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="8f1-Mf-8vI"/>
@@ -547,7 +578,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="NX9-9c-5w5"/>
+        <segue reference="Hev-re-bZs"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.backward.fill" catalog="system" width="128" height="104"/>

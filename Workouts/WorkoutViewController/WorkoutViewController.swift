@@ -34,6 +34,7 @@ class WorkoutViewController: UIViewController {
         titleLabel.text = workout.name
         typeLabel.text = "Default";
                 
+        stackHeight.constant = 0 // Reset the stack height to 0
         // Create and add each SetCell to the stack, dynamically expand the stack height
         for i in 0...workout.sets.count-1 {
             let currentSet = workout.sets[i]
@@ -41,10 +42,14 @@ class WorkoutViewController: UIViewController {
             NSLayoutConstraint.activate([
                 newCell.heightAnchor.constraint(equalToConstant: CGFloat(newCell.getDesiredHeight()))
             ])
+            setCells.append(newCell)
             stackHeight.constant += CGFloat(newCell.getDesiredHeight())
+            if(i != 0) {
+                stackHeight.constant += stack.spacing
+            }
             stack.addArrangedSubview(newCell)
         }
-        
+                
         scrollView.showsVerticalScrollIndicator = false
         scrollView.layer.cornerRadius = 12
         

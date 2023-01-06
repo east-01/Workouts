@@ -56,6 +56,11 @@ class Workout: Codable {
                 
         print("Generating a workout with groups: \(muscleGroups)")
         
+        var prefersSupersets = settings.prefersSupersets
+        if(settings.muscleGroups.count == 1) {
+            prefersSupersets = false
+        }
+        
         let exercisesPerMuscleGroup = settings.exerciseCount / muscleGroups.count
                 
         // Sort and grap exercise options for each muscle group
@@ -95,7 +100,7 @@ class Workout: Codable {
         let setCount = 3
         let repCount = 10
                 
-        if(!settings.prefersSupersets) {
+        if(!prefersSupersets) {
             // Generate single-exercise sets
             for exercise in exercises {
                 self.sets.append(WorkoutSet(exercise: exercise, sets: setCount, reps: repCount))
