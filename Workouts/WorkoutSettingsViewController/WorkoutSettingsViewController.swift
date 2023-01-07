@@ -26,11 +26,14 @@ class WorkoutSettingsViewController: UIViewController {
     @IBOutlet weak var gymView: UIView!
     @IBOutlet weak var gymPicker: UIPickerView!
     
+    @IBOutlet weak var submitButton: UIButton!
+    
     // If this number exists, this means that we're editing the schedule menu NOT creating a workout
     var scheduleIndex: Int?
     var currentSettings: WorkoutSettings?
+    var isValid: Bool = false
     
-//    private var exerciseCount: Int = 12
+    private var gyms: [Gym] = []
     private var muscleSelections: [Bool] = []
     
     override func viewDidLoad() {
@@ -42,6 +45,8 @@ class WorkoutSettingsViewController: UIViewController {
         
         muscleGroupScrollView.layer.cornerRadius = 8
                 
+        submitButton.layer.cornerRadius = 12
+        
         createMuscleGroupButtons()
         
         if(currentSettings == nil) {
@@ -56,24 +61,23 @@ class WorkoutSettingsViewController: UIViewController {
             )
         }
         
+        gyms = getGyms()
         loadGymView()
         
-        sync()
+        // Show whatever is in the current settings to sync up if we've come from a schedule or from scratch
+        showSettings()
+        // Save those settings to check validity
+        saveSettings()
         
     }
     
     @IBAction func submitted(_ sender: Any) {
         
-        // Figure out which muscle groups are selected from the button list
-        let muscleGroupsKey = Muscle.getGeneralGroups()
-        var muscleGroups: [Muscle] = []
-        for i in 0...muscleSelections.count-1 {
-            if(muscleSelections[i]) {
-                muscleGroups.append(muscleGroupsKey[i])
-            }
-        }
+        saveSettings()
         
-        currentSettings!.printSettings()
+        if(!isValid) {
+            return
+        }
         
         // If schedule index doesn't exist this means we're creating a workout
         if(scheduleIndex == nil) {
@@ -113,10 +117,10 @@ class WorkoutSettingsViewController: UIViewController {
         
     }
     
-    // This method makes sure that the all the visual parts of the ViewController
+    // This function makes sure that the all the visual parts of the ViewController
     //   reflect what's in the current settings, not the other way around
     // We are responsible for changing the values in currentSettings elsewhere
-    func sync() {
+    func showSettings() {
         
         guard let settings = currentSettings else {
             return
@@ -146,37 +150,71 @@ class WorkoutSettingsViewController: UIViewController {
         
     }
     
-    @objc func muscleGroupClicked(_ sender: UIButton) {
+    // This function makes sure that all of the settings currently represnted
+    //   on screen are saved in currentSettings
+    func saveSettings() {
+                        
+        var isValid = true
+        
         let generalGroups = Muscle.getGeneralGroups()
-        muscleSelections[sender.tag] = !muscleSelections[sender.tag]
-        if(muscleSelections[sender.tag]) {
-            currentSettings!.muscleGroups.append(generalGroups[sender.tag])
-        } else if(!muscleSelections[sender.tag] && currentSettings!.muscleGroups.firstIndex(of: generalGroups[sender.tag]) != nil) {
-            currentSettings!.muscleGroups.remove(at: currentSettings!.muscleGroups.firstIndex(of: generalGroups[sender.tag])!)
+        var muscleGroups: [Muscle] = []
+        for i in 0...muscleSelections.count-1 {
+            if(muscleSelections[i]) {
+                muscleGroups.append(generalGroups[i])
+            }
         }
+        if(muscleGroups.count == 0) {
+            isValid = false
+        }
+        
+        let gymSelection = gymPicker.selectedRow(inComponent: 0)
+        if(gymSelection < 0 || gymSelection > gyms.count-1) {
+            isValid = false
+        }
+        
+        let exerciseCount = Int(exerciseStepper.value)
+        exerciseCountText.text = "\(currentSettings!.exerciseCount)"
+
+        let prefersSupersets = supersetsToggle.isOn
+        let groupByMuscle = groupToggle.isOn
+
+        self.isValid = isValid
+        
+        // Update button to reflect changes
+        UIView.animate(withDuration: 0.2, animations: {
+            self.submitButton.backgroundColor = UIColor(named: isValid ? "AccentColor" : "BackgroundAccentColor")
+        })
+        
+        if(!isValid) {
+            return
+        }
+
+        currentSettings = WorkoutSettings(
+            name: "Generated on \(getDateString())",
+            muscleGroups: muscleGroups,
+            gym: gyms[gymSelection],
+            exerciseCount: exerciseCount,
+            prefersSupersets: prefersSupersets,
+            groupExercisesByMuscle: groupByMuscle
+        )
+                
+    }
+    
+    @objc func muscleGroupClicked(_ sender: UIButton) {
+        muscleSelections[sender.tag] = !muscleSelections[sender.tag]
+        saveSettings()
         sender.backgroundColor = muscleSelections[sender.tag] ? UIColor(named: "AccentColor") : UIColor(named: "BackgroundColor")
     }
 
-    @IBAction func exerciseCountChanged(_ sender: Any) {
-        if(currentSettings == nil) {
-            return
+    @IBAction func exerciseCountChanged(_ sender: UIStepper) {
+        if(exerciseStepper.value <= 0) {
+            sender.value = 1
         }
-        currentSettings!.exerciseCount = Int(exerciseStepper.value)
-        exerciseCountText.text = "\(currentSettings!.exerciseCount)"
+        saveSettings()
     }
      
-    @IBAction func togglePrefersSupersets(_ sender: UISwitch) {
-        if(currentSettings == nil) {
-            return
-        }
-        currentSettings!.prefersSupersets = sender.isOn
-    }
-    
-    @IBAction func toggleGroupByMuscle(_ sender: UISwitch) {
-        if(currentSettings == nil) {
-            return
-        }
-        currentSettings!.groupExercisesByMuscle = sender.isOn
+    @IBAction func toggleClicked(_ sender: UISwitch) {
+        saveSettings()
     }
     
     private func getDateString() -> String {

@@ -106,13 +106,13 @@
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a3o-nE-OBw">
                                         <rect key="frame" x="215.66666666666666" y="55.666666666666686" width="50.999999999999972" height="31"/>
                                         <connections>
-                                            <action selector="togglePrefersSupersets:" destination="TjB-YR-kbQ" eventType="valueChanged" id="QnB-qm-aah"/>
+                                            <action selector="toggleClicked:" destination="TjB-YR-kbQ" eventType="valueChanged" id="5Xy-g7-Ha7"/>
                                         </connections>
                                     </switch>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VJF-CJ-zl3">
                                         <rect key="frame" x="215.66666666666666" y="99.666666666666629" width="50.999999999999972" height="31"/>
                                         <connections>
-                                            <action selector="toggleGroupByMuscle:" destination="TjB-YR-kbQ" eventType="valueChanged" id="ndg-kO-6sC"/>
+                                            <action selector="toggleClicked:" destination="TjB-YR-kbQ" eventType="valueChanged" id="KOY-nS-iby"/>
                                         </connections>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group By Muscle:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p3M-oy-ppg">
@@ -144,15 +144,13 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsi-vB-Lk9">
                                 <rect key="frame" x="25" y="735" width="340" height="60"/>
+                                <color key="backgroundColor" name="AccentColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="OOT-Vn-QAl"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Done" cornerStyle="large">
-                                    <backgroundConfiguration key="background">
-                                        <color key="backgroundColor" name="AccentColor"/>
-                                        <color key="strokeColor" name="AccentColor"/>
-                                    </backgroundConfiguration>
+                                    <backgroundConfiguration key="background"/>
                                     <color key="baseForegroundColor" name="ForegroundColor"/>
                                 </buttonConfiguration>
                                 <connections>
@@ -215,6 +213,7 @@
                         <outlet property="muscleGroupStackHeight" destination="YsX-bU-1gR" id="6WJ-Cc-fQX"/>
                         <outlet property="muscleView" destination="5G5-Pc-CnB" id="dH2-fN-MYb"/>
                         <outlet property="settingsView" destination="q3j-OI-vOd" id="EE8-dN-h7D"/>
+                        <outlet property="submitButton" destination="dsi-vB-Lk9" id="Fkz-4x-uUS"/>
                         <outlet property="supersetsToggle" destination="a3o-nE-OBw" id="DQz-JU-Lh8"/>
                         <outlet property="titleView" destination="ZDg-cY-CQc" id="jCV-Kg-svf"/>
                         <segue destination="H7S-Np-35s" kind="presentation" identifier="workoutSettingsToWorkoutView" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="Hev-re-bZs"/>

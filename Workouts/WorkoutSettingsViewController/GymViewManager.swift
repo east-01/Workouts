@@ -36,6 +36,6 @@ extension WorkoutSettingsViewController: UIPickerViewDelegate {
         return NSAttributedString(string: getGyms()[row].name, attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "ForegroundColor")!])
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        currentSettings!.gym = getGyms()[row]
+        saveSettings()
     }
 }
