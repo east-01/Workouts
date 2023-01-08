@@ -200,6 +200,10 @@ class WorkoutSettingsViewController: UIViewController {
                 
     }
     
+    @IBAction func clickedCancel(_ sender: Any) {
+        dismiss(animated: true)
+    }
+    
     @objc func muscleGroupClicked(_ sender: UIButton) {
         muscleSelections[sender.tag] = !muscleSelections[sender.tag]
         saveSettings()

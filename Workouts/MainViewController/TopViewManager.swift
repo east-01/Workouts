@@ -60,22 +60,5 @@ extension MainViewController {
         }
         greetingText.text = "\(greeting)\(userName)"
     }
-
-    @IBAction func profileClicked(_ sender: Any) {
-        let alert = UIAlertController(title: "Edit profile", message: "Enter name", preferredStyle: .alert)
-        alert.addTextField { (textField) in }
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
-            let textField = alert!.textFields![0] // Force unwrapping because we know it exists.
-            // Save user data
-            if let inputtedText = textField.text {
-                if let encoded = try? JSONEncoder().encode(inputtedText) {
-                    UserDefaults.standard.set(encoded, forKey: "UserName")
-                    self.userName = inputtedText
-                    self.updateGreetingText()
-                }
-            }
-        }))
-        self.present(alert, animated: true, completion: nil)
-    }
     
 }

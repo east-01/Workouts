@@ -14,6 +14,14 @@ struct Gym: Codable, Equatable {
 
 private var gyms: [Gym]?
 
+func getDefaultGyms() -> [Gym] {
+    return [
+        Gym(name: "Bodyweight only", equipment: [.NONE, .BODYWEIGHT]),
+        Gym(name: "Home gym", equipment: [.NONE, .BODYWEIGHT, .DUMBBELLS, .BARBELL, .BENCH, .INCLINE_BENCH, .DECLINE_BENCH, .LONG_BAND, .PULL_UP_BAR]),
+        Gym(name: "Commercial gym", equipment: Equipment.allCases)
+    ]
+}
+
 func getGyms() -> [Gym] {
     if(gyms == nil) { loadGyms() }
     return gyms!
