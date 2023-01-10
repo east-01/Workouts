@@ -16,14 +16,14 @@ var currentProfile: UserProfile?
 
 func getProfile() -> UserProfile {
     loadProfile()
-    if(currentProfile != nil) {
-        return currentProfile!
+    if(currentProfile == nil) {
+        // Return a default profile
+        return UserProfile(
+            username: "User",
+            gyms: getDefaultGyms()
+        )
     }
-    // Return a default profile
-    return UserProfile(
-        username: "User",
-        gyms: getDefaultGyms()
-    )
+    return currentProfile!
 }
 
 func loadProfile() {    
@@ -40,3 +40,9 @@ func saveProfile() {
         UserDefaults.standard.set(encoded, forKey: "UserProfile")
     }
 }
+
+func setProfile(profile: UserProfile) {
+    currentProfile = profile
+    saveProfile()
+}
+

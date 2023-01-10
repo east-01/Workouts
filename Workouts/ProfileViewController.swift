@@ -34,15 +34,24 @@ class ProfileViewController: UIViewController {
         nameView.addGestureRecognizer(createSimpleTapRecognizer())
         nameLabel.addGestureRecognizer(createSimpleTapRecognizer())
         nameChangeIcon.addGestureRecognizer(createSimpleTapRecognizer())
-
-        showSettings()
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        showSettings()
+    }
+
     // Show the current profile settings onto the ui
     func showSettings() {
         let userProfile = getProfile()
         nameLabel.text = userProfile.username
+        
+        // Clear existing text views and re-add them
+        if(!gymStack.subviews.isEmpty) {
+            for subview in gymStack.subviews{
+                subview.removeFromSuperview()
+            }
+        }
         
         // Add 1 for the plus button on the bottom
         gymStackHeight.constant = CGFloat(
@@ -105,7 +114,9 @@ class ProfileViewController: UIViewController {
     
     @objc func tappedName() {
         let alert = UIAlertController(title: "Edit profile", message: "Enter name", preferredStyle: .alert)
-        alert.addTextField { (textField) in }
+        alert.addTextField { (textField) in
+            textField.text = self.nameLabel.text
+        }
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
             let textField = alert!.textFields![0] // Force unwrapping because we know it exists.
             // Save user data

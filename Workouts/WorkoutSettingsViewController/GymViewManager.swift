@@ -27,13 +27,13 @@ extension WorkoutSettingsViewController: UIPickerViewDataSource {
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return getGyms().count
+        return getProfile().gyms.count
     }
 }
 
 extension WorkoutSettingsViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        return NSAttributedString(string: getGyms()[row].name, attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "ForegroundColor")!])
+        return NSAttributedString(string: getProfile().gyms[row].name, attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "ForegroundColor")!])
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         saveSettings()

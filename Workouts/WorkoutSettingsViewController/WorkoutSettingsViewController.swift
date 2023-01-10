@@ -31,7 +31,7 @@ class WorkoutSettingsViewController: UIViewController {
     // If this number exists, this means that we're editing the schedule menu NOT creating a workout
     var scheduleIndex: Int?
     var currentSettings: WorkoutSettings?
-    var isValid: Bool = false
+    private var isValid: Bool = false
     
     private var gyms: [Gym] = []
     private var muscleSelections: [Bool] = []
@@ -54,14 +54,13 @@ class WorkoutSettingsViewController: UIViewController {
             currentSettings = WorkoutSettings(
                 name: "Generated on \(getDateString())",
                 muscleGroups: [],
-                gym: getGyms()[0],
+                gym: getProfile().gyms[0],
                 exerciseCount: 12,
                 prefersSupersets: true,
                 groupExercisesByMuscle: false
             )
         }
         
-        gyms = getGyms()
         loadGymView()
         
         // Show whatever is in the current settings to sync up if we've come from a schedule or from scratch
@@ -146,7 +145,7 @@ class WorkoutSettingsViewController: UIViewController {
         supersetsToggle.isOn = settings.prefersSupersets
         groupToggle.isOn = settings.groupExercisesByMuscle
                 
-        gymPicker.selectRow(getGyms().firstIndex(of: settings.gym)!, inComponent: 0, animated: true)
+        gymPicker.selectRow(getProfile().gyms.firstIndex(of: settings.gym)!, inComponent: 0, animated: true)
         
     }
     
