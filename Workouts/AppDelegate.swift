@@ -44,6 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func saveData() {
         saveCurrentWorkout()
         saveScheduleSettings()
+        saveProfile()
     }
     
 }

@@ -13,9 +13,7 @@ import UIKit
 // - ScheduleManager: Manages the schedule view and schedule buttons
 // - NewWorkoutViewManager: Manages the new workout view that pops up when you tap on the plus button
 class MainViewController: UIViewController {
-    
-    var userName: String = "User"
-    
+        
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var topStack: UIStackView!
     @IBOutlet weak var greetingText: UILabel!

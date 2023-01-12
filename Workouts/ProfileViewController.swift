@@ -23,6 +23,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var gymStack: UIStackView!
     @IBOutlet weak var gymStackHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var saveButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,6 +32,7 @@ class ProfileViewController: UIViewController {
         nameView.layer.cornerRadius = 12
         gymScrollView.layer.cornerRadius = 12
         gymView.layer.cornerRadius = 12
+        saveButton.layer.cornerRadius = 12
                 
         nameView.addGestureRecognizer(createSimpleTapRecognizer())
         nameLabel.addGestureRecognizer(createSimpleTapRecognizer())
@@ -52,7 +55,7 @@ class ProfileViewController: UIViewController {
                 subview.removeFromSuperview()
             }
         }
-        
+                
         // Add 1 for the plus button on the bottom
         gymStackHeight.constant = CGFloat(
             (userProfile.gyms.count+1)*ProfileViewController.GYM_STACK_BUTTON_HEIGHT + (userProfile.gyms.count)*ProfileViewController.GYM_STACK_SPACING
@@ -76,11 +79,19 @@ class ProfileViewController: UIViewController {
         addButton.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 30), forImageIn: .normal)
         addButton.tintColor = UIColor(named: "ForegroundColor")
         gymStack.addArrangedSubview(addButton)
-        
+                
     }
     
     // Save the settings shown on the ui to current profile settings
     func saveSettings() {
+        
+        let name = nameLabel.text!
+        
+        // We dont have to worry about saving gym data because it's already synced from GymSettingsViewController
+        
+        var currentProfile = getProfile()
+        currentProfile.username = name
+        setProfile(profile: currentProfile)
         
     }
     
@@ -102,6 +113,11 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func clickedCancel(_ sender: Any) {
+        dismiss(animated: true)
+    }
+    
+    @IBAction func tappedSave(_ sender: Any) {
+        saveSettings()
         dismiss(animated: true)
     }
     

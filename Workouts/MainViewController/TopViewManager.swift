@@ -13,13 +13,6 @@ extension MainViewController {
     func loadTopView() {
         
         topView.layer.cornerRadius = 12
-
-        // Load user profile
-        if let data = UserDefaults.standard.data(forKey: "UserName") {
-            if let decoded = try? JSONDecoder().decode(String.self, from: data) {
-                userName = decoded
-            }
-        }
         
         // Manage top view
         updateGreetingText()
@@ -58,7 +51,7 @@ extension MainViewController {
         } else if(hour >= 2 && hour < 10) {
             greeting = "Good morning, "
         }
-        greetingText.text = "\(greeting)\(userName)"
+        greetingText.text = "\(greeting)\(getProfile().username)"
     }
     
 }
