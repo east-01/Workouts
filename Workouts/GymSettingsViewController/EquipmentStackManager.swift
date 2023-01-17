@@ -34,8 +34,10 @@ extension GymSettingsViewController {
                 equipmentSelections.append(showActive)
             }
         } else {
-            for blacklistedExercise in gym.exerciseBlacklist {
-                equipmentStack.addArrangedSubview(createStackLabel(text: blacklistedExercise.data().displayName))
+            for i in 0...gym.exerciseBlacklist.count-1 {
+                let stackLabel = createStackLabel(text: gym.exerciseBlacklist[i].data().displayName)
+                stackLabel.tag = i
+                equipmentStack.addArrangedSubview(stackLabel)
             }
         }
 
@@ -95,7 +97,10 @@ extension GymSettingsViewController {
     }
     
     @objc func removeBlacklistedExerciseTapped(_ sender: UILongPressGestureRecognizer) {
-        sender.view!.removeFromSuperview()
+        if(sender.state == .began) {
+            gym.exerciseBlacklist.remove(at: sender.view!.tag)
+            loadStack()
+        }
     }
     
     // Equipment button tag = 0, Blacklist button tag = 1
@@ -122,15 +127,18 @@ extension GymSettingsViewController {
     
     private func createStackLabel(text: String) -> UILabel {
         let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = UIColor(named: "AccentColor")
         label.textColor = UIColor(named: "ForegroundColor")
-        label.text = text
+        label.text = "  " + text
         label.layer.cornerRadius = 8
+        label.clipsToBounds = true
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(removeBlacklistedExerciseTapped))
         longPressRecognizer.numberOfTapsRequired = 0
         longPressRecognizer.numberOfTouchesRequired = 1
         longPressRecognizer.minimumPressDuration = 1
         label.addGestureRecognizer(longPressRecognizer)
+        label.isUserInteractionEnabled = true
         return label
     }
         

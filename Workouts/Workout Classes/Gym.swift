@@ -7,13 +7,23 @@
 
 import Foundation
 
-struct Gym: Codable, Equatable {
+class Gym: Codable, Equatable {
     var name: String
     var equipment: [Equipment]
     var exerciseBlacklist: [Exercise]
+    init(name: String, equipment: [Equipment], exerciseBlacklist: [Exercise]) {
+        self.name = name
+        self.equipment = equipment
+        self.exerciseBlacklist = exerciseBlacklist
+    }
+    func addToBlacklist(exercise: Exercise) {
+        if(exerciseBlacklist.firstIndex(of: exercise) != nil) { return }
+        exerciseBlacklist.append(exercise)
+    }
+    static func == (lhs: Gym, rhs: Gym) -> Bool {
+        return lhs.name == rhs.name && lhs.equipment == rhs.equipment && lhs.exerciseBlacklist == rhs.exerciseBlacklist
+    }
 }
-
-private var gyms: [Gym]?
 
 func getDefaultGyms() -> [Gym] {
     return [

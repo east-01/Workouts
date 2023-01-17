@@ -25,20 +25,36 @@ class WorkoutViewController: UIViewController {
         super.viewDidLoad()
         
         stack.translatesAutoresizingMaskIntoConstraints = false
-        
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.layer.cornerRadius = 12
+
         guard let workout = currentWorkout else {
             print("Failed to get current workout")
             return;
         }
         
         titleLabel.text = workout.name
-        typeLabel.text = "Default";
-                
+        typeLabel.text = "Default";        
+    }
+        
+    override func viewWillAppear(_ animated: Bool) {
+        loadStack()
+        updateDoneButton()
+    }
+    
+    func loadStack() {
+        
         stackHeight.constant = 0 // Reset the stack height to 0
+        setCells = []
+        
+        for stackSubview in stack.arrangedSubviews {
+            stackSubview.removeFromSuperview()
+        }
+        
         // Create and add each SetCell to the stack, dynamically expand the stack height
-        for i in 0...workout.sets.count-1 {
-            let currentSet = workout.sets[i]
-            let newCell: SetCell = SetCell(workoutViewController: self, workoutSet: currentSet, position: stack.subviews.count + 1, totalCount: workout.sets.count)
+        for i in 0...currentWorkout!.sets.count-1 {
+            let currentSet = currentWorkout!.sets[i]
+            let newCell: SetCell = SetCell(workoutViewController: self, workoutSet: currentSet, position: stack.subviews.count + 1, totalCount: currentWorkout!.sets.count)
             NSLayoutConstraint.activate([
                 newCell.heightAnchor.constraint(equalToConstant: CGFloat(newCell.getDesiredHeight()))
             ])
@@ -49,10 +65,7 @@ class WorkoutViewController: UIViewController {
             }
             stack.addArrangedSubview(newCell)
         }
-                
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.layer.cornerRadius = 12
-        
+                        
         // Add long press listeners
         for uiview in stack.subviews {
             let setCell: SetCell = uiview as! SetCell
@@ -63,12 +76,9 @@ class WorkoutViewController: UIViewController {
                 setSubCell.addGestureRecognizer(tapGesture)
             }
         }
-                
-        // Initlialize the progress button
-        updateDoneButton()
-        
+
     }
-        
+    
     func updateDoneButton() {
         guard let workout = currentWorkout else { return }
         // If the progressLayer doesn't exist make a new one and add it

@@ -405,11 +405,11 @@
             <objects>
                 <viewController storyboardIdentifier="ExerciseDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yxc-PS-WnJ" customClass="ExerciseDetailsViewController" customModule="Workouts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NPE-t2-EeA">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ifu-bM-L8f">
-                                <rect key="frame" x="15" y="52" width="40" height="40"/>
+                                <rect key="frame" x="15" y="62" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="4hT-ya-lLf"/>
                                     <constraint firstAttribute="width" constant="40" id="A9Y-Ue-48J"/>
@@ -429,10 +429,10 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9M4-ow-pvY">
-                                <rect key="frame" x="15" y="107" width="360" height="75"/>
+                                <rect key="frame" x="15" y="117" width="360" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#EXERCISE NAME#" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="lcv-If-zMe">
-                                        <rect key="frame" x="15" y="20.666666666666668" width="330" height="33.666666666666657"/>
+                                        <rect key="frame" x="15" y="20.666666666666654" width="330" height="33.666666666666657"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                         <color key="textColor" name="ForegroundColor"/>
                                         <nil key="highlightedColor"/>
@@ -447,7 +447,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dya-fc-rBc">
-                                <rect key="frame" x="335" y="52" width="40" height="40"/>
+                                <rect key="frame" x="335" y="62" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="Ce8-rF-BXW"/>
                                     <constraint firstAttribute="height" constant="40" id="jh2-Ke-EG0"/>
@@ -457,7 +457,7 @@
                                 <buttonConfiguration key="configuration" style="plain" cornerStyle="large">
                                     <backgroundConfiguration key="background" imageContentMode="center">
                                         <color key="backgroundColor" name="BackgroundAccentColor"/>
-                                        <imageReference key="image" image="gearshape.fill" catalog="system" symbolScale="large"/>
+                                        <imageReference key="image" image="rectangle.2.swap" catalog="system" symbolScale="large"/>
                                     </backgroundConfiguration>
                                 </buttonConfiguration>
                                 <connections>
@@ -472,11 +472,11 @@
                         <constraints>
                             <constraint firstItem="eRB-Uw-OjW" firstAttribute="trailing" secondItem="9M4-ow-pvY" secondAttribute="trailing" constant="15" id="0YO-2a-anB"/>
                             <constraint firstItem="9M4-ow-pvY" firstAttribute="leading" secondItem="eRB-Uw-OjW" secondAttribute="leading" constant="15" id="12B-vg-Kxc"/>
-                            <constraint firstItem="Dya-fc-rBc" firstAttribute="top" secondItem="eRB-Uw-OjW" secondAttribute="top" constant="5" id="Q9L-9F-XuJ"/>
+                            <constraint firstItem="Dya-fc-rBc" firstAttribute="top" secondItem="eRB-Uw-OjW" secondAttribute="top" constant="15" id="Q9L-9F-XuJ"/>
                             <constraint firstItem="9M4-ow-pvY" firstAttribute="top" secondItem="Ifu-bM-L8f" secondAttribute="bottom" constant="15" id="Z8I-1K-reu"/>
                             <constraint firstItem="eRB-Uw-OjW" firstAttribute="trailing" secondItem="Dya-fc-rBc" secondAttribute="trailing" constant="15" id="lcq-UX-dQU"/>
                             <constraint firstItem="Ifu-bM-L8f" firstAttribute="leading" secondItem="eRB-Uw-OjW" secondAttribute="leading" constant="15" id="oP5-HA-KZr"/>
-                            <constraint firstItem="Ifu-bM-L8f" firstAttribute="top" secondItem="eRB-Uw-OjW" secondAttribute="top" constant="5" id="z6c-i6-t0u"/>
+                            <constraint firstItem="Ifu-bM-L8f" firstAttribute="top" secondItem="eRB-Uw-OjW" secondAttribute="top" constant="15" id="z6c-i6-t0u"/>
                         </constraints>
                     </view>
                     <connections>
@@ -783,7 +783,7 @@
                         <outlet property="stackHeight" destination="8f1-Mf-8vI" id="Ck6-vz-YDf"/>
                         <outlet property="titleLabel" destination="neb-v9-ws7" id="tg2-1Q-Fb9"/>
                         <outlet property="typeLabel" destination="qNI-nu-ngL" id="aQE-o3-ytf"/>
-                        <segue destination="Yxc-PS-WnJ" kind="presentation" identifier="toExerciseDetails" modalPresentationStyle="formSheet" id="dQw-hN-ESb"/>
+                        <segue destination="Yxc-PS-WnJ" kind="presentation" identifier="toExerciseDetails" modalPresentationStyle="currentContext" modalTransitionStyle="coverVertical" id="dQw-hN-ESb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Z0-3W-1qX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -982,9 +982,9 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.backward.fill" catalog="system" width="128" height="104"/>
-        <image name="gearshape.fill" catalog="system" width="128" height="123"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="rectangle.2.swap" catalog="system" width="128" height="102"/>
         <image name="square.and.pencil" catalog="system" width="128" height="113"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="AccentColor">

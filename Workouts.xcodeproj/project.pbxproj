@@ -17,10 +17,13 @@
 		507764682967F0DE00F95A61 /* GymViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507764672967F0DE00F95A61 /* GymViewManager.swift */; };
 		50888BE129515A140019C3F2 /* WorkoutSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50888BE029515A140019C3F2 /* WorkoutSettingsViewController.swift */; };
 		50A25356295E696D0056CC04 /* ExerciseDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A25355295E696D0056CC04 /* ExerciseDetailsViewController.swift */; };
+		50A2E8F6297650BC0087C92A /* CheckBoxWithText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A2E8F5297650BC0087C92A /* CheckBoxWithText.swift */; };
 		50A44A3D2957961500CDB23B /* Muscle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A44A3C2957961500CDB23B /* Muscle.swift */; };
 		50ADF738296F75850072EE9D /* EquipmentStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ADF737296F75850072EE9D /* EquipmentStackManager.swift */; };
 		50AE5AAD2966A2310048F76C /* TopViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AE5AAC2966A2310048F76C /* TopViewManager.swift */; };
 		50AE5AAF2966A97B0048F76C /* NewWorkoutViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AE5AAE2966A97B0048F76C /* NewWorkoutViewManager.swift */; };
+		50B008712974A7980044212B /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B008702974A7980044212B /* OverlayView.swift */; };
+		50B008762974DAE30044212B /* SwapExerciseViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B008752974DAE30044212B /* SwapExerciseViewManager.swift */; };
 		50CBBBD1295E79BC005E5EB6 /* WorkoutTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CBBBD0295E79BC005E5EB6 /* WorkoutTile.swift */; };
 		50CFE07A296A3608000579E9 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CFE079296A3608000579E9 /* UserProfile.swift */; };
 		50D3B8F929665F8F003B4BA6 /* CurrentWorkoutViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D3B8F829665F8F003B4BA6 /* CurrentWorkoutViewManager.swift */; };
@@ -51,10 +54,13 @@
 		507764672967F0DE00F95A61 /* GymViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymViewManager.swift; sourceTree = "<group>"; };
 		50888BE029515A140019C3F2 /* WorkoutSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSettingsViewController.swift; sourceTree = "<group>"; };
 		50A25355295E696D0056CC04 /* ExerciseDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailsViewController.swift; sourceTree = "<group>"; };
+		50A2E8F5297650BC0087C92A /* CheckBoxWithText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxWithText.swift; sourceTree = "<group>"; };
 		50A44A3C2957961500CDB23B /* Muscle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Muscle.swift; sourceTree = "<group>"; };
 		50ADF737296F75850072EE9D /* EquipmentStackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentStackManager.swift; sourceTree = "<group>"; };
 		50AE5AAC2966A2310048F76C /* TopViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewManager.swift; sourceTree = "<group>"; };
 		50AE5AAE2966A97B0048F76C /* NewWorkoutViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWorkoutViewManager.swift; sourceTree = "<group>"; };
+		50B008702974A7980044212B /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
+		50B008752974DAE30044212B /* SwapExerciseViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwapExerciseViewManager.swift; sourceTree = "<group>"; };
 		50CBBBD0295E79BC005E5EB6 /* WorkoutTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTile.swift; sourceTree = "<group>"; };
 		50CFE079296A3608000579E9 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		50D3B8F829665F8F003B4BA6 /* CurrentWorkoutViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWorkoutViewManager.swift; sourceTree = "<group>"; };
@@ -136,6 +142,16 @@
 			path = "Workout Classes";
 			sourceTree = "<group>";
 		};
+		50A2E8F4297650880087C92A /* Custom Elements */ = {
+			isa = PBXGroup;
+			children = (
+				503729EB293690D200CABCC9 /* ProgressCircle.swift */,
+				50B008702974A7980044212B /* OverlayView.swift */,
+				50A2E8F5297650BC0087C92A /* CheckBoxWithText.swift */,
+			);
+			path = "Custom Elements";
+			sourceTree = "<group>";
+		};
 		50ADF736296F755A0072EE9D /* GymSettingsViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +159,15 @@
 				50ADF737296F75850072EE9D /* EquipmentStackManager.swift */,
 			);
 			path = GymSettingsViewController;
+			sourceTree = "<group>";
+		};
+		50B008722974DA6C0044212B /* ExerciseDetailsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				50A25355295E696D0056CC04 /* ExerciseDetailsViewController.swift */,
+				50B008752974DAE30044212B /* SwapExerciseViewManager.swift */,
+			);
+			path = ExerciseDetailsViewController;
 			sourceTree = "<group>";
 		};
 		50F7062C292EB13E00846AA4 = {
@@ -174,10 +199,10 @@
 				5082923B2963E1C100A29C6E /* WorkoutViewController */,
 				507764692967F17C00F95A61 /* WorkoutSettingsViewController */,
 				50ADF736296F755A0072EE9D /* GymSettingsViewController */,
-				5082923D2963E1ED00A29C6E /* Workout Classes */,
-				50A25355295E696D0056CC04 /* ExerciseDetailsViewController.swift */,
+				50B008722974DA6C0044212B /* ExerciseDetailsViewController */,
 				505A9CBC296A2A0700233502 /* ProfileViewController.swift */,
-				503729EB293690D200CABCC9 /* ProgressCircle.swift */,
+				5082923D2963E1ED00A29C6E /* Workout Classes */,
+				50A2E8F4297650880087C92A /* Custom Elements */,
 			);
 			path = Workouts;
 			sourceTree = "<group>";
@@ -258,9 +283,11 @@
 				50CBBBD1295E79BC005E5EB6 /* WorkoutTile.swift in Sources */,
 				50D912BC295D5586008D1A82 /* SetSubCell.swift in Sources */,
 				50DBA019293311FA00C46580 /* Exercise.swift in Sources */,
+				50B008712974A7980044212B /* OverlayView.swift in Sources */,
 				50776464296794CE00F95A61 /* ExerciseData.swift in Sources */,
 				50776462296794A500F95A61 /* Equipment.swift in Sources */,
 				50F7064D292EB3F900846AA4 /* WorkoutViewController.swift in Sources */,
+				50B008762974DAE30044212B /* SwapExerciseViewManager.swift in Sources */,
 				50888BE129515A140019C3F2 /* WorkoutSettingsViewController.swift in Sources */,
 				50F7063D292EB13E00846AA4 /* MainViewController.swift in Sources */,
 				507764682967F0DE00F95A61 /* GymViewManager.swift in Sources */,
@@ -281,6 +308,7 @@
 				505A9CBD296A2A0700233502 /* ProfileViewController.swift in Sources */,
 				50D3B8F929665F8F003B4BA6 /* CurrentWorkoutViewManager.swift in Sources */,
 				5016B07429640A2D00C82BC3 /* ScheduleManager.swift in Sources */,
+				50A2E8F6297650BC0087C92A /* CheckBoxWithText.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

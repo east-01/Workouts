@@ -163,11 +163,13 @@ class WorkoutSettingsViewController: UIViewController {
             }
         }
         if(muscleGroups.count == 0) {
+            print("failed mgroups")
             isValid = false
         }
         
         let gymSelection = gymPicker.selectedRow(inComponent: 0)
-        if(gymSelection < 0 || gymSelection > gyms.count-1) {
+        if(gymSelection < 0 || gymSelection > getProfile().gyms.count-1) {
+            print("failed gymselkect")
             isValid = false
         }
         
@@ -191,7 +193,7 @@ class WorkoutSettingsViewController: UIViewController {
         currentSettings = WorkoutSettings(
             name: "Generated on \(getDateString())",
             muscleGroups: muscleGroups,
-            gym: gyms[gymSelection],
+            gym: getProfile().gyms[gymSelection],
             exerciseCount: exerciseCount,
             prefersSupersets: prefersSupersets,
             groupExercisesByMuscle: groupByMuscle

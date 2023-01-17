@@ -30,30 +30,14 @@ class Workout: Codable {
     var name: String
     var muscleGroups: [Muscle]
     
-    init() {
-        // Load the workouts here
-        self.name = "Test"
-        self.sets = []
-        self.muscleGroups = []
-//        for i in 0...0 {
-//            sets.append(WorkoutSet(name: "deads \(i)", reps: 2))
-//        }
+    private var settings: WorkoutSettings
         
-        // Test workout
-//        sets.append(WorkoutSet(exercises: [.DEADLIFT, .DB_HAMMER_CURLS], sets: [5, 5], reps: [8, 12]))
-//        sets.append(WorkoutSet(exercise: .SHRUGS, sets: 4, reps: 12))
-//        sets.append(WorkoutSet(exercise: .DB_DECLINE_BENCH, sets: 5, reps: 10))
-//        sets.append(WorkoutSet(exercise: .LATERAL_RAISES, sets: 3, reps: 8))
-//        sets.append(WorkoutSet(exercise: .BAR_CURLS, sets: 4, reps: 10))
-//        sets.append(WorkoutSet(exercises: [.BB_BENCH, .BAR_CURLS, .LATERAL_RAISES], sets: [3, 3, 3], reps: [5, 5, 8]))
-
-    }
-    
     init(settings: WorkoutSettings) {
         self.name = settings.name
         self.sets = []
         self.muscleGroups = settings.muscleGroups
-                
+        self.settings = settings
+        
         print("Generating a workout with groups: \(muscleGroups)")
         
         var prefersSupersets = settings.prefersSupersets
@@ -147,6 +131,29 @@ class Workout: Codable {
                 
     }
     
+    // Swap out the current exercise for an equal one
+    func swap(_ exercise: Exercise) {
+        let newExercise: Exercise = .ASSISTED_PULL_UPS
+        
+        // Find the exercise
+        for setNum in 0...sets.count-1 {
+            let set: WorkoutSet = sets[setNum]
+            for exNum in 0...set.exercises.count-1 {
+                if(set.exercises[exNum] == exercise) {
+                    
+                    // Found exercise, swap it out for the new one
+                    set.exercises[exNum] = newExercise
+                    // TODO: Replace set/rep counts accordingly
+                    set.sets[exNum] = 4
+                    set.reps[exNum] = 12
+                    
+                }
+            }
+        }
+        
+        print("Swapping out \(exercise) for \(newExercise)")
+    }
+    
     func completedSetsAmount() -> Int {
         var cnt: Int = 0
         for workoutSet in sets {
@@ -173,6 +180,10 @@ class Workout: Codable {
             string += muscleGroups[i].getDisplayName()
         }
         return string
+    }
+    
+    func getSettings() -> WorkoutSettings {
+        return settings
     }
     
 }
