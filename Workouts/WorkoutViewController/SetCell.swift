@@ -70,12 +70,12 @@ class SetCell: UIView {
             subcellStack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: CGFloat(-5)),
             subcellStack.topAnchor.constraint(equalTo: cellHeader.bottomAnchor),
             subcellStack.heightAnchor.constraint(
-                equalToConstant: CGFloat(workoutSet.exercises.count*SetCell.SUBCELL_SIZE + (workoutSet.exercises.count-1)*SetCell.STACK_SPACING)
+                equalToConstant: CGFloat(workoutSet.exerciseUnits.count*SetCell.SUBCELL_SIZE + (workoutSet.exerciseUnits.count-1)*SetCell.STACK_SPACING)
             )
         ])
         
-        for i in 0...workoutSet.exercises.count - 1 {
-            let cell: SetSubCell = SetSubCell(exercise: workoutSet.exercises[i], sets: workoutSet.sets[i], reps: workoutSet.reps[i])
+        for i in 0...workoutSet.exerciseUnits.count - 1 {
+            let cell: SetSubCell = SetSubCell(exerciseUnit: workoutSet.exerciseUnits[i])
             NSLayoutConstraint.activate([
                 cell.heightAnchor.constraint(equalToConstant: CGFloat(SetCell.SUBCELL_SIZE))
             ])
@@ -159,7 +159,7 @@ class SetCell: UIView {
     }
     
     public func getDesiredHeight() -> Int {
-        let exCnt = workoutSet!.exercises.count
+        let exCnt = workoutSet!.exerciseUnits.count
         return SetCell.HEADER_HEIGHT +
             SetCell.SUBCELL_SIZE * exCnt +
             SetCell.STACK_SPACING * (exCnt - 1) +

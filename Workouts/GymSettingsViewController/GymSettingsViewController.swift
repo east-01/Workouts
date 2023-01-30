@@ -12,6 +12,8 @@ class GymSettingsViewController: UIViewController {
     static var EXERCISE_STACK_BUTTON_HEIGHT = 55
     static var EXERCISE_STACK_SPACING = 10
     
+    @IBOutlet weak var titleView: UIView!
+    
     @IBOutlet weak var gymNameView: UIView!
     @IBOutlet weak var gymNameLabel: UILabel!
     @IBOutlet weak var gymNameIcon: UIImageView!
@@ -47,6 +49,7 @@ class GymSettingsViewController: UIViewController {
             gym = getProfile().gyms[gymIndex!]
         }
         
+        titleView.layer.cornerRadius = 12
         gymNameView.layer.cornerRadius = 12
         equipmentView.layer.cornerRadius = 12
         equipmentScrollView.layer.cornerRadius = 8

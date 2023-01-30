@@ -123,7 +123,7 @@ class WorkoutViewController: UIViewController {
         if(segue.identifier == "toExerciseDetails") {
             let exerciseDetailsVC = segue.destination as! ExerciseDetailsViewController
             let exerciseSubcell = sender as! SetSubCell
-            exerciseDetailsVC.exercise = exerciseSubcell.exercise
+            exerciseDetailsVC.exercise = exerciseSubcell.exerciseUnit.exercise
         }
     }
     

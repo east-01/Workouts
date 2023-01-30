@@ -9,17 +9,13 @@ import UIKit
 
 class SetSubCell: UIView {
     
-    var exercise: Exercise
-    var sets: Int
-    var reps: Int
+    var exerciseUnit: ExerciseUnit
     
     var nameText: UILabel
     var setrepText: UILabel
     
-    init(exercise: Exercise, sets: Int, reps: Int) {
-        self.exercise = exercise
-        self.sets = sets
-        self.reps = reps
+    init(exerciseUnit: ExerciseUnit) {
+        self.exerciseUnit = exerciseUnit
         self.nameText = UILabel()
         self.setrepText = UILabel()
         super.init(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
@@ -37,11 +33,11 @@ class SetSubCell: UIView {
         self.layer.cornerRadius = 8        
         self.isUserInteractionEnabled = true
         
-        nameText = createTextLabel(text: exercise.data().displayName, isBold: false, fontSize: 35)
+        nameText = createTextLabel(text: exerciseUnit.exercise.data().displayName, isBold: false, fontSize: 35)
         nameText.adjustsFontSizeToFitWidth = true
         self.addSubview(nameText)
 
-        setrepText = createTextLabel(text: "\(sets) x \(reps)", isBold: true, fontSize: 35)
+        setrepText = createTextLabel(text: exerciseUnit.createRepString(), isBold: true, fontSize: 35)
         setrepText.textAlignment = .right
         self.addSubview(setrepText)
                 
