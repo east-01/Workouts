@@ -15,12 +15,15 @@ struct WorkoutSettings: Codable {
     var prefersSupersets: Bool
     var groupExercisesByMuscle: Bool
     func printSettings() {
-        print("Exercise settings:")
-        print("  Name: \(name)")
-        print("  Groups: \(muscleGroups)")
-        print("  Gym: \(gym.name)")
-        print("  Exercise count: \(exerciseCount)")
-        print("  Prefers supersets: \(prefersSupersets)")
-        print("  Group by muscle: \(groupExercisesByMuscle)")
+        printSettings("")
+    }
+    func printSettings(_ prefix: String) {
+        print("\(prefix)Workout settings:")
+        print("\(prefix)  Name: \(name)")
+        print("\(prefix)  Groups: \(muscleGroups)")
+        print("\(prefix)  Gym: \(gym.name)")
+        print("\(prefix)  Exercise count: \(exerciseCount)")
+        print("\(prefix)  Prefers supersets: \(prefersSupersets)")
+        print("\(prefix)  Group by muscle: \(groupExercisesByMuscle)")
     }
 }

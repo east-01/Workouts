@@ -12,6 +12,10 @@ class ExerciseDetailsViewController: UIViewController {
     @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     
+    @IBOutlet weak var infoView: UIView!
+    @IBOutlet weak var muscleGroupLabel: UILabel!
+    @IBOutlet weak var equipmentLabel: UILabel!
+    
     var settingsOverlay: OverlayView?
     var checkboxStack: UIStackView?
     static let checkboxOptions: [String] = [
@@ -28,7 +32,13 @@ class ExerciseDetailsViewController: UIViewController {
         if(exercise == nil) { return }
         
         titleView.layer.cornerRadius = 12
-        titleLabel.text = exercise!.data().displayName
+        infoView.layer.cornerRadius = 12
+        
+        let data = exercise!.data()
+        
+        titleLabel.text = data.displayName
+        muscleGroupLabel.text = "\(data.genMuscleGroupString())"
+        equipmentLabel.text = "\(data.genEquipomentString())"
         
         loadSwapExerciseView()
         
@@ -37,5 +47,5 @@ class ExerciseDetailsViewController: UIViewController {
     @IBAction func clickedCancel(_ sender: Any) {
         dismiss(animated: true)
     }
-    
+        
 }

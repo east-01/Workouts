@@ -9,8 +9,8 @@ import UIKit
 
 class WorkoutViewController: UIViewController {
     
+    @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var stack: UIStackView!
     @IBOutlet weak var stackHeight: NSLayoutConstraint!
     
@@ -23,10 +23,12 @@ class WorkoutViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        titleView.layer.cornerRadius = 12
+        scrollView.layer.cornerRadius = 12
+
         stack.translatesAutoresizingMaskIntoConstraints = false
         scrollView.showsVerticalScrollIndicator = false
-        scrollView.layer.cornerRadius = 12
 
         guard let workout = currentWorkout else {
             print("Failed to get current workout")
@@ -34,7 +36,7 @@ class WorkoutViewController: UIViewController {
         }
         
         titleLabel.text = workout.name
-        typeLabel.text = "Default";        
+
     }
         
     override func viewWillAppear(_ animated: Bool) {
@@ -43,6 +45,10 @@ class WorkoutViewController: UIViewController {
     }
     
     func loadStack() {
+        
+        if(currentWorkout!.sets.count == 0) {
+            return
+        }
         
         stackHeight.constant = 0 // Reset the stack height to 0
         setCells = []

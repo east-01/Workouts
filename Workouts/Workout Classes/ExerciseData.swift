@@ -24,4 +24,24 @@ class ExerciseData {
         self.equipment = e
         return self
     }
+    func genMuscleGroupString() -> String {
+        var string: String = ""
+        for i in 0..<muscleGroups.count {
+            if(i > 0) {
+                string += ", "
+            }
+            string += muscleGroups[i].getDisplayName()
+        }
+        return string
+    }
+    func genEquipomentString() ->  String {
+        var string: String = ""
+        for i in 0..<equipment.count {
+            if(i > 0) {
+                string += ", "
+            }
+            string += String(describing: equipment[i])
+        }
+        return string
+    }
 }

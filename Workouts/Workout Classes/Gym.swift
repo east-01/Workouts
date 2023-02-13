@@ -21,7 +21,15 @@ class Gym: Codable, Equatable {
         exerciseBlacklist.append(exercise)
     }
     func canPerformExercise(exercise: Exercise) -> Bool {
-        return self.equipment.contains(exercise.data().equipment) && !self.exerciseBlacklist.contains(exercise)
+        if(self.exerciseBlacklist.contains(exercise)) {
+            return false
+        }
+        for eq in exercise.data().equipment {
+            if(!self.equipment.contains(eq)) {
+                return false
+            }
+        }
+        return true
     }
     static func == (lhs: Gym, rhs: Gym) -> Bool {
         return lhs.name == rhs.name && lhs.equipment == rhs.equipment && lhs.exerciseBlacklist == rhs.exerciseBlacklist
