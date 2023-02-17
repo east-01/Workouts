@@ -32,11 +32,15 @@ class Workout: Codable {
     
     var settings: WorkoutSettings
         
+    // WorkoutGenerator variables
+    var exercisesByGroup: [Muscle : WeightedList<Exercise>]
+    
     init(settings: WorkoutSettings) {
         self.name = settings.name
         self.sets = []
         self.muscleGroups = settings.muscleGroups
         self.settings = settings
+        self.exercisesByGroup = [:]
         generateWorkout()
     }
     

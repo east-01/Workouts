@@ -16,6 +16,8 @@ class ExerciseDetailsViewController: UIViewController {
     @IBOutlet weak var muscleGroupLabel: UILabel!
     @IBOutlet weak var equipmentLabel: UILabel!
     
+    @IBOutlet weak var swapButton: UIButton!
+    
     var settingsOverlay: OverlayView?
     var checkboxStack: UIStackView?
     static let checkboxOptions: [String] = [
@@ -33,6 +35,10 @@ class ExerciseDetailsViewController: UIViewController {
         
         titleView.layer.cornerRadius = 12
         infoView.layer.cornerRadius = 12
+        
+        if(!currentWorkout!.canSwap(exercise!)) {
+            swapButton.isHidden = true
+        }
         
         let data = exercise!.data()
         

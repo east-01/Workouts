@@ -8,9 +8,9 @@
 import Foundation
 
 // Thanks ChatGPT
-class WeightedList<T> {
+class WeightedList<T : Codable> : Codable {
     
-    private struct WeightedItem {
+    private struct WeightedItem : Codable {
         let item: T
         let weight: Int
     }

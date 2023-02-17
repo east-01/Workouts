@@ -513,6 +513,7 @@
                         <outlet property="equipmentLabel" destination="mSz-3r-KhH" id="4AD-RT-HV8"/>
                         <outlet property="infoView" destination="1K2-eL-oMj" id="m7p-Pq-RTg"/>
                         <outlet property="muscleGroupLabel" destination="SkB-L6-oLh" id="0jd-O4-DTJ"/>
+                        <outlet property="swapButton" destination="Dya-fc-rBc" id="PFB-Fa-wo9"/>
                         <outlet property="titleLabel" destination="lcv-If-zMe" id="rMo-sR-KgV"/>
                         <outlet property="titleView" destination="9M4-ow-pvY" id="FPU-qo-QFa"/>
                     </connections>
