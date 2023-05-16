@@ -7,11 +7,13 @@
 
 import UIKit
 
-// Main view controller is broken into several components, organized by their height on the main view:
-// - TopViewManager: manages the greeting text and handles the profile button for now
-// - CurrentWorkoutViewManager: Manages the current workout view, handles whether it appears or not
-// - ScheduleManager: Manages the schedule view and schedule buttons
-// - NewWorkoutViewManager: Manages the new workout view that pops up when you tap on the plus button
+/**
+ Main view controller is broken into several components, organized by their height on the main view:
+ - TopViewManager: manages the greeting text and handles the profile button for now
+ - CurrentWorkoutViewManager: Manages the current workout view, handles whether it appears or not
+ - ScheduleManager: Manages the schedule view and schedule buttons
+ - NewWorkoutViewManager: Manages the new workout view that pops up when you tap on the plus button
+ */
 class MainViewController: UIViewController {
         
     @IBOutlet weak var topView: UIView!

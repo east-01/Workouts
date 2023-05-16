@@ -7,6 +7,10 @@
 
 import UIKit
 
+/**
+ Workout Tile
+ A UIView that shows important data about a workout
+ */
 class WorkoutTile: UIView {
 
     var workout: Workout

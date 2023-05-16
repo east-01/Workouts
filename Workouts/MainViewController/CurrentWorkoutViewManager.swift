@@ -8,6 +8,10 @@
 import Foundation
 import UIKit
 
+/**
+ Current workout view manager
+ Responsible for showing the current workout (if there is one), will add a new UIView and add proper constraints to show the workout
+ */
 extension MainViewController {
     
     func loadCurrentWorkoutView() {

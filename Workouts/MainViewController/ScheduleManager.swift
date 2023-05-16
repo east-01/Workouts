@@ -8,6 +8,11 @@
 import Foundation
 import UIKit
 
+/**
+ Schedule view manager
+ Will show populate the schedule blocks with the corresponding schedule data
+ Adds functionality to the schedule buttons to allow them to be turned into a real workout
+ */
 extension MainViewController {
     
     func updateScheduleView() {

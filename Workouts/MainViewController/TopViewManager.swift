@@ -8,6 +8,10 @@
 import Foundation
 import UIKit
 
+/**
+ Top view manager
+ Responsible for the top view on the main screen. Currently only shows a greeting and the users name
+ */
 extension MainViewController {
     
     func loadTopView() {

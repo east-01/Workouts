@@ -8,7 +8,17 @@
 import Foundation
 import UIKit
 
+/**
+ New workout view manager
+ A hidden workout menu that appears when the plus button is clicked at the bottom
+ Adds the subview and populates it with the new workout buttons
+ */
 extension MainViewController {
+    
+    static let BUTTON_SIZE_EXPANDED: CGFloat = 120
+    static let BUTTON_SIZE_COLLAPSED: CGFloat = 100
+    static let BUTTON_Y_EXPANDED: CGFloat = 20
+    static let BUTTON_Y_COLLAPSED: CGFloat = 20
     
     func loadNewWorkoutView() {
         
@@ -53,9 +63,9 @@ extension MainViewController {
     }
     
     func setToggleButtonLarge(val: Bool) {
-        newWorkoutButtonWidth.constant = val ? 120 : 100
-        newWorkoutButtonHeight.constant = val ? 120 : 100
-        newWorkoutButtonBottomConstraint.constant = val ? 40 : 20
+        newWorkoutButtonWidth.constant = val ? MainViewController.BUTTON_SIZE_EXPANDED : MainViewController.BUTTON_SIZE_COLLAPSED
+        newWorkoutButtonHeight.constant = val ? MainViewController.BUTTON_SIZE_EXPANDED : MainViewController.BUTTON_SIZE_COLLAPSED
+        newWorkoutButtonBottomConstraint.constant = val ? MainViewController.BUTTON_Y_EXPANDED : MainViewController.BUTTON_Y_COLLAPSED
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
             self.view.layoutIfNeeded()
         })
@@ -63,7 +73,7 @@ extension MainViewController {
     
     func toggleNewWorkoutButtonSize() {
         let currW = self.newWorkoutButtonWidth.constant
-        setToggleButtonLarge(val: currW != 120)
+        setToggleButtonLarge(val: currW != MainViewController.BUTTON_SIZE_EXPANDED)
     }
         
 }

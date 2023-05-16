@@ -172,7 +172,7 @@ class WorkoutSettingsViewController: UIViewController {
         }
         
         let exerciseCount = Int(exerciseStepper.value)
-        exerciseCountText.text = "\(currentSettings!.exerciseCount)"
+        exerciseCountText.text = "\(exerciseCount)"
 
         let prefersSupersets = supersetsToggle.isOn
         let groupByMuscle = groupToggle.isOn
@@ -183,10 +183,6 @@ class WorkoutSettingsViewController: UIViewController {
         UIView.animate(withDuration: 0.2, animations: {
             self.submitButton.backgroundColor = UIColor(named: isValid ? "AccentColor" : "BackgroundAccentColor")
         })
-        
-        if(!isValid) {
-            return
-        }
 
         currentSettings = WorkoutSettings(
             name: "Generated on \(getDateString())",

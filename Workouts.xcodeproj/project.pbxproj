@@ -27,6 +27,7 @@
 		50B008762974DAE30044212B /* SwapExerciseViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B008752974DAE30044212B /* SwapExerciseViewManager.swift */; };
 		50CA1CE22998A4C100962F1F /* WeightedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CA1CE12998A4C100962F1F /* WeightedList.swift */; };
 		50CBBBD1295E79BC005E5EB6 /* WorkoutTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CBBBD0295E79BC005E5EB6 /* WorkoutTile.swift */; };
+		50CFCE0D2A141AD4008CD202 /* WorkoutTopViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CFCE0C2A141AD4008CD202 /* WorkoutTopViewManager.swift */; };
 		50CFE07A296A3608000579E9 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CFE079296A3608000579E9 /* UserProfile.swift */; };
 		50D3B8F929665F8F003B4BA6 /* CurrentWorkoutViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D3B8F829665F8F003B4BA6 /* CurrentWorkoutViewManager.swift */; };
 		50D912BC295D5586008D1A82 /* SetSubCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D912BB295D5586008D1A82 /* SetSubCell.swift */; };
@@ -66,6 +67,7 @@
 		50B008752974DAE30044212B /* SwapExerciseViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwapExerciseViewManager.swift; sourceTree = "<group>"; };
 		50CA1CE12998A4C100962F1F /* WeightedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightedList.swift; sourceTree = "<group>"; };
 		50CBBBD0295E79BC005E5EB6 /* WorkoutTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTile.swift; sourceTree = "<group>"; };
+		50CFCE0C2A141AD4008CD202 /* WorkoutTopViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTopViewManager.swift; sourceTree = "<group>"; };
 		50CFE079296A3608000579E9 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		50D3B8F829665F8F003B4BA6 /* CurrentWorkoutViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWorkoutViewManager.swift; sourceTree = "<group>"; };
 		50D912BB295D5586008D1A82 /* SetSubCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetSubCell.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				50F7064C292EB3F900846AA4 /* WorkoutViewController.swift */,
+				50CFCE0C2A141AD4008CD202 /* WorkoutTopViewManager.swift */,
 				50D912BB295D5586008D1A82 /* SetSubCell.swift */,
 				50DBA01629307CFE00C46580 /* SetCell.swift */,
 			);
@@ -316,6 +319,7 @@
 				50F70639292EB13E00846AA4 /* AppDelegate.swift in Sources */,
 				50F7064F292EB91700846AA4 /* Workout.swift in Sources */,
 				50A25356295E696D0056CC04 /* ExerciseDetailsViewController.swift in Sources */,
+				50CFCE0D2A141AD4008CD202 /* WorkoutTopViewManager.swift in Sources */,
 				50F7063B292EB13E00846AA4 /* SceneDelegate.swift in Sources */,
 				504376D3296A9D76004070F0 /* GymSettingsViewController.swift in Sources */,
 				50AE5AAD2966A2310048F76C /* TopViewManager.swift in Sources */,
@@ -485,7 +489,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = mullen.ethan.Workouts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -515,7 +519,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = mullen.ethan.Workouts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

@@ -7,41 +7,40 @@
 
 import UIKit
 
+/**
+ Workout View Controller
+ -
+ */
 class WorkoutViewController: UIViewController {
+        
+    @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var topViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var topTitleLabel: UILabel!
+    @IBOutlet weak var topSetCountLabel: UILabel!
+    @IBOutlet weak var topMuscleGroupsLabel: UILabel!
     
-    @IBOutlet weak var titleView: UIView!
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var stack: UIStackView!
     @IBOutlet weak var stackHeight: NSLayoutConstraint!
     
+    // Note: Scroll view's delegate is set to self in WorkoutTopViewManager
     @IBOutlet weak var scrollView: UIScrollView!
-    
-    var progressLayer: CALayer?
-    @IBOutlet weak var doneButton: UIButton!
     
     var setCells: [UIView] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        titleView.layer.cornerRadius = 12
+        loadTopView()
+        
         scrollView.layer.cornerRadius = 12
-
+        
         stack.translatesAutoresizingMaskIntoConstraints = false
         scrollView.showsVerticalScrollIndicator = false
-
-        guard let workout = currentWorkout else {
-            print("Failed to get current workout")
-            return;
-        }
         
-        titleLabel.text = workout.name
-
     }
         
     override func viewWillAppear(_ animated: Bool) {
         loadStack()
-        updateDoneButton()
     }
     
     func loadStack() {
@@ -84,38 +83,9 @@ class WorkoutViewController: UIViewController {
         }
 
     }
-    
-    func updateDoneButton() {
-        guard let workout = currentWorkout else { return }
-        // If the progressLayer doesn't exist make a new one and add it
-        if(progressLayer == nil) {
-            progressLayer = CALayer()
-            progressLayer!.cornerRadius = 8
-            progressLayer!.backgroundColor = (UIColor(named: "AccentColor")?.cgColor)
-            doneButton.layer.insertSublayer(progressLayer!, at: 1)
-        }
-        // Modify the progressLayer's width to show progress
-        let progress = workout.progress()
-        progressLayer!.frame = CGRect(x: doneButton.bounds.minX, y: doneButton.bounds.minY, width: doneButton.bounds.width * CGFloat(progress), height: doneButton.bounds.height)
-        // Update the button's text color
-        let nextColor = progress == 1 ? UIColor(named: "ForegroundColor") : .clear
-        UIView.transition(with: doneButton.titleLabel!, duration: 0.25, options: .transitionCrossDissolve, animations: {
-            self.doneButton.titleLabel!.textColor = nextColor
-            self.doneButton.tintColor = nextColor
-        })
-    }
-    
-    @IBAction func tappedDoneButton(_ sender: Any) {
-        guard let workout = currentWorkout else { return }
-        if(workout.progress() != 1) { return }
-        // TODO Save current workout to workout history
-        currentWorkout = nil
-        saveCurrentWorkout()
-        performSegue(withIdentifier: "toMainView", sender: self)
-    }
-    
-    // Tapped the back button in the upper left, auto segues to main view
-    @IBAction func tappedBack(_ sender: Any) {
+            
+    // Tapped the home button. If the workout is complete, ask to save
+    @IBAction func tappedHome(_ sender: Any) {
         saveCurrentWorkout()
     }
     
