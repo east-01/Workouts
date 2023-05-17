@@ -30,7 +30,7 @@ class SetCell: UIView {
     var cellHeader: UIView
     var subcellStack: UIStackView
     var numberText: UILabel
-    
+        
     init(workoutViewController: WorkoutViewController, workoutSet: WorkoutSet, position: Int, totalCount: Int) {
         self.workoutViewController = workoutViewController
         self.workoutSet = workoutSet
@@ -64,7 +64,7 @@ class SetCell: UIView {
         subcellStack.axis = .vertical
         subcellStack.spacing = CGFloat(SetCell.STACK_SPACING)
         subcellStack.distribution = .equalSpacing
-
+        
         NSLayoutConstraint.activate([
             subcellStack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: CGFloat(5)),
             subcellStack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: CGFloat(-5)),
@@ -94,7 +94,7 @@ class SetCell: UIView {
 
         self.addSubview(cellHeader)
 
-        numberText = createTextLabel(text: "\(position)/\(totalCount)", isBold: false, fontSize: 30)
+        numberText = createTextLabel(text: "Set \(position)", isBold: false, fontSize: 30)
         cellHeader.addSubview(numberText)
  
         let completedButton = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
@@ -153,7 +153,10 @@ class SetCell: UIView {
         }
         let config = UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: CGFloat(SetCell.HEADER_BUTTON_SIZE)))
         let imageName = workout.sets[position-1].isComplete ? "checkmark.circle.fill" : "circle"
-        button.setImage(UIImage(systemName: imageName, withConfiguration: config), for: .normal)
+        let newImage = UIImage(systemName: imageName, withConfiguration: config)
+        UIView.transition(with: button, duration: 0.15, options: .transitionFlipFromRight, animations: {
+            button.setImage(newImage, for: .normal)
+        }, completion: nil)
     }
     
     public func getDesiredHeight() -> Int {
