@@ -564,7 +564,7 @@
                                         <buttonConfiguration key="configuration" style="plain" image="person.fill" catalog="system">
                                             <backgroundConfiguration key="background"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="35"/>
-                                            <color key="baseForegroundColor" name="ForegroundColor"/>
+                                            <color key="baseForegroundColor" name="DarkAccentColor"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <segue destination="BHW-lI-mae" kind="presentation" modalPresentationStyle="currentContext" modalTransitionStyle="coverVertical" id="6zu-N6-0ll"/>
@@ -576,7 +576,7 @@
                                         <buttonConfiguration key="configuration" style="plain" image="calendar" catalog="system">
                                             <backgroundConfiguration key="background"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="35"/>
-                                            <color key="baseForegroundColor" name="ForegroundColor"/>
+                                            <color key="baseForegroundColor" name="DarkAccentColor"/>
                                         </buttonConfiguration>
                                     </button>
                                 </subviews>
@@ -728,28 +728,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="3" translatesAutoresizingMaskIntoConstraints="NO" id="TMa-Jg-C6c">
-                                <rect key="frame" x="10" y="130" width="370" height="584"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="500" axis="vertical" distribution="equalCentering" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="AyP-d4-ysC">
-                                        <rect key="frame" x="0.0" y="0.0" width="370" height="584"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="0tR-bO-kri"/>
-                                            <constraint firstAttribute="width" constant="370" id="jgQ-N4-tNh"/>
-                                        </constraints>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="AyP-d4-ysC" secondAttribute="trailing" id="YEp-0D-AXh"/>
-                                    <constraint firstItem="AyP-d4-ysC" firstAttribute="top" secondItem="cLR-MD-4Kx" secondAttribute="top" id="aH9-9o-ipA"/>
-                                    <constraint firstAttribute="bottom" secondItem="AyP-d4-ysC" secondAttribute="bottom" constant="15" id="bhN-m9-H2H"/>
-                                    <constraint firstItem="AyP-d4-ysC" firstAttribute="trailing" secondItem="ui9-95-3gd" secondAttribute="trailing" id="gMq-Wa-D9a"/>
-                                    <constraint firstItem="AyP-d4-ysC" firstAttribute="leading" secondItem="ui9-95-3gd" secondAttribute="leading" id="vun-ur-Hqc"/>
-                                    <constraint firstItem="ui9-95-3gd" firstAttribute="bottom" secondItem="AyP-d4-ysC" secondAttribute="bottom" placeholder="YES" id="wGR-YE-AJX"/>
-                                </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="cLR-MD-4Kx"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="ui9-95-3gd"/>
-                            </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="baW-hY-Mrv">
                                 <rect key="frame" x="10" y="0.0" width="370" height="120"/>
                                 <subviews>
@@ -817,22 +795,17 @@
                         <viewLayoutGuide key="safeArea" id="jen-Xv-nUz"/>
                         <color key="backgroundColor" name="BackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="TMa-Jg-C6c" firstAttribute="leading" secondItem="jen-Xv-nUz" secondAttribute="leading" constant="10" id="0CO-F7-U0b"/>
                             <constraint firstItem="uJf-QM-3UB" firstAttribute="trailing" secondItem="jen-Xv-nUz" secondAttribute="trailing" constant="16" id="B9b-B5-VXx"/>
-                            <constraint firstItem="uJf-QM-3UB" firstAttribute="top" secondItem="TMa-Jg-C6c" secondAttribute="bottom" constant="10" id="G4u-px-X7w"/>
                             <constraint firstItem="baW-hY-Mrv" firstAttribute="top" secondItem="jen-Xv-nUz" secondAttribute="top" id="If8-GL-FfJ"/>
                             <constraint firstAttribute="bottom" secondItem="uJf-QM-3UB" secondAttribute="bottom" id="Vbe-PG-6GI"/>
                             <constraint firstItem="uJf-QM-3UB" firstAttribute="leading" secondItem="jen-Xv-nUz" secondAttribute="leading" constant="-16" id="bNe-35-Rsd"/>
                             <constraint firstItem="baW-hY-Mrv" firstAttribute="leading" secondItem="jen-Xv-nUz" secondAttribute="leading" constant="10" id="ewL-Vq-8PL"/>
                             <constraint firstItem="jen-Xv-nUz" firstAttribute="trailing" secondItem="baW-hY-Mrv" secondAttribute="trailing" constant="10" id="huD-C7-CI4"/>
-                            <constraint firstItem="TMa-Jg-C6c" firstAttribute="top" secondItem="baW-hY-Mrv" secondAttribute="bottom" constant="10" id="rXK-7t-EFr"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="llY-fI-5zI"/>
                     <connections>
-                        <outlet property="scrollView" destination="TMa-Jg-C6c" id="upC-PS-VLK"/>
-                        <outlet property="stack" destination="AyP-d4-ysC" id="ogG-WC-9rM"/>
-                        <outlet property="stackHeight" destination="0tR-bO-kri" id="jkv-Ue-unB"/>
+                        <outlet property="bottomView" destination="uJf-QM-3UB" id="yk4-di-zEg"/>
                         <outlet property="topMuscleGroupsLabel" destination="h8y-kv-1f0" id="Mev-Pg-UYi"/>
                         <outlet property="topSetCountLabel" destination="n9U-cr-4Cr" id="1SY-uZ-NuR"/>
                         <outlet property="topTitleLabel" destination="neb-v9-ws7" id="HmS-hb-0Xl"/>
@@ -1034,7 +1007,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Hev-re-bZs"/>
+        <segue reference="NX9-9c-5w5"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="calendar" catalog="system" width="128" height="107"/>
@@ -1055,6 +1028,9 @@
         </namedColor>
         <namedColor name="BackgroundColor">
             <color red="0.098039215686274508" green="0.086274509803921567" blue="0.098039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="DarkAccentColor">
+            <color red="0.45098039215686275" green="0.058823529411764705" blue="0.078431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="ForegroundColor">
             <color red="0.98039215686274506" green="0.96862745098039216" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

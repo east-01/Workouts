@@ -19,24 +19,48 @@ class WorkoutViewController: UIViewController {
     @IBOutlet weak var topSetCountLabel: UILabel!
     @IBOutlet weak var topMuscleGroupsLabel: UILabel!
     
-    @IBOutlet weak var stack: UIStackView!
-    @IBOutlet weak var stackHeight: NSLayoutConstraint!
+    @IBOutlet weak var bottomView: UIView!
+    
+    var stack: ExpandableStackView!
     
     // Note: Scroll view's delegate is set to self in WorkoutTopViewManager
-    @IBOutlet weak var scrollView: UIScrollView!
+    var scrollView: UIScrollView!
     
     var setCells: [UIView] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        loadTopView()
         
+        // Create scroll view and add constraints
+        scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.layer.cornerRadius = 12
-        
-        stack.translatesAutoresizingMaskIntoConstraints = false
         scrollView.showsVerticalScrollIndicator = false
+        view.addSubview(scrollView)
+
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: 10),
+            scrollView.bottomAnchor.constraint(equalTo: bottomView.topAnchor, constant: -10),
+            scrollView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10),
+            scrollView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10)
+        ])
         
+        // Create the expandable stack view for inside the scroll view and add constraints
+        stack = ExpandableStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.setSpacing(spacing: 10)
+        scrollView.addSubview(stack)
+        
+        NSLayoutConstraint.activate([
+            stack.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            stack.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            stack.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            stack.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            stack.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
+        ])
+        
+        loadTopView()
+                
     }
         
     override func viewWillAppear(_ animated: Bool) {
@@ -48,31 +72,28 @@ class WorkoutViewController: UIViewController {
         if(currentWorkout!.sets.count == 0) {
             return
         }
-        
-        stackHeight.constant = 0 // Reset the stack height to 0
+                
+        // Reset old setCells
         setCells = []
-        
         for stackSubview in stack.arrangedSubviews {
             stackSubview.removeFromSuperview()
         }
-        
-        // Create and add each SetCell to the stack, dynamically expand the stack height
-        for i in 0...currentWorkout!.sets.count-1 {
+
+        // Create new setcells and add them to the stack view
+        for i in 0..<currentWorkout!.sets.count {
             let currentSet = currentWorkout!.sets[i]
             let newCell: SetCell = SetCell(workoutViewController: self, workoutSet: currentSet, position: stack.subviews.count + 1, totalCount: currentWorkout!.sets.count)
+            let newCellHeightAnchor: NSLayoutConstraint = newCell.heightAnchor.constraint(equalToConstant: CGFloat(newCell.getDesiredHeight()))
             NSLayoutConstraint.activate([
-                newCell.heightAnchor.constraint(equalToConstant: CGFloat(newCell.getDesiredHeight()))
+                newCellHeightAnchor
             ])
+            newCell.setHeightConstraint(constraint: newCellHeightAnchor)
             setCells.append(newCell)
-            stackHeight.constant += CGFloat(newCell.getDesiredHeight())
-            if(i != 0) {
-                stackHeight.constant += stack.spacing
-            }
-            stack.addArrangedSubview(newCell)
+            stack.addArrangedSubview(view: newCell)
         }
-                        
+        
         // Add long press listeners
-        for uiview in stack.subviews {
+        for uiview in stack!.subviews {
             let setCell: SetCell = uiview as! SetCell
             for setSubCell in setCell.subcellStack.subviews {
                 let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tappedSubCell))

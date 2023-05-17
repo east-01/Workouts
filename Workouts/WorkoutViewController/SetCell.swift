@@ -26,6 +26,7 @@ class SetCell: UIView {
     
     var position: Int
     var totalCount: Int
+    private var heightConstraint: NSLayoutConstraint?
     
     var cellHeader: UIView
     var subcellStack: UIStackView
@@ -143,8 +144,10 @@ class SetCell: UIView {
             return
         }
         // Invert completion status then change button to reflect this
-        workout.sets[position-1].isComplete = !workout.sets[position-1].isComplete
+        let isComplete = !workout.sets[position-1].isComplete
+        workout.sets[position-1].isComplete = isComplete
         updateCompletedButton(button: sender)
+        setExpanded(expanded: !isComplete)
     }
     
     func updateCompletedButton(button: UIButton) {
@@ -158,6 +161,38 @@ class SetCell: UIView {
             button.setImage(newImage, for: .normal)
         }, completion: nil)
     }
+
+    func setExpanded(expanded: Bool) {
+                
+        let animationDuration: TimeInterval = 0.15
+        let subcellDuration: TimeInterval = 0.075
+        
+        // If we're expanding the view, we need to wait for the expanding animation to complete first.
+        // If we're collapsing the view, we need to fade away the text first
+        showSubcellsWithFade(show: expanded, duration: subcellDuration, delay: expanded ? animationDuration : 0)
+        
+        UIView.animate(withDuration: animationDuration, delay: expanded ? 0 : subcellDuration, animations: {
+            self.heightConstraint!.constant = expanded ? CGFloat(self.getDesiredHeight()) : CGFloat(SetCell.HEADER_HEIGHT)
+            self.superview!.layoutIfNeeded()
+        })
+        
+    }
+        
+    private func showSubcellsWithFade(show: Bool, duration: TimeInterval, delay: TimeInterval) {
+                
+        UIView.animate(withDuration: duration, delay: delay) {
+            if show {
+                // Show the stack view
+                self.subcellStack.alpha = 1.0
+                self.subcellStack.isUserInteractionEnabled = true
+            } else {
+                // Hide the stack view
+                self.subcellStack.alpha = 0.0
+                self.subcellStack.isUserInteractionEnabled = false
+            }
+        }
+        
+    }
     
     public func getDesiredHeight() -> Int {
         let exCnt = workoutSet!.exerciseUnits.count
@@ -165,6 +200,10 @@ class SetCell: UIView {
             SetCell.SUBCELL_SIZE * exCnt +
             SetCell.STACK_SPACING * (exCnt - 1) +
             SetCell.BOTTOM_SPACE_HEIGHT
+    }
+    
+    public func setHeightConstraint(constraint: NSLayoutConstraint) {
+        self.heightConstraint = constraint
     }
     
 }
