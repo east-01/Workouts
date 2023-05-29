@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		5016B07429640A2D00C82BC3 /* ScheduleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5016B07329640A2D00C82BC3 /* ScheduleManager.swift */; };
 		503729EC293690D200CABCC9 /* ProgressCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503729EB293690D200CABCC9 /* ProgressCircle.swift */; };
+		503E961E2A254D8D0038E58F /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503E961D2A254D8D0038E58F /* HistoryViewController.swift */; };
 		504376D3296A9D76004070F0 /* GymSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504376D2296A9D76004070F0 /* GymSettingsViewController.swift */; };
+		50442CA52A23FB9A00D78EAC /* SettingsViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50442CA42A23FB9A00D78EAC /* SettingsViewManager.swift */; };
 		505A9CBD296A2A0700233502 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505A9CBC296A2A0700233502 /* ProfileViewController.swift */; };
 		506271A6298897BD009E8A37 /* WorkoutGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506271A5298897BD009E8A37 /* WorkoutGenerator.swift */; };
 		50776462296794A500F95A61 /* Equipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50776461296794A500F95A61 /* Equipment.swift */; };
@@ -50,7 +52,9 @@
 /* Begin PBXFileReference section */
 		5016B07329640A2D00C82BC3 /* ScheduleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleManager.swift; sourceTree = "<group>"; };
 		503729EB293690D200CABCC9 /* ProgressCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircle.swift; sourceTree = "<group>"; };
+		503E961D2A254D8D0038E58F /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		504376D2296A9D76004070F0 /* GymSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymSettingsViewController.swift; sourceTree = "<group>"; };
+		50442CA42A23FB9A00D78EAC /* SettingsViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewManager.swift; sourceTree = "<group>"; };
 		505A9CBC296A2A0700233502 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		506271A5298897BD009E8A37 /* WorkoutGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutGenerator.swift; sourceTree = "<group>"; };
 		50776461296794A500F95A61 /* Equipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equipment.swift; sourceTree = "<group>"; };
@@ -106,6 +110,7 @@
 			children = (
 				50888BE029515A140019C3F2 /* WorkoutSettingsViewController.swift */,
 				507764672967F0DE00F95A61 /* GymViewManager.swift */,
+				50442CA42A23FB9A00D78EAC /* SettingsViewManager.swift */,
 			);
 			path = WorkoutSettingsViewController;
 			sourceTree = "<group>";
@@ -220,6 +225,7 @@
 				50ADF736296F755A0072EE9D /* GymSettingsViewController */,
 				50B008722974DA6C0044212B /* ExerciseDetailsViewController */,
 				505A9CBC296A2A0700233502 /* ProfileViewController.swift */,
+				503E961D2A254D8D0038E58F /* HistoryViewController.swift */,
 				5082923D2963E1ED00A29C6E /* Workout Classes */,
 				50CA1CE02998A4AA00962F1F /* Utility classes */,
 				50A2E8F4297650880087C92A /* Custom Elements */,
@@ -306,6 +312,7 @@
 				50B008712974A7980044212B /* OverlayView.swift in Sources */,
 				50776464296794CE00F95A61 /* ExerciseData.swift in Sources */,
 				50CA1CE22998A4C100962F1F /* WeightedList.swift in Sources */,
+				503E961E2A254D8D0038E58F /* HistoryViewController.swift in Sources */,
 				50776462296794A500F95A61 /* Equipment.swift in Sources */,
 				50F7064D292EB3F900846AA4 /* WorkoutViewController.swift in Sources */,
 				50B008762974DAE30044212B /* SwapExerciseViewManager.swift in Sources */,
@@ -313,6 +320,7 @@
 				50F7063D292EB13E00846AA4 /* MainViewController.swift in Sources */,
 				507764682967F0DE00F95A61 /* GymViewManager.swift in Sources */,
 				50ADF738296F75850072EE9D /* EquipmentStackManager.swift in Sources */,
+				50442CA52A23FB9A00D78EAC /* SettingsViewManager.swift in Sources */,
 				50DA012C2960315200E6EE06 /* ScheduleData.swift in Sources */,
 				50CFE07A296A3608000579E9 /* UserProfile.swift in Sources */,
 				503729EC293690D200CABCC9 /* ProgressCircle.swift in Sources */,

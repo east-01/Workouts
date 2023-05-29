@@ -98,7 +98,6 @@ extension ExerciseDetailsViewController {
             
         }
         
-
         currentWorkout!.swap(exercise!)
         saveCurrentWorkout()
         

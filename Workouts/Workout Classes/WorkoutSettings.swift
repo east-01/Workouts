@@ -13,6 +13,7 @@ struct WorkoutSettings: Codable {
     var gym: Gym
     var exerciseCount: Int
     var prefersSupersets: Bool
+    var supersetSize: Int
     var groupExercisesByMuscle: Bool
     func printSettings() {
         printSettings("")
@@ -24,6 +25,9 @@ struct WorkoutSettings: Codable {
         print("\(prefix)  Gym: \(gym.name)")
         print("\(prefix)  Exercise count: \(exerciseCount)")
         print("\(prefix)  Prefers supersets: \(prefersSupersets)")
+        if(prefersSupersets) {
+            print("\(prefix)    Superset size: \(supersetSize)")
+        }
         print("\(prefix)  Group by muscle: \(groupExercisesByMuscle)")
     }
 }

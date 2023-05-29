@@ -117,7 +117,11 @@ extension Workout {
             let exerciseUnit = ExerciseUnit(exercise: exercise, reps: reps)
             exerciseUnits.append(exerciseUnit)
             
-            let reset_superset = !prefersSupersets || supersetMarkers.contains(i) || (i+1) >= exercises.count
+            // Three conditions:
+            //   - If we don't use supersets we just continue
+            //   - If the index is divisible by the supersetSize, reset
+            //   - If this index is the last index, reset
+            let reset_superset = !prefersSupersets || (i+1)%settings.supersetSize==0 || (i+1) >= exercises.count
             if(reset_superset) {
                 self.sets.append(WorkoutSet(exerciseUnits: exerciseUnits))
                 exerciseUnits = []

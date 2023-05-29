@@ -11,6 +11,7 @@ class WorkoutSettingsViewController: UIViewController {
     
     @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var settingsView: UIView!
+    @IBOutlet weak var settingsViewHeight: NSLayoutConstraint!
     @IBOutlet weak var muscleView: UIView!
         
     @IBOutlet weak var muscleGroupScrollView: UIScrollView!
@@ -21,6 +22,11 @@ class WorkoutSettingsViewController: UIViewController {
     @IBOutlet weak var exerciseCountText: UILabel!
     
     @IBOutlet weak var supersetsToggle: UISwitch!
+    
+    @IBOutlet weak var supersetSizeDisplayText: UILabel!
+    @IBOutlet weak var supersetSizeStepper: UIStepper!
+    @IBOutlet weak var supersetSizeText: UILabel!
+    
     @IBOutlet weak var groupToggle: UISwitch!
     
     @IBOutlet weak var gymView: UIView!
@@ -57,6 +63,7 @@ class WorkoutSettingsViewController: UIViewController {
                 gym: getProfile().gyms[0],
                 exerciseCount: 12,
                 prefersSupersets: true,
+                supersetSize: 2,
                 groupExercisesByMuscle: false
             )
         }
@@ -143,6 +150,10 @@ class WorkoutSettingsViewController: UIViewController {
         exerciseCountText.text = "\(settings.exerciseCount)"
 
         supersetsToggle.isOn = settings.prefersSupersets
+        
+        supersetSizeStepper.value = Double(settings.supersetSize)
+        supersetSizeText.text = "\(settings.supersetSize)"
+        
         groupToggle.isOn = settings.groupExercisesByMuscle
                 
         gymPicker.selectRow(getProfile().gyms.firstIndex(of: settings.gym)!, inComponent: 0, animated: true)
@@ -175,6 +186,11 @@ class WorkoutSettingsViewController: UIViewController {
         exerciseCountText.text = "\(exerciseCount)"
 
         let prefersSupersets = supersetsToggle.isOn
+        setSettingsViewExpanded(prefersSupersets)
+        
+        let supersetSize = Int(supersetSizeStepper.value)
+        supersetSizeText.text = "\(supersetSize)"
+        
         let groupByMuscle = groupToggle.isOn
 
         self.isValid = isValid
@@ -190,6 +206,7 @@ class WorkoutSettingsViewController: UIViewController {
             gym: getProfile().gyms[gymSelection],
             exerciseCount: exerciseCount,
             prefersSupersets: prefersSupersets,
+            supersetSize: supersetSize,
             groupExercisesByMuscle: groupByMuscle
         )
                 
@@ -211,7 +228,17 @@ class WorkoutSettingsViewController: UIViewController {
         }
         saveSettings()
     }
-     
+    
+    @IBAction func supersetSizeChanged(_ sender: UIStepper) {
+        if(supersetSizeStepper.value <= 0) {
+            sender.value = 1
+        }
+        if(supersetSizeStepper.value > exerciseStepper.value) {
+            sender.value = exerciseStepper.value
+        }
+        saveSettings()
+    }
+    
     @IBAction func toggleClicked(_ sender: UISwitch) {
         saveSettings()
     }

@@ -38,8 +38,8 @@ class Gym: Codable, Equatable {
 
 func getDefaultGyms() -> [Gym] {
     return [
-        Gym(name: "Bodyweight only", equipment: [.NONE, .BODYWEIGHT], exerciseBlacklist: []),
+        Gym(name: "Commercial gym", equipment: Equipment.allCases, exerciseBlacklist: []),
         Gym(name: "Home gym", equipment: [.NONE, .BODYWEIGHT, .DUMBBELLS, .BARBELL, .BENCH, .INCLINE_BENCH, .DECLINE_BENCH, .LONG_BAND, .PULL_UP_BAR], exerciseBlacklist: []),
-        Gym(name: "Commercial gym", equipment: Equipment.allCases, exerciseBlacklist: [])
+        Gym(name: "Bodyweight only", equipment: [.NONE, .BODYWEIGHT], exerciseBlacklist: [])
     ]
 }

@@ -41,6 +41,10 @@ class MainViewController: UIViewController {
             currentWorkout = loadCurrentWorkout()
         }
 
+        if(currentProfile == nil) {
+            currentProfile = getProfile()
+        }
+        
         // Manage top view
         loadTopView()
                 

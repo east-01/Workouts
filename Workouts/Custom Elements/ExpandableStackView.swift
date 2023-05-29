@@ -72,4 +72,16 @@ class ExpandableStackView: UIView {
         self.spacing = spacing
     }
     
+    /**
+     This function will clear all subiews in the ExpandableStackView and reset the constraints back to their initial (empty) state.
+     */
+    func clearSubviews() {
+        for subview in self.subviews {
+            subview.removeFromSuperview()
+        }
+        arrangedSubviews = []
+        topConstraints = []
+        bottomConstraint = nil
+    }
+    
 }

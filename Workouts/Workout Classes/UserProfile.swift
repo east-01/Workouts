@@ -10,6 +10,7 @@ import Foundation
 struct UserProfile: Codable {
     var username: String
     var gyms: [Gym]
+    var workoutHistory: [Workout]
 }
 
 var currentProfile: UserProfile?
@@ -20,7 +21,8 @@ func getProfile() -> UserProfile {
         // Return a default profile
         return UserProfile(
             username: "User",
-            gyms: getDefaultGyms()
+            gyms: getDefaultGyms(),
+            workoutHistory: []
         )
     }
     return currentProfile!

@@ -75,10 +75,8 @@ class WorkoutViewController: UIViewController {
                 
         // Reset old setCells
         setCells = []
-        for stackSubview in stack.arrangedSubviews {
-            stackSubview.removeFromSuperview()
-        }
-
+        stack.clearSubviews()
+        
         // Create new setcells and add them to the stack view
         for i in 0..<currentWorkout!.sets.count {
             let currentSet = currentWorkout!.sets[i]
@@ -107,7 +105,13 @@ class WorkoutViewController: UIViewController {
             
     // Tapped the home button. If the workout is complete, ask to save
     @IBAction func tappedHome(_ sender: Any) {
+        if(currentWorkout!.progress() == 1 && currentProfile != nil) {
+            currentProfile!.workoutHistory.append(currentWorkout!)
+            saveProfile()
+            currentWorkout = nil
+        }
         saveCurrentWorkout()
+        performSegue(withIdentifier: "toMainView", sender: self)
     }
     
     // Tapped a sub cell, perform segue to exercise details
