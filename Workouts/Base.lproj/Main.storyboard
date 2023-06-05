@@ -1079,7 +1079,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HuN-cd-7ch">
-                                <rect key="frame" x="15" y="187" width="360" height="608"/>
+                                <rect key="frame" x="15" y="182" width="360" height="613"/>
                                 <color key="backgroundColor" name="BackgroundAccentColor"/>
                             </view>
                         </subviews>
@@ -1088,7 +1088,7 @@
                         <constraints>
                             <constraint firstItem="ChU-E5-dub" firstAttribute="top" secondItem="5uU-Et-VvU" secondAttribute="top" constant="5" id="A7L-Yb-Cix"/>
                             <constraint firstItem="UA0-BG-GNg" firstAttribute="leading" secondItem="5uU-Et-VvU" secondAttribute="leading" constant="15" id="Db5-ta-D3W"/>
-                            <constraint firstItem="HuN-cd-7ch" firstAttribute="top" secondItem="UA0-BG-GNg" secondAttribute="bottom" constant="15" id="Rpm-5G-jm2"/>
+                            <constraint firstItem="HuN-cd-7ch" firstAttribute="top" secondItem="UA0-BG-GNg" secondAttribute="bottom" constant="10" id="Rpm-5G-jm2"/>
                             <constraint firstItem="ChU-E5-dub" firstAttribute="leading" secondItem="5uU-Et-VvU" secondAttribute="leading" constant="15" id="WOu-yO-BAB"/>
                             <constraint firstItem="5uU-Et-VvU" firstAttribute="trailing" secondItem="HuN-cd-7ch" secondAttribute="trailing" constant="15" id="aGa-cD-tVJ"/>
                             <constraint firstItem="5uU-Et-VvU" firstAttribute="trailing" secondItem="UA0-BG-GNg" secondAttribute="trailing" constant="15" id="det-ZV-mE2"/>

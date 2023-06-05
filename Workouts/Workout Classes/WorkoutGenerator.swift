@@ -15,7 +15,7 @@ extension Workout {
         if(settings.muscleGroups.count == 1) {
             prefersSupersets = false
         }
-        
+                
         let exercisesPerMuscleGroup = settings.exerciseCount / muscleGroups.count
                 
         // Sort and grap exercise options for each muscle group
@@ -38,17 +38,8 @@ extension Workout {
                     elims += 1
                     continue
                 }
-
-                let exerciseData = exercise.data()
-                // Calculate exercise weight
-                var weight = 10
                 
-                let isExclusivelyBodyweight = exerciseData.equipment.count == 1 && (exerciseData.equipment[0] == .NONE || exerciseData.equipment[0] == .BODYWEIGHT)
-                if(!isExclusivelyBodyweight) {
-                    weight += 5
-                }
-                
-                options.addItem(exercise, weight: weight)
+                options.addItem(exercise, weight: currentProfile!.exerciseWeights[exercise]!)
                 
             }
             

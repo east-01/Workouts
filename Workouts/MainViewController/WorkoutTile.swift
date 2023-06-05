@@ -15,10 +15,17 @@ class WorkoutTile: UIView {
 
     var workout: Workout
     
-    init(workout: Workout) {
+    var showCompletion: Bool
+
+    init(workout: Workout, showCompletion: Bool) {
         self.workout = workout
+        self.showCompletion = showCompletion
         super.init(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         setup()
+    }
+    
+    convenience init(workout: Workout) {
+        self.init(workout: workout, showCompletion: true)
     }
     
     required init?(coder: NSCoder) {
@@ -58,6 +65,11 @@ class WorkoutTile: UIView {
             completionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
             completionLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         ])
+        
+        if(!showCompletion) {
+            completionLabel.layer.opacity = 0
+            completionLabel.isUserInteractionEnabled = false
+        }
         
     }
     

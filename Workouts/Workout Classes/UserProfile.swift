@@ -10,6 +10,7 @@ import Foundation
 struct UserProfile: Codable {
     var username: String
     var gyms: [Gym]
+    var exerciseWeights: [Exercise : Int]
     var workoutHistory: [Workout]
 }
 
@@ -22,6 +23,7 @@ func getProfile() -> UserProfile {
         return UserProfile(
             username: "User",
             gyms: getDefaultGyms(),
+            exerciseWeights: generateDefaultExerciseWeights(),
             workoutHistory: []
         )
     }
@@ -48,3 +50,19 @@ func setProfile(profile: UserProfile) {
     saveProfile()
 }
 
+func generateDefaultExerciseWeights() -> [Exercise : Int] {
+    var weightMap: [Exercise : Int] = [:]
+    for exercise in Exercise.allCases {
+        let exerciseData = exercise.data()
+        // Calculate exercise weight
+        var weight = 10
+        
+        let isExclusivelyBodyweight = exerciseData.equipment.count == 1 && (exerciseData.equipment[0] == .NONE || exerciseData.equipment[0] == .BODYWEIGHT)
+        if(!isExclusivelyBodyweight) {
+            weight += 5
+        }
+
+        weightMap[exercise] = weight
+    }
+    return weightMap
+}

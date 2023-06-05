@@ -58,7 +58,7 @@ class HistoryViewController: UIViewController {
         let userProfile = getProfile()
         
         for workout in userProfile.workoutHistory {
-            let workoutTile = WorkoutTile(workout: workout)
+            let workoutTile = WorkoutTile(workout: workout, showCompletion: false)
             stack.addArrangedSubview(view: workoutTile)
             
             NSLayoutConstraint.activate([

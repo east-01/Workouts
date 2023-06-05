@@ -163,10 +163,15 @@ class SetCell: UIView {
     }
 
     func setExpanded(expanded: Bool) {
-                
-        let animationDuration: TimeInterval = 0.15
-        let subcellDuration: TimeInterval = 0.075
-        
+        setExpanded(expanded: expanded, animate: true)
+    }
+    
+    func setExpanded(expanded: Bool, animate: Bool) {
+        setExpanded(expanded: expanded, animationDuration: animate ? 0.15 : 0, subcellDuration: animate ? 0.075 : 0)
+    }
+    
+    func setExpanded(expanded: Bool, animationDuration: TimeInterval, subcellDuration: TimeInterval) {
+                        
         // If we're expanding the view, we need to wait for the expanding animation to complete first.
         // If we're collapsing the view, we need to fade away the text first
         showSubcellsWithFade(show: expanded, duration: subcellDuration, delay: expanded ? animationDuration : 0)
@@ -179,19 +184,10 @@ class SetCell: UIView {
     }
         
     private func showSubcellsWithFade(show: Bool, duration: TimeInterval, delay: TimeInterval) {
-                
         UIView.animate(withDuration: duration, delay: delay) {
-            if show {
-                // Show the stack view
-                self.subcellStack.alpha = 1.0
-                self.subcellStack.isUserInteractionEnabled = true
-            } else {
-                // Hide the stack view
-                self.subcellStack.alpha = 0.0
-                self.subcellStack.isUserInteractionEnabled = false
-            }
+            self.subcellStack.alpha = show ? 1.0 : 0.0
+            self.subcellStack.isUserInteractionEnabled = show
         }
-        
     }
     
     public func getDesiredHeight() -> Int {

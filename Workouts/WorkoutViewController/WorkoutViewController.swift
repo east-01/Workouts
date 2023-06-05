@@ -88,6 +88,11 @@ class WorkoutViewController: UIViewController {
             newCell.setHeightConstraint(constraint: newCellHeightAnchor)
             setCells.append(newCell)
             stack.addArrangedSubview(view: newCell)
+            
+            if(currentSet.isComplete) {
+                newCell.setExpanded(expanded: false, animate: false)
+            }
+            
         }
         
         // Add long press listeners

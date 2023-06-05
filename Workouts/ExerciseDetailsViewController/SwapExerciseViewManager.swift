@@ -79,26 +79,44 @@ extension ExerciseDetailsViewController {
         
     @objc func clickedSwap(_ sender: UIButton) {
         
+        guard let exercise = exercise else {
+            print("ERROR: Exercise optional nil when making a swap. This is illegal.")
+            return
+        }
+        guard var currentProfile = currentProfile else {
+            print("ERROR: Failed to get the current profile when executing a swap.")
+            return
+        }
+        if(currentProfile.exerciseWeights[exercise] == nil) {
+            print("ERROR: Exercise weights doesn't contain exercise \(String(describing: exercise)), swap failed")
+            return
+        }
+
         // "Can't do this exercise at this gym" is selected
         if((checkboxStack!.arrangedSubviews[0] as! CheckBoxWithText).getState()) {
             let gym = currentWorkout!.getSettings().gym
             let gyms = getProfile().gyms
             if(gyms.firstIndex(of: gym) != nil) {
-                gyms[gyms.firstIndex(of: gym)!].addToBlacklist(exercise: exercise!)
+                gyms[gyms.firstIndex(of: gym)!].addToBlacklist(exercise: exercise)
             }
         }
-
+        
         // "I don't like it" is selected
         if((checkboxStack!.arrangedSubviews[1] as! CheckBoxWithText).getState()) {
-            
+            // TODO: How much should selecting this reduce weight by?
+            currentProfile.exerciseWeights[exercise]! -= 2
+            if(currentProfile.exerciseWeights[exercise])! < 0 {
+                currentProfile.exerciseWeights[exercise]! = 0
+            }
         }
 
         // "It doesn't fit in this workout" is selected
         if((checkboxStack!.arrangedSubviews[2] as! CheckBoxWithText).getState()) {
-            
+            // TODO: How should we treat this? We'll need to look at what the other exercises are in the workout, calculate based off of that. Good luck.
+            print("TODO: Unfinished \"doesn't fit in this workout\" selection in swap exercises.")
         }
         
-        currentWorkout!.swap(exercise!)
+        currentWorkout!.swap(exercise)
         saveCurrentWorkout()
         
         settingsOverlay!.hide()
